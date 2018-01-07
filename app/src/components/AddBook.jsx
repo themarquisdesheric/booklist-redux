@@ -32,7 +32,7 @@ class AddBook extends Component {
       <form onSubmit={this.handleSubmit}>
         Name:
         <input value={this.state.title} onChange={this.handleChange} />
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Add book" />
       </form>
     );
   }

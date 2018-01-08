@@ -7,13 +7,11 @@ describe('books', () => {
 
     const action = {
       type: c.ADD_BOOK,
-      payload: {
-        title: 'Sapiens'
-      }
+      payload: 'Sapiens'
     };
     
     const newState = books(state, action);
 
-    expect(newState.books).toHaveLength(1);
+    expect(newState).toHaveLength(1);
   });
 });

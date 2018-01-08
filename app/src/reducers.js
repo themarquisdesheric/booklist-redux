@@ -1,14 +1,20 @@
 import c from './constants';
 
-const books = (state = [], action) => {
+const initialState = {
+  books: []
+};
+
+const books = (state = initialState, action) => {
   if (action.type === c.ADD_BOOK) {
-    return [
-      ...state,
-      { 
-        title: action.payload,
-        read: false
-      }
-    ];
+    return {
+      books: [
+        ...state.books,
+        { 
+          title: action.payload,
+          read: false
+        }
+      ]
+    };
   }
 
   return state;

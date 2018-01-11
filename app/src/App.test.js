@@ -13,6 +13,53 @@ describe('books', () => {
     };
     
     const newState = books(state, action);
+
     expect(newState.books).toHaveLength(1);
+  });
+
+  it('removes a book', () => {
+    const state = {
+      books: [
+        {
+          title: 'sapiens',
+          id: 0,
+          read: false
+        },
+        {
+          title: 'the magus',
+          id: 1,
+          read: false
+        },
+        {
+          title: 'shantaram',
+          id: 2,
+          read: false
+        },
+      ]
+    };
+
+    const action = {
+      type: c.REMOVE_BOOK,
+      payload: 1
+    };
+
+    const expectedState = {
+      books: [
+        {
+          title: 'sapiens',
+          id: 0,
+          read: false
+        },
+        {
+          title: 'shantaram',
+          id: 2,
+          read: false
+        },
+      ]
+    };
+
+    const newState = books(state, action);
+
+    expect(newState).toEqual(expectedState);
   });
 });

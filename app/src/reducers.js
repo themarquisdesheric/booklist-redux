@@ -1,3 +1,4 @@
+import shortid from 'shortid';
 import c from './constants';
 
 const initialState = {
@@ -11,6 +12,7 @@ const books = (state = initialState, action) => {
         ...state.books,
         { 
           title: action.payload,
+          id: shortid.generate(),
           read: false
         }
       ]

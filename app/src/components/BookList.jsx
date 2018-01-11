@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Book from './Book';
 
 const BookList = ({ books }) => (
   <div>
     <ul>
       {books.map(book => 
-        <li key={book.title}>{book.title}</li>
+        <Book key={book.title} book={book} />
       )}
     </ul>
   </div>
@@ -19,6 +20,7 @@ BookList.propTypes = {
   books: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
       read: PropTypes.bool.isRequired
     })
   )

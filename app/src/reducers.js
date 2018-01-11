@@ -6,20 +6,27 @@ const initialState = {
 };
 
 const books = (state = initialState, action) => {
-  if (action.type === c.ADD_BOOK) {
-    return {
-      books: [
-        ...state.books,
-        { 
-          title: action.payload,
-          id: shortid.generate(),
-          read: false
-        }
-      ]
-    };
-  }
+  switch (action.type) {
+    case c.ADD_BOOK:
+      return {
+        books: [
+          ...state.books,
+          { 
+            title: action.payload,
+            id: shortid.generate(),
+            read: false
+          }
+        ]
+      };
 
-  return state;
+    case c.REMOVE_BOOK:
+      return {
+        books: state.books.filter(book => book.id !== action.payload)
+      };
+   
+    default:
+      return state;
+  }
 };
 
 export default books;

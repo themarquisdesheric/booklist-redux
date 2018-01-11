@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import DeleteButton from './DeleteButton';
 
 const Book = ({ book }) => (
   <li>
-    {book.title}
+    {book.title} <DeleteButton />
   </li>
 );
 

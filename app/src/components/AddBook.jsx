@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import c from '../constants';
 
 class AddBook extends Component {
   static propTypes = {
-    addBook: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired
   }
   
   constructor(props) {
@@ -23,7 +25,10 @@ class AddBook extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.addBook(this.state.title);
+    this.props.dispatch({
+      type: c.ADD_BOOK,
+      payload: this.state.title
+    });
     this.setState({ title: '' });
   }
 
@@ -38,4 +43,4 @@ class AddBook extends Component {
   }
 }
 
-export default AddBook;
+export default connect()(AddBook);

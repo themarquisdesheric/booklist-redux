@@ -9,9 +9,28 @@ describe('books', () => {
 
     const action = {
       type: c.ADD_BOOK,
-      payload: 'Sapiens'
+      payload: 'sapiens'
     };
     
+    const newState = books(state, action);
+
+    expect(newState.books).toHaveLength(1);
+  });
+
+  it('prevents duplicate books from being added', () => {
+    const state = {
+      books: [
+        {
+          title: 'sapiens'
+        }
+      ]
+    };
+
+    const action = {
+      type: c.ADD_BOOK,
+      payload: 'Sapiens'
+    };
+
     const newState = books(state, action);
 
     expect(newState.books).toHaveLength(1);

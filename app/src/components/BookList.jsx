@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Book from './Book';
+import AddBook from './AddBook';
 
 const BookList = ({ books }) => (
   <div>
@@ -9,6 +10,7 @@ const BookList = ({ books }) => (
         <Book key={book.title} book={book} />
       )}
     </ul>
+    <AddBook />
   </div>
 );
 

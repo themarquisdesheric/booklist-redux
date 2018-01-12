@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DeleteButton from './DeleteButton';
 
-const Book = ({ book }) => (
+const Book = ({ book, removeBook }) => (
   <li>
-    {book.title} <DeleteButton />
+    {book.title} <DeleteButton removeBook={() => removeBook(book.id)} />
   </li>
 );
 
@@ -13,7 +13,8 @@ Book.propTypes = {
     title: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     read: PropTypes.bool.isRequired
-  }).isRequired
+  }).isRequired,
+  removeBook: PropTypes.func.isRequired
 };
 
 export default Book;

@@ -10,3 +10,9 @@ export const addBook = (title) =>
       read: false
     }
   });
+
+export const removeBook = (id) => 
+  ({
+    type: c.REMOVE_BOOK,
+    payload: id
+  });

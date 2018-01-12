@@ -8,7 +8,7 @@ const books = (state = initialState, action) => {
   switch (action.type) {
     case c.ADD_BOOK:   
       var duplicate = state.books.some(book => 
-        book.title.toLowerCase() === action.payload.toLowerCase()
+        book.title.toLowerCase() === action.payload.title.toLowerCase()
       );
 
       return (duplicate) 

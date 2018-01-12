@@ -9,7 +9,9 @@ describe('books', () => {
 
     const action = {
       type: c.ADD_BOOK,
-      payload: 'sapiens'
+      payload: {
+        title: 'Sapiens'
+      }
     };
     
     const newState = books(state, action);
@@ -28,7 +30,9 @@ describe('books', () => {
 
     const action = {
       type: c.ADD_BOOK,
-      payload: 'Sapiens'
+      payload: {
+        title: 'Sapiens'
+      }
     };
 
     const newState = books(state, action);

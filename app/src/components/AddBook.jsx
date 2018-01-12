@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { addBook } from '../actions';
 
 class AddBook extends Component {
   static propTypes = {
-    dispatch: PropTypes.func.isRequired
+    addBook: PropTypes.func.isRequired
   }
   
   constructor(props) {
@@ -25,11 +23,7 @@ class AddBook extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
-    this.props.dispatch(
-      addBook(this.state.title)
-    );
-    
+    this.props.addBook(this.state.title);    
     this.setState({ title: '' });
   }
 
@@ -44,4 +38,4 @@ class AddBook extends Component {
   }
 }
 
-export default connect()(AddBook);
+export default AddBook;

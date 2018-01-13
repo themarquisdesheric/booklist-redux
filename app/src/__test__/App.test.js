@@ -1,5 +1,5 @@
-import c from './constants';
-import books from './reducers';
+import c from '../constants/books';
+import books from '../reducers/books';
 
 describe('books', () => {
   it('adds a book', () => {

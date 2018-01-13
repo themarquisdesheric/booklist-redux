@@ -1,2 +1,2 @@
 # booklist-redux
-An app to manage books I'm planning to read
+An app to manage the books in my life

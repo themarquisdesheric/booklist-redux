@@ -23,15 +23,20 @@ class AddBook extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.addBook(this.state.title);
+
+    if (!this.state.title) return;
+    
+    this.props.addBook(this.state.title);    
     this.setState({ title: '' });
   }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        Name:
+        Name: 
+        {' '}
         <input value={this.state.title} onChange={this.handleChange} />
+        {' '}
         <input type="submit" value="Add book" />
       </form>
     );

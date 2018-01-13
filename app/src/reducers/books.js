@@ -1,4 +1,4 @@
-import c from './constants';
+import c from '../constants/books';
 
 const initialState = {
   books: []

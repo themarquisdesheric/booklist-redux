@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import App from './App';
-import books from './reducers/books';
+import appReducer from './reducers';
 import { loadState, saveState } from './localStorage';
 
 const persistedState = loadState();
 
 const store = createStore(
-  books, 
+  appReducer, 
   persistedState, 
   // redux dev tools
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

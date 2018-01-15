@@ -26,4 +26,11 @@ describe('actions', () => {
     expect(action.type).toBe(c.TOGGLE_READ);
     expect(action.payload).toBe(5);
   });
+
+  it('should create an action to update the visibility filter', () => {
+    const action = setFilter('read');
+
+    expect(action.type).toBe(c.SET_FILTER);
+    expect(action.payload).toBe('read');
+  });
 });

@@ -17,6 +17,13 @@ describe('actions', () => {
     const action = removeBook('someID');
 
     expect(action.type).toBe(c.REMOVE_BOOK);
-    expect(action.payload).toBeTruthy();
+    expect(action.payload).toBe('someID');
+  });
+
+  it('should create an action to toggle whether the book has been read', () => {
+    const action = toggleRead(5);
+
+    expect(action.type).toBe(c.TOGGLE_READ);
+    expect(action.payload).toBe(5);
   });
 });

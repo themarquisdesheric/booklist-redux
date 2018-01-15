@@ -24,6 +24,20 @@ const books = (state = initialState, action) => {
       return {
         books: state.books.filter(book => book.id !== action.payload)
       };
+
+    case c.TOGGLE_READ:
+      return {
+        books: state.books.map(book => {
+          if (book.id === action.payload) {
+            return {
+              ...book,
+              read: !book.read
+            };
+          }
+          
+          return book;
+        })
+      };
    
     default:
       return state;

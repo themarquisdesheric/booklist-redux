@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import Book from './Book';
 import AddBook from './AddBook';
 
-const BookList = ({ books, addBook, removeBook }) => (
+const BookList = ({ books, addBook, removeBook, toggleRead }) => (
   <div>
     <ul>
       {books.map(book => 
-        <Book key={book.title} book={book} removeBook={removeBook} />
+        <Book key={book.title} book={book} removeBook={removeBook} toggleRead={toggleRead} />
       )}
     </ul>
     <AddBook addBook={addBook} />
@@ -27,7 +27,8 @@ BookList.propTypes = {
     })
   ),
   addBook: PropTypes.func.isRequired,
-  removeBook: PropTypes.func.isRequired
+  removeBook: PropTypes.func.isRequired,
+  toggleRead: PropTypes.func.isRequired
 };
 
 export default BookList;

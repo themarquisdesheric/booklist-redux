@@ -85,4 +85,35 @@ describe('books', () => {
 
     expect(newState).toEqual(expectedState);
   });
+
+  it('toggles whether the book has been read', () => {
+    const state = {
+      books: [
+        {
+          title: 'sapiens',
+          id: 'someID',
+          read: false
+        }
+      ]
+    };
+
+    const action = {
+      type: c.TOGGLE_READ,
+      payload: 'someID'
+    };
+
+    const expectedState = {
+      books: [
+        {
+          title: 'sapiens',
+          id: 'someID',
+          read: true
+        }
+      ]
+    };
+
+    const newState = books(state, action);
+
+    expect(newState).toEqual(expectedState);
+  });
 });

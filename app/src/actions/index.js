@@ -16,3 +16,9 @@ export const removeBook = (id) =>
     type: c.REMOVE_BOOK,
     payload: id
   });
+
+export const toggleRead = (id) =>
+  ({
+    type: c.TOGGLE_READ,
+    payload: id
+  });

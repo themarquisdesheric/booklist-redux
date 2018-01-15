@@ -1,5 +1,5 @@
 import shortid from 'shortid';
-import c from '../constants/books';
+import c from '../constants';
 
 export const addBook = title => 
   ({

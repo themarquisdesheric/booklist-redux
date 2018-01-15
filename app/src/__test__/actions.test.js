@@ -1,4 +1,4 @@
-import c from '../constants/books';
+import c from '../constants';
 import { addBook, removeBook, toggleRead, setFilter } from '../actions';
 
 describe('actions', () => {

@@ -1,4 +1,4 @@
-import c from '../constants/books';
+import c from '../constants';
 import books from '../reducers/books';
 
 describe('books', () => {

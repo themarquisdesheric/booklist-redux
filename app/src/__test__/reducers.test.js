@@ -1,5 +1,6 @@
 import c from '../constants';
 import books from '../reducers/books';
+import visibilityFilter from '../reducers/visibilityFilter';
 
 describe('books', () => {
   it('adds a book', () => {
@@ -122,7 +123,7 @@ describe('books', () => {
 
     const action = {
       type: c.SET_FILTER,
-      filter: c.SHOW_READ
+      payload: c.SHOW_READ
     };
 
     const expectedState = {

@@ -116,4 +116,21 @@ describe('books', () => {
 
     expect(newState).toEqual(expectedState);
   });
+
+  it('updates the visibility filter', () => {
+    const state = c.SHOW_ALL;
+
+    const action = {
+      type: c.SET_FILTER,
+      filter: c.SHOW_READ
+    };
+
+    const expectedState = {
+      visibilityFilter: c.SHOW_READ
+    };
+
+    const newState = visibilityFilter(state, action);
+
+    expect(newState).toEqual(expectedState);
+  });
 });

@@ -28,9 +28,9 @@ describe('actions', () => {
   });
 
   it('should create an action to update the visibility filter', () => {
-    const action = setFilter('read');
+    const action = setFilter(c.SHOW_READ);
 
     expect(action.type).toBe(c.SET_FILTER);
-    expect(action.payload).toBe('read');
+    expect(action.payload).toBe(c.SHOW_READ);
   });
 });

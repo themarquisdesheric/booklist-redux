@@ -1,43 +1,33 @@
 import c from '../constants';
 
-const initialState = {
-  books: []
-};
-
-const books = (state = initialState, action) => {
+const books = (state = [], action) => {
   switch (action.type) {
     case c.ADD_BOOK:   
-      var duplicate = state.books.some(book => 
+      var duplicate = state.some(book => 
         book.title.toLowerCase() === action.payload.title.toLowerCase()
       );
 
       return (duplicate) 
         ? state 
-        : {
-          books: [
-            ...state.books,
-            action.payload
-          ]
-        };
+        : [
+          ...state,
+          action.payload
+        ];
 
     case c.REMOVE_BOOK:
-      return {
-        books: state.books.filter(book => book.id !== action.payload)
-      };
+      return state.filter(book => book.id !== action.payload);
 
     case c.TOGGLE_READ:
-      return {
-        books: state.books.map(book => {
-          if (book.id === action.payload) {
-            return {
-              ...book,
-              read: !book.read
-            };
-          }
-          
-          return book;
-        })
-      };
+      return state.map(book => {
+        if (book.id === action.payload) {
+          return {
+            ...book,
+            read: !book.read
+          };
+        }
+        
+        return book;
+      });
    
     default:
       return state;

@@ -3,10 +3,8 @@ import c from '../constants';
 const visibilityFilter = (state = c.SHOW_ALL, action) => {
   switch (action.type) {
     case c.SET_FILTER:
-      return {
-        visibilityFilter: action.payload
-      };
-      
+      return action.payload;
+
     default:
       return state;
   }

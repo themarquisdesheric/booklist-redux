@@ -1,0 +1,11 @@
+const constants = {
+  ADD_BOOK: 'ADD_BOOK',
+  REMOVE_BOOK: 'REMOVE_BOOK',
+  TOGGLE_READ: 'TOGGLE_READ',
+  SET_FILTER: 'SET_FILTER',
+  SHOW_ALL: 'SHOW_ALL',
+  SHOW_READ: 'SHOW_READ',
+  SHOW_UNREAD: 'SHOW_UNREAD'
+};
+
+export default constants;

@@ -1,7 +1,7 @@
 import shortid from 'shortid';
-import c from '../constants/books';
+import c from '../constants';
 
-export const addBook = (title) => 
+export const addBook = title => 
   ({
     type: c.ADD_BOOK,
     payload: {
@@ -11,8 +11,20 @@ export const addBook = (title) =>
     }
   });
 
-export const removeBook = (id) => 
+export const removeBook = id => 
   ({
     type: c.REMOVE_BOOK,
     payload: id
+  });
+
+export const toggleRead = id =>
+  ({
+    type: c.TOGGLE_READ,
+    payload: id
+  });
+
+export const setFilter = filter =>
+  ({
+    type: c.SET_FILTER,
+    payload: filter
   });

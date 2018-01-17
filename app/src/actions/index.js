@@ -23,6 +23,12 @@ export const toggleRead = id =>
     payload: id
   });
 
+export const setOrder = books =>
+  ({
+    type: c.SET_ORDER,
+    payload: books
+  });
+
 export const setFilter = filter =>
   ({
     type: c.SET_FILTER,

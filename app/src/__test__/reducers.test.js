@@ -106,6 +106,30 @@ describe('books', () => {
     expect(newState).toEqual(expectedState);
   });
 
+  it('updates the order of books', () => {
+    const state = [
+      {
+        title: 'sapiens',
+        id: 'someID',
+        read: false
+      },
+      {
+        title: 'the magus',
+        id: 'someOtherID',
+        read: false
+      }
+    ];
+
+    const action = {
+      type: c.SET_ORDER,
+      payload: state
+    };
+
+    const newState = books(state, action);
+
+    expect(newState).toEqual(state);
+  });
+
   it('updates the visibility filter', () => {
     const state = c.SHOW_ALL;
 
@@ -114,9 +138,7 @@ describe('books', () => {
       payload: c.SHOW_READ
     };
 
-    const expectedState = {
-      visibilityFilter: c.SHOW_READ
-    };
+    const expectedState = c.SHOW_READ;
 
     const newState = visibilityFilter(state, action);
 

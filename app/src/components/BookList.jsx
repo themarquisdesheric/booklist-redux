@@ -15,30 +15,28 @@ const SortableBookList = SortableContainer( ({ items, removeBook, toggleRead }) 
 ));
 
 class BookList extends Component {
-  state = {
-    books: [{"title":"what's","id":"HkomjRqNf","read":false},{"title":"up?","id":"HkKWjghEf","read":false}],
-    filters: {
-      'All Books': c.SHOW_ALL,
-      'Unread Books': c.SHOW_UNREAD,
-      'Finished Books': c.SHOW_READ
-    }
-  };
+  onSortEnd = ({ oldIndex, newIndex }) => {
+    // only allow sorting on main view
+    if (this.props.visibilityFilter !== c.SHOW_ALL) return;
 
-  onSortEnd = ({oldIndex, newIndex}) => {
-    this.setState({
-      books: arrayMove(this.state.books, oldIndex, newIndex),
-    });
+    const sortedBooks = arrayMove(this.props.books, oldIndex, newIndex);
+    this.props.setOrder(sortedBooks);
   };
 
   render() {
     const { books, addBook, removeBook, toggleRead, setFilter } = this.props;
+    const filters = {
+      'All Books': c.SHOW_ALL,
+      'Unread Books': c.SHOW_UNREAD,
+      'Finished Books': c.SHOW_READ
+    };
 
     return (
       <div>
-        {Object.keys(this.state.filters).map(filter => 
-          <VisibilityFilter key={filter} value={filter} setFilter={() => setFilter(this.state.filters[filter])} />
+        {Object.keys(filters).map(filter => 
+          <VisibilityFilter key={filter} value={filter} setFilter={() => setFilter(filters[filter])} />
         )}
-        <SortableBookList items={this.state.books} onSortEnd={this.onSortEnd} removeBook={removeBook} toggleRead={toggleRead} />
+        <SortableBookList items={books} onSortEnd={this.onSortEnd} removeBook={removeBook} toggleRead={toggleRead} />
         <AddBook addBook={addBook} />
       </div>
     );
@@ -57,9 +55,11 @@ BookList.propTypes = {
       read: PropTypes.bool.isRequired
     })
   ),
+  visibilityFilter: PropTypes.string.isRequired,
   addBook: PropTypes.func.isRequired,
   removeBook: PropTypes.func.isRequired,
   toggleRead: PropTypes.func.isRequired,
+  setOrder: PropTypes.func.isRequired,
   setFilter: PropTypes.func.isRequired
 };
 

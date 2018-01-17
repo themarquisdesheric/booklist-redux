@@ -1,31 +1,49 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { SortableContainer, arrayMove } from 'react-sortable-hoc';
 import VisibilityFilter from './VisibilityFilter';
 import Book from './Book';
 import AddBook from './AddBook';
 import c from '../constants';
 
-const BookList = ({ books, addBook, removeBook, toggleRead, setFilter }) => {
-  const filters = {
-    'All Books': c.SHOW_ALL,
-    'Unread Books': c.SHOW_UNREAD,
-    'Finished Books': c.SHOW_READ
+const SortableBookList = SortableContainer( ({ items, removeBook, toggleRead }) => (
+  <ul>
+    {items.map( (book, index) => (
+      <Book key={`item-${book.title}`} index={index} book={book} removeBook={removeBook} toggleRead={toggleRead} />
+    ))}
+  </ul>
+));
+
+class BookList extends Component {
+  state = {
+    books: [{"title":"what's","id":"HkomjRqNf","read":false},{"title":"up?","id":"HkKWjghEf","read":false}],
+    filters: {
+      'All Books': c.SHOW_ALL,
+      'Unread Books': c.SHOW_UNREAD,
+      'Finished Books': c.SHOW_READ
+    }
   };
 
-  return (
-    <div>
-      {Object.keys(filters).map(filter => 
-        <VisibilityFilter key={filter} value={filter} setFilter={() => setFilter(filters[filter])} />
-      )}
-      <ul>
-        {books.map(book => 
-          <Book key={book.title} book={book} removeBook={removeBook} toggleRead={toggleRead} />
+  onSortEnd = ({oldIndex, newIndex}) => {
+    this.setState({
+      books: arrayMove(this.state.books, oldIndex, newIndex),
+    });
+  };
+
+  render() {
+    const { books, addBook, removeBook, toggleRead, setFilter } = this.props;
+
+    return (
+      <div>
+        {Object.keys(this.state.filters).map(filter => 
+          <VisibilityFilter key={filter} value={filter} setFilter={() => setFilter(this.state.filters[filter])} />
         )}
-      </ul>
-      <AddBook addBook={addBook} />
-    </div>
-  );
-};
+        <SortableBookList items={this.state.books} onSortEnd={this.onSortEnd} removeBook={removeBook} toggleRead={toggleRead} />
+        <AddBook addBook={addBook} />
+      </div>
+    );
+  }
+}
 
 BookList.defaultProps = {
   books: []

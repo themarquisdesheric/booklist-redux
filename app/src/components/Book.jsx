@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { SortableElement } from 'react-sortable-hoc';
 import DeleteButton from './DeleteButton';
 import FinishedButton from './FinishedButton';
 
-const Book = ({ book, removeBook, toggleRead }) => (
+const Book = SortableElement( ({ book, removeBook, toggleRead }) => (
   <li style={book.read ? { textDecoration: 'line-through' } : null}>
     {book.title}
     <DeleteButton removeBook={() => removeBook(book.id)} />
     <FinishedButton toggleRead={() => toggleRead(book.id)} />
   </li>
-);
+));
 
 Book.propTypes = {
   book: PropTypes.shape({

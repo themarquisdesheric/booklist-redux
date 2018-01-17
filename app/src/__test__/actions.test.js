@@ -27,6 +27,19 @@ describe('actions', () => {
     expect(action.payload).toBe(5);
   });
 
+  it('should create an action to update the list order', () => {
+    const books = [{title: 'sapiens'}, {title: 'the magus'}];
+
+    const expectedAction = {
+      type: c.SET_ORDER,
+      payload: [{title: 'sapiens'}, {title: 'the magus'}]
+    };
+    
+    const action = setOrder(books);
+
+    expect(action).toEqual(expectedAction);
+  });
+
   it('should create an action to update the visibility filter', () => {
     const action = setFilter(c.SHOW_READ);
 

@@ -28,6 +28,9 @@ const books = (state = [], action) => {
         
         return book;
       });
+
+    case c.SET_ORDER:
+      return action.payload;
    
     default:
       return state;

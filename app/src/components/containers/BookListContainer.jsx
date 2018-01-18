@@ -22,7 +22,8 @@ const getFilteredBooks = (books, filter) => {
 
 const mapStateToProps = state => ({
   books: getFilteredBooks(state.books, state.visibilityFilter),
-  visibilityFilter: state.visibilityFilter
+  visibilityFilter: state.visibilityFilter,
+  fetching: state.fetching
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);

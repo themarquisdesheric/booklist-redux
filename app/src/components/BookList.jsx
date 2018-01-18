@@ -38,6 +38,7 @@ class BookList extends Component {
         )}
         <SortableBookList items={books} onSortEnd={this.onSortEnd} removeBook={removeBook} toggleRead={toggleRead} />
         <AddBook addBook={addBook} />
+        {this.props.fetching && 'loading...'}
       </div>
     );
   }
@@ -56,6 +57,7 @@ BookList.propTypes = {
     })
   ),
   visibilityFilter: PropTypes.string.isRequired,
+  fetching: PropTypes.bool.isRequired,
   addBook: PropTypes.func.isRequired,
   removeBook: PropTypes.func.isRequired,
   toggleRead: PropTypes.func.isRequired,

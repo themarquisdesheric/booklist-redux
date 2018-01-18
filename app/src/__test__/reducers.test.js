@@ -162,4 +162,19 @@ describe('fetching', () => {
 
     expect(newState).toEqual(expectedState);
   });
+
+  it('sets the fetching to false when cancelling fetching', () => {
+    const state = true;
+
+    const action = {
+      type: c.CANCEL_FETCHING,
+      payload: false
+    };
+
+    const expectedState = false;
+
+    const newState = fetching(state, action);
+
+    expect(newState).toEqual(expectedState);
+  });
 });

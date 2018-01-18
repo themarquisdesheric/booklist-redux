@@ -6,7 +6,8 @@ const constants = {
   SET_FILTER: 'SET_FILTER',
   SHOW_ALL: 'SHOW_ALL',
   SHOW_READ: 'SHOW_READ',
-  SHOW_UNREAD: 'SHOW_UNREAD'
+  SHOW_UNREAD: 'SHOW_UNREAD',
+  FETCH_BOOKS: 'FETCH_BOOKS'
 };
 
 export default constants;

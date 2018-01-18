@@ -34,3 +34,9 @@ export const setFilter = filter =>
     type: c.SET_FILTER,
     payload: filter
   });
+
+export const fetchBooks = () =>
+  ({
+    type: c.FETCH_BOOKS,
+    payload: true
+  });

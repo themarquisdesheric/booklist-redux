@@ -1,5 +1,5 @@
 import c from '../constants';
-import { addBook, removeBook, toggleRead, setOrder, setFilter } from '../actions';
+import { addBook, removeBook, toggleRead, setOrder, setFilter, fetchBooks } from '../actions';
 
 describe('actions', () => {
   it('should create an action to add a book', () => {

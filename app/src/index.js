@@ -6,12 +6,7 @@ import storeFactory from './reducers';
 import { loadState, saveState } from './localStorage';
 
 const persistedState = loadState();
-
-const store = storeFactory(
-  persistedState, 
-  // redux dev tools
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const store = storeFactory(persistedState);
 
 store.subscribe( () => {
   saveState({ books: store.getState().books });

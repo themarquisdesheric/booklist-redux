@@ -1,4 +1,4 @@
-import { combineReducers, applyMiddleware, createStore } from 'redux';
+import { combineReducers, applyMiddleware, createStore, compose } from 'redux';
 import books from './books';
 import visibilityFilter from './visibilityFilter';
 import fetching from './fetching';
@@ -33,6 +33,8 @@ const consoleMessages = store => next => action => {
   return result;
 };
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 export default (initialState = {}) => {
-  return applyMiddleware(consoleMessages)(createStore)(appReducer, initialState);
+  return createStore(appReducer, initialState, composeEnhancers(applyMiddleware(consoleMessages)));
 };

@@ -1,15 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 import App from './App';
-import appReducer from './reducers';
+import storeFactory from './reducers';
 import { loadState, saveState } from './localStorage';
 
 const persistedState = loadState();
 
-const store = createStore(
-  appReducer, 
+const store = storeFactory(
   persistedState, 
   // redux dev tools
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

@@ -145,3 +145,20 @@ describe('books', () => {
     expect(newState).toEqual(expectedState);
   });
 });
+
+describe('fetching', () => {
+  it('sets the fetching to true when fetching books', () => {
+    const state = false;
+
+    const action = {
+      type: c.FETCH_BOOKS,
+      payload: true
+    };
+
+    const expectedState = true;
+
+    const newState = fetching(state, action);
+
+    expect(newState).toEqual(expectedState);
+  });
+});

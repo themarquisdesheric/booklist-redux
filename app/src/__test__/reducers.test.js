@@ -1,6 +1,7 @@
 import c from '../constants';
 import books from '../reducers/books';
 import visibilityFilter from '../reducers/visibilityFilter';
+import fetching from '../reducers/fetching';
 
 describe('books', () => {
   it('adds a book', () => {

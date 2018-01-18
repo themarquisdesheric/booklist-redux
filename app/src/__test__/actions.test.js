@@ -46,4 +46,15 @@ describe('actions', () => {
     expect(action.type).toBe(c.SET_FILTER);
     expect(action.payload).toBe(c.SHOW_READ);
   });
+
+  it('should create an action to set fetching to true when fetching books', () => {
+    const action = fetchBooks(c.FETCH_BOOKS);
+
+    const expectedAction = {
+      type: c.FETCH_BOOKS,
+      payload: true
+    };
+
+    expect(action).toEqual(expectedAction);
+  });
 });

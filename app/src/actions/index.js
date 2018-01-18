@@ -40,3 +40,9 @@ export const fetchBooks = () =>
     type: c.FETCH_BOOKS,
     payload: true
   });
+
+export const cancelFetching = () =>
+  ({
+    type: c.CANCEL_FETCHING,
+    payload: false
+  });

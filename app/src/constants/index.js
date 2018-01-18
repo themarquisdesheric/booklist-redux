@@ -7,7 +7,8 @@ const constants = {
   SHOW_ALL: 'SHOW_ALL',
   SHOW_READ: 'SHOW_READ',
   SHOW_UNREAD: 'SHOW_UNREAD',
-  FETCH_BOOKS: 'FETCH_BOOKS'
+  FETCH_BOOKS: 'FETCH_BOOKS',
+  CANCEL_FETCHING: 'CANCEL_FETCHING'
 };
 
 export default constants;

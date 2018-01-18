@@ -5,6 +5,9 @@ const fetching = (state = false, action) => {
     case c.FETCH_BOOKS:
       return true;
 
+    case c.CANCEL_FETCHING:
+      return false;
+
     default: 
       return state;
   }

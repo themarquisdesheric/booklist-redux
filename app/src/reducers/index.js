@@ -1,10 +1,12 @@
 import { combineReducers, applyMiddleware, createStore } from 'redux';
 import books from './books';
 import visibilityFilter from './visibilityFilter';
+import fetching from './fetching';
 
 const appReducer = combineReducers({
   books,
-  visibilityFilter
+  visibilityFilter,
+  fetching
 });
 
 const consoleMessages = store => next => action => {
@@ -23,7 +25,7 @@ const consoleMessages = store => next => action => {
   
   console.log(`
     action dispatched!
-    
+
     current state: 
       ${JSON.stringify(store.getState())}
   `);

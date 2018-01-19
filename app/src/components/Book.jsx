@@ -6,6 +6,7 @@ import FinishedButton from './FinishedButton';
 
 const Book = SortableElement( ({ book, removeBook, toggleRead }) => (
   <li style={book.read ? { textDecoration: 'line-through' } : null}>
+    <img src={book.img} alt={book.title} />
     {book.title}
     <DeleteButton removeBook={() => removeBook(book.id)} />
     <FinishedButton toggleRead={() => toggleRead(book.id)} />

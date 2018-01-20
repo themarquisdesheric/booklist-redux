@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { SortableContainer, arrayMove } from 'react-sortable-hoc';
+import BookIcon from 'react-icons/lib/fa/book';
+import FilesIcon from 'react-icons/lib/fa/file-text';
 import VisibilityFilter from './VisibilityFilter';
 import Book from './Book';
 import AddBook from './AddBook';
@@ -32,15 +34,37 @@ class BookList extends Component {
     };
 
     return (
-      <div>
-        <div className="booklist">
-          {Object.keys(filters).map(filter => 
-            <VisibilityFilter key={filter} value={filter} setFilter={() => setFilter(filters[filter])} />
-          )}
+      // <div>
+      //   <div className="booklist">
+      //     {Object.keys(filters).map(filter => 
+      //       <VisibilityFilter key={filter} value={filter} setFilter={() => setFilter(filters[filter])} />
+      //     )}
+      //   </div>
+      //   <SortableBookList items={books} onSortEnd={this.onSortEnd} removeBook={removeBook} toggleRead={toggleRead} />
+      //   <AddBook addBook={suggestBooks} />
+      //   {this.props.fetching && 'loading...'}
+      // </div>
+
+      <div className="booklist">
+        <div className="tabs is-fullwidth is-toggle">
+          <ul>
+            <li className="is-active">
+              <a href="/">
+                <span className="icon is-small"><BookIcon /></span>
+                <span>Reading list</span>
+              </a>
+            </li>
+            <li>
+              <a href="/">
+                <span className="icon is-small"><FilesIcon /></span>
+                <span>Finished books</span>
+              </a>
+            </li>
+          </ul>
         </div>
+
         <SortableBookList items={books} onSortEnd={this.onSortEnd} removeBook={removeBook} toggleRead={toggleRead} />
         <AddBook addBook={suggestBooks} />
-        {this.props.fetching && 'loading...'}
       </div>
     );
   }

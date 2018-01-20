@@ -11,7 +11,7 @@ const ButtonText = ({ Child, value }) => (
 );
 
 const ReadButton = ({ finished, toggleRead }) => (
-  <button onClick={toggleRead} className={finished ? 'button is-light' : 'button is-success'}>
+  <button onClick={toggleRead} className={finished ? 'button is-danger' : 'button is-success'}>
     <ButtonText Child={finished ? RemoveIcon : CheckIcon} value={finished ? 'Mark unread' : 'Mark read'} />
   </button>
 );

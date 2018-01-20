@@ -16,9 +16,9 @@ const Book = SortableElement( ({ book, removeBook, toggleRead }) => (
       <div className="media-content">
         <div className="content">
           <p>
-            <strong>{book.title}</strong>
+            <strong className="title is-5">{book.title}</strong>
             <br />
-            <small>{book.author}</small> 
+            <small className="subtitle is-6">{book.author}</small> 
             <br />
             {book.snippet}
           </p>

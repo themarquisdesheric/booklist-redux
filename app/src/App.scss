@@ -1,5 +1,11 @@
 @import "../node_modules/bulma/sass/utilities/initial-variables";
 @import "../node_modules/bulma/sass/utilities/functions";
+
+$tabs-toggle-link-active-background-color: $blue;
+$tabs-toggle-link-active-border-color: $blue;
+$tabs-toggle-link-hover-background-color: #E8EAF6;
+$tabs-toggle-link-hover-border-color: #E8EAF6;
+
 @import "../node_modules/bulma/sass/utilities/derived-variables.sass";
 @import "../node_modules/bulma/bulma";
 
@@ -14,6 +20,7 @@ header {
   background: rgba(0, 0, 0, 0.9);
   width: 100%;
   position: fixed;
+  top: 0;
   z-index: 1;
 
   h1.title {
@@ -24,14 +31,15 @@ header {
 }
 
 .booklist {
-  padding-top: 11em;
+  width: 60%;
+  margin: 10.5em auto;
+  padding: 0;
 }
 
 ul {
   padding-left: 0;
   text-decoration: none;
-  width: 60%;
-  margin: 2em auto;
+  z-index: 0;
 }
 
 .image img {
@@ -46,6 +54,7 @@ ul {
   background: rgba(0, 0, 0, 0.9);
   width: 100%;
   padding: 1.5em;
+  margin-top: 4em;
 
   span {
     font-weight: 900;

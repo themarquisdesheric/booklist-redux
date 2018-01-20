@@ -33,9 +33,11 @@ class BookList extends Component {
 
     return (
       <div>
-        {Object.keys(filters).map(filter => 
-          <VisibilityFilter key={filter} value={filter} setFilter={() => setFilter(filters[filter])} />
-        )}
+        <div className="booklist">
+          {Object.keys(filters).map(filter => 
+            <VisibilityFilter key={filter} value={filter} setFilter={() => setFilter(filters[filter])} />
+          )}
+        </div>
         <SortableBookList items={books} onSortEnd={this.onSortEnd} removeBook={removeBook} toggleRead={toggleRead} />
         <AddBook addBook={suggestBooks} />
         {this.props.fetching && 'loading...'}

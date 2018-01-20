@@ -9,9 +9,9 @@ const Book = SortableElement( ({ book, removeBook, toggleRead }) => (
   <div className="box">
     <article className="media">
       <figure className="media-left">
-        <p className="image">
+        <figure>
           <img src={book.img} alt={book.title} />
-        </p>
+        </figure>
       </figure>
       <div className="media-content">
         <div className="content">

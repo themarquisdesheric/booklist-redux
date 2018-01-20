@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const FinishedButton = ({ toggleRead }) => (
-  <button onClick={toggleRead}>
-    Finished
+  <button className="button is-success" onClick={toggleRead}>
+    Mark completed
   </button>
 );
 

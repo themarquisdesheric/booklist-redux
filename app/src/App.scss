@@ -38,6 +38,16 @@ ul {
   width: 85%;
 }
 
-.check-icon {
+.button-icon {
   margin-right: .3em;
+}
+
+.footer {
+  background: rgba(0, 0, 0, 0.9);
+  width: 100%;
+  padding: 1.5em;
+
+  span {
+    font-weight: 900;
+  }
 }

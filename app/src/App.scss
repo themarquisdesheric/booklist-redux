@@ -1,0 +1,53 @@
+@import "../node_modules/bulma/sass/utilities/initial-variables";
+@import "../node_modules/bulma/sass/utilities/functions";
+@import "../node_modules/bulma/sass/utilities/derived-variables.sass";
+@import "../node_modules/bulma/bulma";
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+header {
+  background: rgba(0, 0, 0, 0.9);
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+
+  h1.title {
+    color: #fff;
+    font-size: 4em;
+    padding: .5em;
+  }
+}
+
+.booklist {
+  padding-top: 11em;
+}
+
+ul {
+  padding-left: 0;
+  text-decoration: none;
+  width: 60%;
+  margin: 2em auto;
+}
+
+.image img {
+  width: 85%;
+}
+
+.button-icon {
+  margin-right: .3em;
+}
+
+.footer {
+  background: rgba(0, 0, 0, 0.9);
+  width: 100%;
+  padding: 1.5em;
+
+  span {
+    font-weight: 900;
+  }
+}

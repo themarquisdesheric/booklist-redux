@@ -1,7 +1,7 @@
 import c from '../constants';
-import { addBook, removeBook, toggleRead, setOrder, setFilter } from '../actions';
+import { addBook, removeBook, toggleRead, setOrder, setFilter, fetchBooks, cancelFetching } from '../actions';
 
-describe('actions', () => {
+describe('actions: books', () => {
   it('should create an action to add a book', () => {
     const title = 'sapiens';
     const action = addBook(title);
@@ -45,5 +45,29 @@ describe('actions', () => {
 
     expect(action.type).toBe(c.SET_FILTER);
     expect(action.payload).toBe(c.SHOW_READ);
+  });
+});
+
+describe('actions: fetching', () => {
+  it('should create an action to set fetching to true when fetching books', () => {
+    const action = fetchBooks(c.FETCH_BOOKS);
+
+    const expectedAction = {
+      type: c.FETCH_BOOKS,
+      payload: true
+    };
+
+    expect(action).toEqual(expectedAction);
+  });
+
+  it('should create an action to set fetching to false when cancelling fetching', () => {
+    const action = cancelFetching(c.CANCEL_FETCHING);
+
+    const expectedAction = {
+      type: c.CANCEL_FETCHING,
+      payload: false
+    };
+
+    expect(action).toEqual(expectedAction);
   });
 });

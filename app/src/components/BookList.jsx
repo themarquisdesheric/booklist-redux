@@ -24,7 +24,7 @@ class BookList extends Component {
   };
 
   render() {
-    const { books, addBook, removeBook, toggleRead, setFilter } = this.props;
+    const { books, suggestBooks, removeBook, toggleRead, setFilter } = this.props;
     const filters = {
       'All Books': c.SHOW_ALL,
       'Unread Books': c.SHOW_UNREAD,
@@ -33,11 +33,14 @@ class BookList extends Component {
 
     return (
       <div>
-        {Object.keys(filters).map(filter => 
-          <VisibilityFilter key={filter} value={filter} setFilter={() => setFilter(filters[filter])} />
-        )}
+        <div className="booklist">
+          {Object.keys(filters).map(filter => 
+            <VisibilityFilter key={filter} value={filter} setFilter={() => setFilter(filters[filter])} />
+          )}
+        </div>
         <SortableBookList items={books} onSortEnd={this.onSortEnd} removeBook={removeBook} toggleRead={toggleRead} />
-        <AddBook addBook={addBook} />
+        <AddBook addBook={suggestBooks} />
+        {this.props.fetching && 'loading...'}
       </div>
     );
   }
@@ -56,7 +59,8 @@ BookList.propTypes = {
     })
   ),
   visibilityFilter: PropTypes.string.isRequired,
-  addBook: PropTypes.func.isRequired,
+  fetching: PropTypes.bool.isRequired,
+  suggestBooks: PropTypes.func.isRequired,
   removeBook: PropTypes.func.isRequired,
   toggleRead: PropTypes.func.isRequired,
   setOrder: PropTypes.func.isRequired,

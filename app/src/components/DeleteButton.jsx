@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const DeleteButton = ({ removeBook }) => (
-  <button onClick={removeBook}>
-    🗑 Delete
-  </button>
+  <button className="delete" onClick={removeBook} />
 );
 
 DeleteButton.propTypes = {

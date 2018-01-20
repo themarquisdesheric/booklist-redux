@@ -48,7 +48,7 @@ export const cancelFetching = () =>
   });
 
 export const suggestBooks = searchTerm => dispatch => {
-  let book, title, author, img;
+  let book, title, author, snippet, img;
 
   dispatch({
     type: c.FETCH_BOOKS
@@ -59,7 +59,8 @@ export const suggestBooks = searchTerm => dispatch => {
     .then(suggestions => {
       book = suggestions.items[0];
       title = book.volumeInfo.title;
-      author = book.volumeInfo.authors[0];
+      author = book.volumeInfo.authors[0] || '';
+      snippet = book.searchInfo.textSnippet;
       img = book.volumeInfo.imageLinks.smallThumbnail;
       
       console.log(suggestions);
@@ -69,6 +70,7 @@ export const suggestBooks = searchTerm => dispatch => {
         payload: {
           title,
           author,
+          snippet,
           img,
           id: shortid.generate(),
           read: false

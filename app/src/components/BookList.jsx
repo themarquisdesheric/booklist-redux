@@ -4,6 +4,7 @@ import { SortableContainer, arrayMove } from 'react-sortable-hoc';
 import BookIcon from 'react-icons/lib/fa/book';
 import FilesIcon from 'react-icons/lib/fa/file-text';
 import VisibilityFilter from './VisibilityFilter';
+import Tabs from './Tabs';
 import Book from './Book';
 import AddBook from './AddBook';
 import c from '../constants';
@@ -46,25 +47,13 @@ class BookList extends Component {
       // </div>
 
       <div className="booklist">
-        <div className="tabs is-fullwidth is-toggle">
-          <ul>
-            <li className="is-active">
-              <a href="/">
-                <span className="icon is-small"><BookIcon /></span>
-                <span>Reading list</span>
-              </a>
-            </li>
-            <li>
-              <a href="/">
-                <span className="icon is-small"><FilesIcon /></span>
-                <span>Finished books</span>
-              </a>
-            </li>
-          </ul>
-        </div>
+        <Tabs filter={this.props.visibilityFilter}>
+          {[BookIcon, FilesIcon]}
+        </Tabs>
 
         <SortableBookList items={books} onSortEnd={this.onSortEnd} removeBook={removeBook} toggleRead={toggleRead} />
         <AddBook addBook={suggestBooks} />
+        {this.props.fetching && 'loading...'}
       </div>
     );
   }

@@ -9,9 +9,7 @@ const Book = SortableElement( ({ book, removeBook, toggleRead }) => (
   <div className="box">
     <article className="media">
       <figure className="media-left">
-        <figure>
-          <img src={book.img} alt={book.title} />
-        </figure>
+        <img src={book.img} alt={book.title} />
       </figure>
       <div className="media-content">
         <div className="content">
@@ -20,7 +18,9 @@ const Book = SortableElement( ({ book, removeBook, toggleRead }) => (
             <br />
             <small className="subtitle is-6">{book.author}</small> 
             <br />
-            {book.snippet}
+            <span className="is-hidden-mobile is-italic">
+              {book.snippet}
+            </span>
           </p>
           <ReadButton finished={book.read} toggleRead={() => toggleRead(book.id)} />
         </div>

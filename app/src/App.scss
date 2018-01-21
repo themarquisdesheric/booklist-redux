@@ -1,13 +1,17 @@
 @import "../node_modules/bulma/sass/utilities/initial-variables";
 @import "../node_modules/bulma/sass/utilities/functions";
 
-$tabs-toggle-link-active-background-color: $blue;
-$tabs-toggle-link-active-border-color: $blue;
+$tabs-toggle-link-active-background-color: $cyan;
+$tabs-toggle-link-active-border-color: $cyan;
 $tabs-toggle-link-hover-background-color: #E8EAF6;
 $tabs-toggle-link-hover-border-color: #E8EAF6;
 
 @import "../node_modules/bulma/sass/utilities/derived-variables.sass";
 @import "../node_modules/bulma/bulma";
+
+html {
+  background: linear-gradient(to bottom right, #fafafa, #fefefe);
+}
 
 body {
   margin: 0;
@@ -17,7 +21,7 @@ body {
 }
 
 header {
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(5, 5, 5, 0.9);
   width: 100%;
   position: fixed;
   top: 0;
@@ -31,24 +35,65 @@ header {
 }
 
 .booklist {
-  width: 60%;
+  min-width: 60%;
+  max-width: 400px;
   margin: 10.5em auto;
-  padding: 0;
+  padding: 0 2em;
+  
+  ul {
+    padding-left: 0;
+    text-decoration: none;
+    z-index: 0;
+  
+    li {
+      background-color: $white;
+    }
+  }
 }
 
-ul {
-  padding-left: 0;
-  text-decoration: none;
-  z-index: 0;
+/* 
+
+Book 
+
+*/
+.media {
+  position: relative;
+
+  figure {
+    height: 160px;
+    
+    img {
+      width: 85%;
+    }
+  }
+  
+  .subtitle {
+    color: $grey;
+  }
+  
+  .button-read svg {
+    color: $green;
+  }
+  
+  .button-unread svg {
+    color: $red;
+  }
+  
+  .button-read, .button-unread {
+    position: absolute;
+    bottom: 0;
+  }
+  
+  .button-icon {
+    margin-right: .3em;
+  }
 }
 
-.image img {
-  width: 85%;
-}
+/* 
 
-.button-icon {
-  margin-right: .3em;
-}
+End Book 
+
+*/
 
 .footer {
   background: rgba(0, 0, 0, 0.9);

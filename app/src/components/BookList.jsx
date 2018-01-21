@@ -49,7 +49,14 @@ class BookList extends Component {
           })}
         </div>
 
-        <SortableBookList items={books} onSortEnd={this.onSortEnd} removeBook={removeBook} toggleRead={toggleRead} />
+        {visibilityFilter === c.SHOW_UNREAD 
+          ? <SortableBookList items={books} onSortEnd={this.onSortEnd} removeBook={removeBook} toggleRead={toggleRead} /> 
+          : 
+          <ul>
+            {books.map(book => <Book key={book.title} book={book} removeBook={removeBook} toggleRead={toggleRead} />)}
+          </ul>
+        }
+
         <AddBook addBook={suggestBooks} />
         {this.props.fetching && 'loading...'}
       </div>

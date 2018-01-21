@@ -4,7 +4,7 @@ import { SortableElement } from 'react-sortable-hoc';
 import DeleteButton from './DeleteButton';
 import ReadButton from './ReadButton';
 
-const Book = SortableElement( ({ book, removeBook, toggleRead }) => (
+export const Book = ({ book, removeBook, toggleRead }) => (
   // TODO: sanitize snippet input for html entities, etc
   <div className="box">
     <article className="media">
@@ -30,7 +30,7 @@ const Book = SortableElement( ({ book, removeBook, toggleRead }) => (
       </div>
     </article>
   </div>
-));
+);
 
 Book.propTypes = {
   book: PropTypes.shape({
@@ -42,4 +42,4 @@ Book.propTypes = {
   toggleRead: PropTypes.func.isRequired
 };
 
-export default Book;
+export const SortableBook = SortableElement(Book);

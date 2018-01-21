@@ -4,14 +4,14 @@ import { SortableContainer, arrayMove } from 'react-sortable-hoc';
 import BookIcon from 'react-icons/lib/fa/book';
 import FilesIcon from 'react-icons/lib/fa/file-text';
 import Tab from './Tab';
-import Book from './Book';
+import { SortableBook, Book } from './Book';
 import AddBook from './AddBook';
 import c from '../constants';
 
 const SortableBookList = SortableContainer( ({ items, removeBook, toggleRead }) => (
   <ul>
     {items.map( (book, index) => (
-      <Book key={`item-${book.title}`} index={index} book={book} removeBook={removeBook} toggleRead={toggleRead} />
+      <SortableBook key={`item-${book.title}`} index={index} book={book} removeBook={removeBook} toggleRead={toggleRead} />
     ))}
   </ul>
 ));

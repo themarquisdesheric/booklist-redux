@@ -1,6 +1,6 @@
 import c from '../constants';
 
-const visibilityFilter = (state = c.SHOW_UNREAD, action) => {
+const visibilityFilter = (state = 'reading-list', action) => {
   switch (action.type) {
     case c.SET_FILTER:
       return action.payload;

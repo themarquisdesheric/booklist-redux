@@ -7,7 +7,6 @@ import FilesIcon from 'react-icons/lib/fa/file-text';
 import Tab from './Tab';
 import { SortableBook, Book } from './Book';
 import AddBook from './AddBook';
-import c from '../constants';
 
 const SortableBookList = SortableContainer( ({ items, removeBook, toggleRead }) => (
   <ul>
@@ -24,25 +23,21 @@ class BookList extends Component {
   };
 
   render() {
-    const { books, visibilityFilter, suggestBooks, removeBook, toggleRead, setFilter } = this.props;
+    const { books, visibilityFilter, suggestBooks, removeBook, toggleRead } = this.props;
+    const filters = ['Reading List', 'Finished Books'];
     const icons = [BookIcon, FilesIcon];
-    const filters = {
-      'Reading List': c.SHOW_UNREAD,
-      'Finished Books': c.SHOW_READ
-    };
 
     return (
       <div className="booklist">
         <div className="tabs is-fullwidth is-toggle">
-          {Object.keys(filters).map( (filter, i) => {
+          {filters.map( (filter, i) => {
             const Icon = icons[i];
 
             return (
               <Tab 
                 key={filter}
-                setFilter={() => setFilter(filters[filter])}
                 value={filter}
-                active={filters[filter] === visibilityFilter}
+                visibilityFilter={visibilityFilter}
               >
                 <Icon />
               </Tab>
@@ -50,7 +45,7 @@ class BookList extends Component {
           })}
         </div>
 
-        <Route 
+        <Route
           path="/reading-list"
           component={() => 
             <SortableBookList items={books} onSortEnd={this.onSortEnd} removeBook={removeBook} toggleRead={toggleRead} />
@@ -89,8 +84,7 @@ BookList.propTypes = {
   suggestBooks: PropTypes.func.isRequired,
   removeBook: PropTypes.func.isRequired,
   toggleRead: PropTypes.func.isRequired,
-  setOrder: PropTypes.func.isRequired,
-  setFilter: PropTypes.func.isRequired
+  setOrder: PropTypes.func.isRequired
 };
 
 export default BookList;

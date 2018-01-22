@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const hyphenate = link => link.toLowerCase().replace(' ', '-');
+const hyphenate = value => value.toLowerCase().replace(' ', '-');
 
-const Tab = ({ setFilter, active, value, children }) => {
+const Tab = ({ value, visibilityFilter, children }) => {
+  const hyphenated = hyphenate(value);
+
   return (
-    <li onClick={setFilter} className={active ? 'is-active' : ''}>
-      {/* use href for link */}
-      <Link to={`/${hyphenate(value)}`}>
+    <li className={visibilityFilter ===  hyphenated ? 'is-active' : ''}>
+      <Link href to={`/${hyphenated}`}>
         <span className="icon is-small">{children}</span>
         <span>{value}</span>
       </Link>
@@ -17,9 +18,8 @@ const Tab = ({ setFilter, active, value, children }) => {
 };
 
 Tab.propTypes = {
-  setFilter: PropTypes.func.isRequired,
-  active: PropTypes.bool.isRequired,
   value: PropTypes.string.isRequired,
+  visibilityFilter: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired
 };
 

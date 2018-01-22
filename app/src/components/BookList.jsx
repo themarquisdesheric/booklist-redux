@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Route } from 'react-router-dom';
 import { SortableContainer, arrayMove } from 'react-sortable-hoc';
 import BookIcon from 'react-icons/lib/fa/book';
 import FilesIcon from 'react-icons/lib/fa/file-text';
@@ -39,7 +40,7 @@ class BookList extends Component {
             return (
               <Tab 
                 key={filter}
-                setFilter={() => setFilter(filters[filter])} 
+                setFilter={() => setFilter(filters[filter])}
                 value={filter}
                 active={filters[filter] === visibilityFilter}
               >
@@ -49,13 +50,20 @@ class BookList extends Component {
           })}
         </div>
 
-        {visibilityFilter === c.SHOW_UNREAD 
-          ? <SortableBookList items={books} onSortEnd={this.onSortEnd} removeBook={removeBook} toggleRead={toggleRead} /> 
-          : 
-          <ul>
-            {books.map(book => <Book key={book.title} book={book} removeBook={removeBook} toggleRead={toggleRead} />)}
-          </ul>
-        }
+        <Route 
+          path="/reading-list"
+          component={() => 
+            <SortableBookList items={books} onSortEnd={this.onSortEnd} removeBook={removeBook} toggleRead={toggleRead} />
+          } 
+        />
+        <Route 
+          path="/finished-books"
+          component={() => (
+            <ul>
+              {books.map(book => <Book key={book.title} book={book} removeBook={removeBook} toggleRead={toggleRead} />)}
+            </ul>
+          )}
+        />
 
         <AddBook addBook={suggestBooks} />
         {this.props.fetching && 'loading...'}

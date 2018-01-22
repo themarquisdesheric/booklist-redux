@@ -5,7 +5,10 @@ import DeleteButton from './DeleteButton';
 import ReadButton from './ReadButton';
 
 export const Book = ({ book, removeBook, toggleRead }) => (
+  
   // TODO: sanitize snippet input for html entities, etc
+  // TODO: make 'read more' link for descriptions over 3 lines long
+
   <div className="box">
     <article className="media">
       <figure className="media-left">

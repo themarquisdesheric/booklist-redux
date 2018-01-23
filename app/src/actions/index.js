@@ -23,17 +23,14 @@ export const toggleRead = id =>
     payload: id
   });
 
-export const setOrder = books =>
-  ({
+export const setOrder = books => (dispatch, getState) => {
+  let finishedBooks = getState().books.filter(book => book.read);
+  
+  dispatch({
     type: c.SET_ORDER,
-    payload: books
+    payload: [...books, ...finishedBooks]
   });
-
-export const setFilter = filter =>
-  ({
-    type: c.SET_FILTER,
-    payload: filter
-  });
+};
 
 export const fetchBooks = () =>
   ({
@@ -48,8 +45,6 @@ export const cancelFetching = () =>
   });
 
 export const suggestBooks = searchTerm => dispatch => {
-  let book, title, author, snippet, img;
-
   dispatch({
     type: c.FETCH_BOOKS
   });
@@ -57,11 +52,11 @@ export const suggestBooks = searchTerm => dispatch => {
   fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURI(searchTerm)}`)
     .then(response => response.json())
     .then(suggestions => {
-      book = suggestions.items[0];
-      title = book.volumeInfo.title;
-      author = book.volumeInfo.authors[0] || '';
-      snippet = book.searchInfo.textSnippet;
-      img = book.volumeInfo.imageLinks.smallThumbnail;
+      let book = suggestions.items[0],
+        title = book.volumeInfo.title,
+        author = book.volumeInfo.authors[0] || '',
+        snippet = book.searchInfo.textSnippet || '',
+        img = book.volumeInfo.imageLinks.smallThumbnail;
       
       console.log(suggestions);
       

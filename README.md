@@ -8,6 +8,8 @@ Redux https://redux.js.org/
 
 React-Sortable-HOC https://github.com/clauderic/react-sortable-hoc
 
+Persistence via local storage API (for now)
+
 ## Usage
 
 To use the app, clone it and navigate to the `app` directory, then run 

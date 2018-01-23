@@ -1,36 +1,33 @@
 import { bindActionCreators } from 'redux';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
-import c from '../../constants';
-import BookList from '../BookList';
+import BookList from '../ui/BookList';
 
 const getFilteredBooks = (books, filter) => {
   switch (filter) {
-    case c.SHOW_ALL:
-      return books;
-    
-    case c.SHOW_READ:
-      return books.filter(book => book.read);
-
-    case c.SHOW_UNREAD:
+    case 'reading-list':
       return books.filter(book => !book.read);
+
+    case 'finished-books':
+      return books.filter(book => book.read);
 
     default:
       return books;
   }
 };
 
-const mapStateToProps = state => ({
-  books: getFilteredBooks(state.books, state.visibilityFilter),
-  visibilityFilter: state.visibilityFilter,
+const mapStateToProps = (state, { match }) => ({
+  books: getFilteredBooks(state.books, match.params.filter),
+  visibilityFilter: match.params.filter,
   fetching: state.fetching
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
-const BookListContainer = connect(
+const BookListContainer = withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(BookList);
+)(BookList));
 
 export default BookListContainer;

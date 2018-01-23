@@ -50,6 +50,11 @@ export const changeSuggestions = suggestions =>
     payload: suggestions
   });
 
+export const clearSuggestions = () =>
+  ({
+    type: c.CLEAR_SUGGESTIONS
+  });
+
 export const suggestBooks = searchTerm => dispatch => {
   dispatch({
     type: c.FETCH_BOOKS

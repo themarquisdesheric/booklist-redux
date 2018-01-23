@@ -23,11 +23,14 @@ export const toggleRead = id =>
     payload: id
   });
 
-export const setOrder = books =>
-  ({
+export const setOrder = books => (dispatch, getState) => {
+  let finishedBooks = getState().books.filter(book => book.read);
+  
+  dispatch({
     type: c.SET_ORDER,
-    payload: books
+    payload: [...books, ...finishedBooks]
   });
+};
 
 export const fetchBooks = () =>
   ({
@@ -54,7 +57,7 @@ export const suggestBooks = searchTerm => dispatch => {
       book = suggestions.items[0];
       title = book.volumeInfo.title;
       author = book.volumeInfo.authors[0] || '';
-      snippet = book.searchInfo.textSnippet;
+      snippet = book.searchInfo.textSnippet || '';
       img = book.volumeInfo.imageLinks.smallThumbnail;
       
       console.log(suggestions);

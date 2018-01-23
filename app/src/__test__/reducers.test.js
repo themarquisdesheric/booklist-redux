@@ -1,6 +1,5 @@
 import c from '../constants';
 import books from '../reducers/books';
-import visibilityFilter from '../reducers/visibilityFilter';
 import fetching from '../reducers/fetching';
 
 describe('books', () => {
@@ -129,21 +128,6 @@ describe('books', () => {
     const newState = books(state, action);
 
     expect(newState).toEqual(state);
-  });
-
-  it('updates the visibility filter', () => {
-    const state = c.SHOW_ALL;
-
-    const action = {
-      type: c.SET_FILTER,
-      payload: c.SHOW_READ
-    };
-
-    const expectedState = c.SHOW_READ;
-
-    const newState = visibilityFilter(state, action);
-
-    expect(newState).toEqual(expectedState);
   });
 });
 

@@ -1,5 +1,5 @@
 import c from '../constants';
-import { addBook, removeBook, toggleRead, setOrder, setFilter, fetchBooks, cancelFetching } from '../actions';
+import { addBook, removeBook, toggleRead, setOrder, fetchBooks, cancelFetching } from '../actions';
 
 describe('actions: books', () => {
   it('should create an action to add a book', () => {
@@ -38,13 +38,6 @@ describe('actions: books', () => {
     const action = setOrder(books);
 
     expect(action).toEqual(expectedAction);
-  });
-
-  it('should create an action to update the visibility filter', () => {
-    const action = setFilter(c.SHOW_READ);
-
-    expect(action.type).toBe(c.SET_FILTER);
-    expect(action.payload).toBe(c.SHOW_READ);
   });
 });
 

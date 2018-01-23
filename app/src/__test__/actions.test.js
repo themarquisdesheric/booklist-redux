@@ -51,3 +51,16 @@ describe('actions: fetching', () => {
     expect(action).toEqual(expectedAction);
   });
 });
+
+describe('actions: suggestions', () => {
+  it('should create an action to change the book suggestions', () => {
+    const action = changeSuggestions(['sapiens', 'the magus']);
+
+    const expectedAction = {
+      type: c.CHANGE_SUGGESTIONS,
+      payload: ['sapiens', 'the magus']
+    };
+
+    expect(action).toEqual(expectedAction);
+  });
+});

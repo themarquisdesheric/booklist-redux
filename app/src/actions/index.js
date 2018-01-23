@@ -44,6 +44,12 @@ export const cancelFetching = () =>
     payload: false
   });
 
+export const changeSuggestions = suggestions =>
+  ({
+    type: c.CHANGE_SUGGESTIONS,
+    payload: suggestions
+  });
+
 export const suggestBooks = searchTerm => dispatch => {
   dispatch({
     type: c.FETCH_BOOKS

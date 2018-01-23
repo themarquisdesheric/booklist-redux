@@ -1,6 +1,7 @@
 import c from '../constants';
 import books from '../reducers/books';
 import fetching from '../reducers/fetching';
+import suggestions from '../reducers/suggestions';
 
 describe('books', () => {
   it('adds a book', () => {
@@ -19,11 +20,9 @@ describe('books', () => {
   });
 
   it('prevents duplicate books from being added', () => {
-    const state = [
-      {
-        title: 'sapiens'
-      }
-    ];
+    const state = [{
+      title: 'sapiens'
+    }];
 
     const action = {
       type: c.ADD_BOOK,
@@ -80,26 +79,22 @@ describe('books', () => {
   });
 
   it('toggles whether the book has been read', () => {
-    const state = [
-      {
-        title: 'sapiens',
-        id: 'someID',
-        read: false
-      }
-    ];
+    const state = [{
+      title: 'sapiens',
+      id: 'someID',
+      read: false
+    }];
 
     const action = {
       type: c.TOGGLE_READ,
       payload: 'someID'
     };
 
-    const expectedState = [
-      {
-        title: 'sapiens',
-        id: 'someID',
-        read: true
-      }
-    ];
+    const expectedState = [{
+      title: 'sapiens',
+      id: 'someID',
+      read: true
+    }];
 
     const newState = books(state, action);
 

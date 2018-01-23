@@ -20,7 +20,8 @@ const getFilteredBooks = (books, filter) => {
 const mapStateToProps = (state, { match }) => ({
   books: getFilteredBooks(state.books, match.params.filter),
   visibilityFilter: match.params.filter,
-  fetching: state.fetching
+  fetching: state.fetching,
+  suggestions: state.suggestions
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);

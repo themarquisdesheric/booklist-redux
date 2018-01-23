@@ -30,7 +30,7 @@ describe('actions: books', () => {
 
 describe('actions: fetching', () => {
   it('should create an action to set fetching to true when fetching books', () => {
-    const action = fetchBooks(c.FETCH_BOOKS);
+    const action = fetchBooks();
 
     const expectedAction = {
       type: c.FETCH_BOOKS,
@@ -41,7 +41,7 @@ describe('actions: fetching', () => {
   });
 
   it('should create an action to set fetching to false when cancelling fetching', () => {
-    const action = cancelFetching(c.CANCEL_FETCHING);
+    const action = cancelFetching();
 
     const expectedAction = {
       type: c.CANCEL_FETCHING,
@@ -59,6 +59,16 @@ describe('actions: suggestions', () => {
     const expectedAction = {
       type: c.CHANGE_SUGGESTIONS,
       payload: ['sapiens', 'the magus']
+    };
+
+    expect(action).toEqual(expectedAction);
+  });
+
+  it('should create an action to clear the book suggestions', () => {
+    const action = clearSuggestions();
+
+    const expectedAction = {
+      type: c.CLEAR_SUGGESTIONS
     };
 
     expect(action).toEqual(expectedAction);

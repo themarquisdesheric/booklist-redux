@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 import { SortableContainer, arrayMove } from 'react-sortable-hoc';
 import BookIcon from 'react-icons/lib/fa/book';
 import FilesIcon from 'react-icons/lib/fa/file-text';
-import Tab from './Tab';
+import Tabs from './Tabs';
 import { SortableBook, Book } from './Book';
 import AddBook from './AddBook';
 
@@ -24,26 +24,14 @@ class BookList extends Component {
 
   render() {
     const { books, visibilityFilter, suggestBooks, removeBook, toggleRead } = this.props;
-    const filters = ['Reading List', 'Finished Books'];
-    const icons = [BookIcon, FilesIcon];
 
     return (
       <div className="booklist">
-        <div className="tabs is-fullwidth is-toggle">
-          {filters.map( (filter, i) => {
-            const Icon = icons[i];
-
-            return (
-              <Tab 
-                key={filter}
-                value={filter}
-                visibilityFilter={visibilityFilter}
-              >
-                <Icon />
-              </Tab>
-            );
-          })}
-        </div>
+        <Tabs 
+          filters={['Reading List', 'Finished Books']} 
+          icons={[BookIcon, FilesIcon]} 
+          visibilityFilter={visibilityFilter} 
+        />
 
         <Route
           path="/reading-list"

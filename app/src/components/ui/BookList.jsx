@@ -6,6 +6,7 @@ import BookIcon from 'react-icons/lib/fa/book';
 import FilesIcon from 'react-icons/lib/fa/file-text';
 import Tabs from './Tabs';
 import { SortableBook, Book } from './Book';
+import SearchBooks from './SearchBooks';
 import AddBook from './AddBook';
 
 const SortableBookList = SortableContainer( ({ items, removeBook, toggleRead }) => (
@@ -26,7 +27,7 @@ class BookList extends Component {
     const { books, visibilityFilter, suggestBooks, removeBook, toggleRead } = this.props;
 
     return (
-      <div className="booklist">
+      <main className="booklist">
         <Tabs 
           filters={['Reading List', 'Finished Books']} 
           icons={[BookIcon, FilesIcon]} 
@@ -48,9 +49,10 @@ class BookList extends Component {
           )}
         />
 
-        <AddBook addBook={suggestBooks} />
+        <SearchBooks suggestBooks={suggestBooks} />
+        {/* <AddBook addBook={suggestBooks} /> */}
         {this.props.fetching && 'loading...'}
-      </div>
+      </main>
     );
   }
 }

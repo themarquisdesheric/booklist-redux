@@ -52,25 +52,28 @@ export const suggestBooks = searchTerm => dispatch => {
   fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURI(searchTerm)}`)
     .then(response => response.json())
     .then(suggestions => {
-      let book = suggestions.items[0],
-        title = book.volumeInfo.title,
-        author = book.volumeInfo.authors[0] || '',
-        snippet = book.searchInfo.textSnippet || '',
-        img = book.volumeInfo.imageLinks.smallThumbnail;
+      // let book = suggestions.items[0],
+      //   title = book.volumeInfo.title,
+      //   author = book.volumeInfo.authors[0] || '',
+      //   snippet = book.searchInfo.textSnippet || '',
+
+      // book.searchInfo doesn't always exist (book: 'hey')
+      
+      //   img = book.volumeInfo.imageLinks.smallThumbnail;
       
       console.log(suggestions);
       
-      dispatch({
-        type: c.ADD_BOOK,
-        payload: {
-          title,
-          author,
-          snippet,
-          img,
-          id: shortid.generate(),
-          read: false
-        }
-      });
+      // dispatch({
+      //   type: c.ADD_BOOK,
+      //   payload: {
+      //     title,
+      //     author,
+      //     snippet,
+      //     img,
+      //     id: shortid.generate(),
+      //     read: false
+      //   }
+      // });
 
       dispatch({
         type: c.CANCEL_FETCHING

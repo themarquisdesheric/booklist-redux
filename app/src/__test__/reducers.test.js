@@ -162,3 +162,20 @@ describe('fetching', () => {
     expect(newState).toEqual(expectedState);
   });
 });
+
+describe('suggestions', () => {
+  it('changes the suggested books', () => {
+    const state = [];
+
+    const action = {
+      type: c.CHANGE_SUGGESTIONS,
+      payload: ['sapiens', 'the magus']
+    };
+
+    const expectedState = ['sapiens', 'the magus'];
+
+    const newState = suggestions(state, action);
+
+    expect(newState).toEqual(expectedState);
+  });
+});

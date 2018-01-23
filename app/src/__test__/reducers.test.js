@@ -173,4 +173,16 @@ describe('suggestions', () => {
 
     expect(newState).toEqual(expectedState);
   });
+
+  it('clears the suggested books', () => {
+    const state = ['sapiens', 'the magus'];
+
+    const action = {
+      type: c.CLEAR_SUGGESTIONS
+    };
+
+    const newState = suggestions(state, action);
+
+    expect(newState).toEqual([]);
+  });
 });

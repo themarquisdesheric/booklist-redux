@@ -2,7 +2,7 @@ import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
-import BookList from '../BookList';
+import BookList from '../ui/BookList';
 
 const getFilteredBooks = (books, filter) => {
   switch (filter) {

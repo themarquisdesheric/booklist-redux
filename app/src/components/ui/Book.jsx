@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { SortableElement } from 'react-sortable-hoc';
-import DeleteButton from './DeleteButton';
-import ReadButton from './ReadButton';
+import PlusIcon from 'react-icons/lib/fa/plus-circle';
+import CheckIcon from 'react-icons/lib/fa/check-square';
+import RemoveIcon from 'react-icons/lib/fa/minus-square';
+import Button from './Button';
 
-export const Book = ({ book, isSuggestion, removeBook, toggleRead }) => (
+export const Book = ({ book, isSuggestion, addBook, removeBook, toggleRead }) => (
   
   // TODO: sanitize snippet input for html entities, etc
   // TODO: make 'read more' link for descriptions over 3 lines long
@@ -17,19 +19,31 @@ export const Book = ({ book, isSuggestion, removeBook, toggleRead }) => (
       <div className="media-content">
         <div className="content">
           <p>
-            <strong className="title is-5">{book.title}</strong>
-            <br />
-            <small className="subtitle is-6">{book.author}</small> 
-            <br />
+            <strong className="title is-5">{book.title}</strong><br />
+            <small className="subtitle is-6">{book.author}</small><br />
             <span className="is-hidden-mobile is-italic">
               {book.snippet}
             </span>
           </p>
-          {isSuggestion || <ReadButton finished={book.read} toggleRead={() => toggleRead(book.id)} />}
+          {isSuggestion || book.read ? 
+            <Button className="button is-light button-unread" clickHandler={() => toggleRead(book.id)}>
+              <RemoveIcon className="button-icon" />Mark Unread
+            </Button> 
+            : 
+            <Button className="button is-light button-read" clickHandler={() => toggleRead(book.id)}>
+              <CheckIcon className="button-icon" />Mark Read
+            </Button> 
+          }
         </div>
       </div>
       <div className="media-right">
-        {isSuggestion || <DeleteButton removeBook={() => removeBook(book.id)} />}
+        {isSuggestion ? 
+          <Button clickHandler={() => addBook(book)}>
+            <PlusIcon />Add Book
+          </Button> 
+          : 
+          <Button className="delete" clickHandler={() => removeBook(book.id)} />
+        }
       </div>
     </article>
   </div>
@@ -37,6 +51,7 @@ export const Book = ({ book, isSuggestion, removeBook, toggleRead }) => (
 
 Book.defaultProps = {
   isSuggestion: false,
+  addBook: () => {},
   removeBook: () => {},
   toggleRead: () => {}
 };
@@ -48,6 +63,7 @@ Book.propTypes = {
     read: PropTypes.bool
   }).isRequired,
   isSuggestion: PropTypes.bool,
+  addBook: PropTypes.func,
   removeBook: PropTypes.func,
   toggleRead: PropTypes.func
 };

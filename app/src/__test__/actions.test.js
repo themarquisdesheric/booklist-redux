@@ -11,12 +11,16 @@ import {
 
 describe('actions: books', () => {
   it('should create an action to add a book', () => {
-    const title = 'sapiens';
-    const action = addBook(title);
+    const book = {
+      title: 'sapiens',
+      id: 'someID',
+      read: false
+    };
+
+    const action = addBook(book);
 
     expect(action.type).toBe(c.ADD_BOOK);
-    expect(action.payload.title).toEqual(title);
-    expect(action.payload.id).toBeTruthy();
+    expect(action.payload.title).toEqual('sapiens');
     expect(typeof action.payload.id).toBe('string');
     expect(action.payload.read).toBeFalsy();
   });

@@ -1,12 +1,10 @@
-import shortid from 'shortid';
 import c from '../constants';
 
-export const addBook = title => 
+export const addBook = book => 
   ({
     type: c.ADD_BOOK,
     payload: {
-      title,
-      id: shortid.generate(),
+      ...book,
       read: false
     }
   });
@@ -63,23 +61,14 @@ export const suggestBooks = searchTerm => dispatch => {
   fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURI(searchTerm)}`)
     .then(response => response.json())
     .then(suggestions => {
-      // let book = suggestions.items[0],
-      //   title = book.volumeInfo.title,
-      //   author = book.volumeInfo.authors[0] || '',
-      //   snippet = book.searchInfo.textSnippet || '',
-
-      // book.searchInfo doesn't always exist (book: 'hey')
-      
-      //   img = book.volumeInfo.imageLinks.smallThumbnail;
-      
-      console.log(suggestions);
-
       const suggestedBooks = suggestions.items.map(book => 
         ({
           title: book.volumeInfo.title,
           authors: book.volumeInfo.authors || '',
           snippet: book.searchInfo ? book.searchInfo.textSnippet : '',
-          img: book.volumeInfo.imageLinks.smallThumbnail,
+          img: book.volumeInfo.imageLinks 
+            ? book.volumeInfo.imageLinks.smallThumbnail 
+            : '',
           id: book.id
         }));
 

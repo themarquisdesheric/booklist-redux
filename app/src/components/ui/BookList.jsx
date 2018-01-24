@@ -7,7 +7,6 @@ import FilesIcon from 'react-icons/lib/fa/file-text';
 import Tabs from './Tabs';
 import { SortableBook, Book } from './Book';
 import SearchBooks from './SearchBooks';
-import AddBook from './AddBook';
 
 const SortableBookList = SortableContainer( ({ items, removeBook, toggleRead }) => (
   <ul>
@@ -24,8 +23,8 @@ class BookList extends Component {
   };
 
   render() {
-    const { books, visibilityFilter, suggestions, suggestBooks, removeBook, toggleRead } = this.props;
-
+    const { books, visibilityFilter, suggestions, suggestBooks, addBook, removeBook, toggleRead } = this.props;
+    
     return (
       <main className="booklist">
         <Tabs 
@@ -49,7 +48,7 @@ class BookList extends Component {
           )}
         />
 
-        <SearchBooks suggestions={suggestions} suggestBooks={suggestBooks} />
+        <SearchBooks suggestions={suggestions} suggestBooks={suggestBooks} addBook={addBook} />
         {this.props.fetching && 'loading...'}
       </main>
     );
@@ -72,6 +71,7 @@ BookList.propTypes = {
   fetching: PropTypes.bool.isRequired,
   suggestions: PropTypes.arrayOf(PropTypes.object).isRequired,
   suggestBooks: PropTypes.func.isRequired,
+  addBook: PropTypes.func.isRequired,
   removeBook: PropTypes.func.isRequired,
   toggleRead: PropTypes.func.isRequired,
   setOrder: PropTypes.func.isRequired

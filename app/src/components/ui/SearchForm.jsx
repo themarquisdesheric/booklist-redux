@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class AddBook extends Component {
+class SearchForm extends Component {
   static propTypes = {
     suggestBooks: PropTypes.func.isRequired
   }
@@ -43,4 +43,4 @@ class AddBook extends Component {
   }
 }
 
-export default AddBook;
+export default SearchForm;

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class AddBook extends Component {
+class SearchForm extends Component {
   static propTypes = {
-    addBook: PropTypes.func.isRequired
+    suggestBooks: PropTypes.func.isRequired
   }
   
   constructor(props) {
@@ -26,7 +26,7 @@ class AddBook extends Component {
 
     if (!this.state.title) return;
     
-    this.props.addBook(this.state.title);    
+    this.props.suggestBooks(this.state.title);    
     this.setState({ title: '' });
   }
 
@@ -37,10 +37,10 @@ class AddBook extends Component {
         {' '}
         <input value={this.state.title} onChange={this.handleChange} />
         {' '}
-        <input type="submit" value="Add book" />
+        <input type="submit" value="Search" />
       </form>
     );
   }
 }
 
-export default AddBook;
+export default SearchForm;

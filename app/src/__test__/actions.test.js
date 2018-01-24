@@ -1,14 +1,26 @@
 import c from '../constants';
-import { addBook, removeBook, toggleRead, fetchBooks, cancelFetching } from '../actions';
+import { 
+  addBook, 
+  removeBook, 
+  toggleRead, 
+  fetchBooks, 
+  cancelFetching, 
+  changeSuggestions, 
+  clearSuggestions
+} from '../actions';
 
 describe('actions: books', () => {
   it('should create an action to add a book', () => {
-    const title = 'sapiens';
-    const action = addBook(title);
+    const book = {
+      title: 'sapiens',
+      id: 'someID',
+      read: false
+    };
+
+    const action = addBook(book);
 
     expect(action.type).toBe(c.ADD_BOOK);
-    expect(action.payload.title).toEqual(title);
-    expect(action.payload.id).toBeTruthy();
+    expect(action.payload.title).toEqual('sapiens');
     expect(typeof action.payload.id).toBe('string');
     expect(action.payload.read).toBeFalsy();
   });
@@ -30,7 +42,7 @@ describe('actions: books', () => {
 
 describe('actions: fetching', () => {
   it('should create an action to set fetching to true when fetching books', () => {
-    const action = fetchBooks(c.FETCH_BOOKS);
+    const action = fetchBooks();
 
     const expectedAction = {
       type: c.FETCH_BOOKS,
@@ -41,11 +53,34 @@ describe('actions: fetching', () => {
   });
 
   it('should create an action to set fetching to false when cancelling fetching', () => {
-    const action = cancelFetching(c.CANCEL_FETCHING);
+    const action = cancelFetching();
 
     const expectedAction = {
       type: c.CANCEL_FETCHING,
       payload: false
+    };
+
+    expect(action).toEqual(expectedAction);
+  });
+});
+
+describe('actions: suggestions', () => {
+  it('should create an action to change the book suggestions', () => {
+    const action = changeSuggestions(['sapiens', 'the magus']);
+
+    const expectedAction = {
+      type: c.CHANGE_SUGGESTIONS,
+      payload: ['sapiens', 'the magus']
+    };
+
+    expect(action).toEqual(expectedAction);
+  });
+
+  it('should create an action to clear the book suggestions', () => {
+    const action = clearSuggestions();
+
+    const expectedAction = {
+      type: c.CLEAR_SUGGESTIONS
     };
 
     expect(action).toEqual(expectedAction);

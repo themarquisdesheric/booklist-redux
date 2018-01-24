@@ -6,7 +6,7 @@ import BookIcon from 'react-icons/lib/fa/book';
 import FilesIcon from 'react-icons/lib/fa/file-text';
 import Tabs from './Tabs';
 import { SortableBook, Book } from './Book';
-import AddBook from './AddBook';
+import SearchBooks from './SearchBooks';
 
 const SortableBookList = SortableContainer( ({ items, removeBook, toggleRead }) => (
   <ul>
@@ -23,10 +23,10 @@ class BookList extends Component {
   };
 
   render() {
-    const { books, visibilityFilter, suggestBooks, removeBook, toggleRead } = this.props;
-
+    const { books, visibilityFilter, suggestions, suggestBooks, addBook, removeBook, toggleRead } = this.props;
+    
     return (
-      <div className="booklist">
+      <main className="booklist">
         <Tabs 
           filters={['Reading List', 'Finished Books']} 
           icons={[BookIcon, FilesIcon]} 
@@ -48,9 +48,9 @@ class BookList extends Component {
           )}
         />
 
-        <AddBook addBook={suggestBooks} />
+        <SearchBooks suggestions={suggestions} suggestBooks={suggestBooks} addBook={addBook} />
         {this.props.fetching && 'loading...'}
-      </div>
+      </main>
     );
   }
 }
@@ -69,7 +69,9 @@ BookList.propTypes = {
   ),
   visibilityFilter: PropTypes.string.isRequired,
   fetching: PropTypes.bool.isRequired,
+  suggestions: PropTypes.arrayOf(PropTypes.object).isRequired,
   suggestBooks: PropTypes.func.isRequired,
+  addBook: PropTypes.func.isRequired,
   removeBook: PropTypes.func.isRequired,
   toggleRead: PropTypes.func.isRequired,
   setOrder: PropTypes.func.isRequired

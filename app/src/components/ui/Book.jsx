@@ -4,7 +4,7 @@ import { SortableElement } from 'react-sortable-hoc';
 import DeleteButton from './DeleteButton';
 import ReadButton from './ReadButton';
 
-export const Book = ({ book, removeBook, toggleRead }) => (
+export const Book = ({ book, isSuggestion, removeBook, toggleRead }) => (
   
   // TODO: sanitize snippet input for html entities, etc
   // TODO: make 'read more' link for descriptions over 3 lines long
@@ -25,24 +25,31 @@ export const Book = ({ book, removeBook, toggleRead }) => (
               {book.snippet}
             </span>
           </p>
-          <ReadButton finished={book.read} toggleRead={() => toggleRead(book.id)} />
+          {isSuggestion || <ReadButton finished={book.read} toggleRead={() => toggleRead(book.id)} />}
         </div>
       </div>
       <div className="media-right">
-        <DeleteButton removeBook={() => removeBook(book.id)} />
+        {isSuggestion || <DeleteButton removeBook={() => removeBook(book.id)} />}
       </div>
     </article>
   </div>
 );
 
+Book.defaultProps = {
+  isSuggestion: false,
+  removeBook: () => {},
+  toggleRead: () => {}
+};
+
 Book.propTypes = {
   book: PropTypes.shape({
     title: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
-    read: PropTypes.bool.isRequired
+    read: PropTypes.bool
   }).isRequired,
-  removeBook: PropTypes.func.isRequired,
-  toggleRead: PropTypes.func.isRequired
+  isSuggestion: PropTypes.bool,
+  removeBook: PropTypes.func,
+  toggleRead: PropTypes.func
 };
 
 export const SortableBook = SortableElement(Book);

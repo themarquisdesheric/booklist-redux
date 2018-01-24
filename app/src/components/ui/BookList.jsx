@@ -24,7 +24,7 @@ class BookList extends Component {
   };
 
   render() {
-    const { books, visibilityFilter, suggestBooks, removeBook, toggleRead } = this.props;
+    const { books, visibilityFilter, suggestions, suggestBooks, removeBook, toggleRead } = this.props;
 
     return (
       <main className="booklist">
@@ -49,8 +49,7 @@ class BookList extends Component {
           )}
         />
 
-        <SearchBooks suggestBooks={suggestBooks} />
-        {/* <AddBook addBook={suggestBooks} /> */}
+        <SearchBooks suggestions={suggestions} suggestBooks={suggestBooks} />
         {this.props.fetching && 'loading...'}
       </main>
     );
@@ -71,6 +70,7 @@ BookList.propTypes = {
   ),
   visibilityFilter: PropTypes.string.isRequired,
   fetching: PropTypes.bool.isRequired,
+  suggestions: PropTypes.arrayOf(PropTypes.object).isRequired,
   suggestBooks: PropTypes.func.isRequired,
   removeBook: PropTypes.func.isRequired,
   toggleRead: PropTypes.func.isRequired,

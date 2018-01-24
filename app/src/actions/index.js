@@ -73,6 +73,20 @@ export const suggestBooks = searchTerm => dispatch => {
       //   img = book.volumeInfo.imageLinks.smallThumbnail;
       
       console.log(suggestions);
+
+      const suggestedBooks = suggestions.items.map(book => 
+        ({
+          title: book.volumeInfo.title,
+          authors: book.volumeInfo.authors || '',
+          snippet: book.searchInfo ? book.searchInfo.textSnippet : '',
+          img: book.volumeInfo.imageLinks.smallThumbnail,
+          id: book.id
+        }));
+
+      dispatch({
+        type: c.CHANGE_SUGGESTIONS,
+        payload: suggestedBooks
+      });
       
       // dispatch({
       //   type: c.ADD_BOOK,

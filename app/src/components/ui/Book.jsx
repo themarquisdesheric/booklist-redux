@@ -25,12 +25,13 @@ export const Book = ({ book, isSuggestion, addBook, removeBook, toggleRead }) =>
               {book.snippet}
             </span>
           </p>
-          {isSuggestion || book.read ? 
-            <Button className="is-light button-unread" clickHandler={() => toggleRead(book.id)}>
+          {/* if not a book suggestion then find out if book has been read  */}
+          {isSuggestion ? null : book.read ? 
+            <Button className="is-danger" clickHandler={() => toggleRead(book.id)}>
               <RemoveIcon className="button-icon" />Mark Unread
             </Button> 
             : 
-            <Button className="is-light button-read" clickHandler={() => toggleRead(book.id)}>
+            <Button className="is-success" clickHandler={() => toggleRead(book.id)}>
               <CheckIcon className="button-icon" />Mark Read
             </Button> 
           }
@@ -38,8 +39,8 @@ export const Book = ({ book, isSuggestion, addBook, removeBook, toggleRead }) =>
       </div>
       <div className="media-right">
         {isSuggestion ? 
-          <Button clickHandler={() => addBook(book)}>
-            <PlusIcon className="button-icon button-plus" />Add Book
+          <Button className="is-primary add" clickHandler={() => addBook(book)}>
+            <PlusIcon className="button-icon" />Add Book
           </Button> 
           : 
           <Button className="delete" clickHandler={() => removeBook(book.id)} />

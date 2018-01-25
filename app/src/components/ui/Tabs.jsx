@@ -1,8 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import BookIcon from 'react-icons/lib/fa/book';
+import FilesIcon from 'react-icons/lib/fa/file-text';
 import Tab from './Tab';
 
-const Tabs = ({ filters, icons, visibilityFilter }) => {
+const Tabs = ({ visibilityFilter }) => {
+  const filters = ['Reading List', 'Finished Books'];
+  const icons = [BookIcon, FilesIcon];
+
   return (
     <div className="tabs is-fullwidth is-toggle">
       {filters.map( (filter, i) => {
@@ -23,8 +28,6 @@ const Tabs = ({ filters, icons, visibilityFilter }) => {
 };
 
 Tabs.propTypes = {
-  filters: PropTypes.arrayOf(PropTypes.string).isRequired,
-  icons: PropTypes.arrayOf(PropTypes.func).isRequired,
   visibilityFilter: PropTypes.string.isRequired
 };
 

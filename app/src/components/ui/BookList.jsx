@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 import { SortableContainer, arrayMove } from 'react-sortable-hoc';
-import BookIcon from 'react-icons/lib/fa/book';
-import FilesIcon from 'react-icons/lib/fa/file-text';
 import Tabs from './Tabs';
 import { SortableBook, Book } from './Book';
 import SearchBooks from './SearchBooks';
@@ -23,32 +21,31 @@ class BookList extends Component {
   };
 
   render() {
-    const { books, visibilityFilter, suggestions, suggestBooks, addBook, removeBook, toggleRead } = this.props;
-    
+    const { books, visibilityFilter, suggestions, history, suggestBooks, addBook, removeBook, toggleRead } = this.props;
     return (
       <main className="booklist">
-        <Tabs 
-          filters={['Reading List', 'Finished Books']} 
-          icons={[BookIcon, FilesIcon]} 
-          visibilityFilter={visibilityFilter} 
-        />
-
         <Route
           path="/reading-list"
-          component={() => 
-            <SortableBookList items={books} onSortEnd={this.onSortEnd} removeBook={removeBook} toggleRead={toggleRead} />
-          } 
+          component={() => (
+            <div>
+              <Tabs visibilityFilter={visibilityFilter} />
+              <SortableBookList items={books} onSortEnd={this.onSortEnd} removeBook={removeBook} toggleRead={toggleRead} />
+            </div>
+          )} 
         />
         <Route 
           path="/finished-books"
           component={() => (
-            <ul>
-              {books.map(book => <Book key={book.title} book={book} removeBook={removeBook} toggleRead={toggleRead} />)}
-            </ul>
+            <div>
+              <Tabs visibilityFilter={visibilityFilter} />
+              <ul>
+                {books.map(book => <Book key={book.title} book={book} removeBook={removeBook} toggleRead={toggleRead} />)}
+              </ul>
+            </div>
           )}
         />
 
-        <SearchBooks suggestions={suggestions} suggestBooks={suggestBooks} addBook={addBook} />
+        <SearchBooks suggestions={suggestions} history={history} suggestBooks={suggestBooks} addBook={addBook} />
         {this.props.fetching && 'loading...'}
       </main>
     );
@@ -70,6 +67,7 @@ BookList.propTypes = {
   visibilityFilter: PropTypes.string.isRequired,
   fetching: PropTypes.bool.isRequired,
   suggestions: PropTypes.arrayOf(PropTypes.object).isRequired,
+  history: PropTypes.shape({}).isRequired,
   suggestBooks: PropTypes.func.isRequired,
   addBook: PropTypes.func.isRequired,
   removeBook: PropTypes.func.isRequired,

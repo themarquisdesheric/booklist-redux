@@ -76,21 +76,8 @@ Book
     color: $grey;
   }
 
-  .button-read svg {
-    color: $green;
-  }
-  
-  .button-unread svg {
-    color: $red;
-  }
-  
-  .button-read, .button-unread {
-    position: absolute;
-    bottom: 0;
-  }
-
-  .button-plus {
-    color: $green;
+  .add {
+    margin-top: 50%;
   }
   
   .button-icon {

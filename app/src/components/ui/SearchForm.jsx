@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import SearchIcon from 'react-icons/lib/fa/search';
 
 class SearchForm extends Component {
   static propTypes = {
@@ -32,12 +33,16 @@ class SearchForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        Name: 
-        {' '}
-        <input value={this.state.title} onChange={this.handleChange} />
-        {' '}
-        <input type="submit" value="Search" />
+      <form className="field has-addons" onSubmit={this.handleSubmit}>
+        <div className="control has-icons-left">
+          <input className="input" value={this.state.title} placeholder="Find a book" onChange={this.handleChange} />
+          <span className="icon is-small is-left">
+            <SearchIcon />
+          </span>
+        </div>
+        <div className="control has-icons-left">
+          <input className="button is-info" type="submit" value="Search" />
+        </div>
       </form>
     );
   }

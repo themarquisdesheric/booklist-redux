@@ -88,6 +88,10 @@ Book
     position: absolute;
     bottom: 0;
   }
+
+  .button-plus {
+    color: $green;
+  }
   
   .button-icon {
     margin-right: .3em;
@@ -99,6 +103,21 @@ Book
 End Book 
 
 */
+
+form {
+  margin: auto;
+  padding: 2em 0;
+  min-width: 320px;
+  max-width: 500px;
+
+  div:first-child {
+    width: 100%;
+  }
+
+  &.field:not(:last-child) {
+    margin-bottom: 0;
+  }
+}
 
 .footer {
   background: rgba(0, 0, 0, 0.9);

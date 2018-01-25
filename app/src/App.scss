@@ -27,7 +27,7 @@ header {
   width: 100%;
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 10;
 
   h1.title {
     color: #fff;
@@ -47,13 +47,9 @@ header {
     text-decoration: none;
     
     li {
-      background-color: $white;      
+      background-color: $white;
     }
   }
-}
-
-.is-active {
-  z-index: 0;
 }
 
 /* 
@@ -69,6 +65,7 @@ Book
     
     img {
       width: 85%;
+      min-width: 110px;
     }
   }
   
@@ -78,6 +75,14 @@ Book
 
   .add {
     margin-top: 50%;
+  }
+
+  .button-unread {
+    color: $red;
+  }
+  
+  .button-read {
+    color: $green;
   }
   
   .button-icon {

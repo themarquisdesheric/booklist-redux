@@ -27,11 +27,11 @@ export const Book = ({ book, isSuggestion, addBook, removeBook, toggleRead }) =>
           </p>
           {/* if not a book suggestion then find out if book has been read  */}
           {isSuggestion ? null : book.read ? 
-            <Button className="is-danger" clickHandler={() => toggleRead(book.id)}>
+            <Button className="is-light button-unread" clickHandler={() => toggleRead(book.id)}>
               <RemoveIcon className="button-icon" />Mark Unread
             </Button> 
             : 
-            <Button className="is-success" clickHandler={() => toggleRead(book.id)}>
+            <Button className="is-light button-read" clickHandler={() => toggleRead(book.id)}>
               <CheckIcon className="button-icon" />Mark Read
             </Button> 
           }

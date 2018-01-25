@@ -21,7 +21,7 @@ class BookList extends Component {
   };
 
   render() {
-    const { books, visibilityFilter, suggestions, history, suggestBooks, addBook, removeBook, toggleRead } = this.props;
+    const { books, visibilityFilter, suggestions, fetching, history, suggestBooks, addBook, removeBook, toggleRead } = this.props;
     return (
       <main className="booklist">
         <Route
@@ -45,8 +45,13 @@ class BookList extends Component {
           )}
         />
 
-        <SearchBooks suggestions={suggestions} history={history} suggestBooks={suggestBooks} addBook={addBook} />
-        {this.props.fetching && 'loading...'}
+        <SearchBooks 
+          suggestions={suggestions} 
+          fetching={fetching} 
+          history={history} 
+          suggestBooks={suggestBooks} 
+          addBook={addBook} 
+        />
       </main>
     );
   }

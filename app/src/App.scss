@@ -76,17 +76,8 @@ Book
     color: $grey;
   }
 
-  .button-read svg {
-    color: $green;
-  }
-  
-  .button-unread svg {
-    color: $red;
-  }
-  
-  .button-read, .button-unread {
-    position: absolute;
-    bottom: 0;
+  .add {
+    margin-top: 50%;
   }
   
   .button-icon {
@@ -99,6 +90,21 @@ Book
 End Book 
 
 */
+
+form {
+  margin: auto;
+  padding: 2em 0;
+  min-width: 320px;
+  max-width: 500px;
+
+  div:first-child {
+    width: 100%;
+  }
+
+  &.field:not(:last-child) {
+    margin-bottom: 0;
+  }
+}
 
 .footer {
   background: rgba(0, 0, 0, 0.9);

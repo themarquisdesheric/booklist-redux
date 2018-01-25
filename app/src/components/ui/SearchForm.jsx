@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import SearchIcon from 'react-icons/lib/fa/search';
 
 class SearchForm extends Component {
   static propTypes = {
-    suggestBooks: PropTypes.func.isRequired
+    suggestBooks: PropTypes.func.isRequired,
+    history: PropTypes.shape({}).isRequired
   }
   
   constructor(props) {
@@ -22,22 +24,29 @@ class SearchForm extends Component {
   }
 
   handleSubmit(e) {
+    const { suggestBooks, history } = this.props;
+
     e.preventDefault();
 
     if (!this.state.title) return;
     
-    this.props.suggestBooks(this.state.title);    
+    suggestBooks(this.state.title);
     this.setState({ title: '' });
+    history.push('/suggestions');
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        Name: 
-        {' '}
-        <input value={this.state.title} onChange={this.handleChange} />
-        {' '}
-        <input type="submit" value="Search" />
+      <form className="field has-addons" onSubmit={this.handleSubmit}>
+        <div className="control has-icons-left">
+          <input className="input" value={this.state.title} placeholder="Find a book" onChange={this.handleChange} />
+          <span className="icon is-small is-left">
+            <SearchIcon />
+          </span>
+        </div>
+        <div className="control has-icons-left">
+          <input className="button is-info" type="submit" value="Search" />
+        </div>
       </form>
     );
   }

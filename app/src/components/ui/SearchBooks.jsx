@@ -1,24 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Route } from 'react-router-dom';
 import SearchForm from './SearchForm';
 import { Book } from './Book';
 
-const SearchBooks = ({ suggestions, suggestBooks, addBook }) => {
+const SearchBooks = ({ suggestions, history, suggestBooks, addBook }) => {
   return (
     <div>
-      <SearchForm suggestBooks={suggestBooks} />
-      {suggestions && 
-        <ul>
-          {suggestions.map( (book, i) => 
-            <Book key={book.id} book={book} isSuggestion addBook={addBook} />)}
-        </ul>
-      }
+      <SearchForm history={history} suggestBooks={suggestBooks} /> 
+      <Route 
+        path="/suggestions"
+        component={() => (
+          <ul>
+            {suggestions.map( (book, i) => (
+              <Book 
+                key={book.id} 
+                book={book} 
+                isSuggestion 
+                addBook={() => {
+                  addBook(book);
+                  history.push('reading-list');
+                }} 
+              />))}
+          </ul>
+        )} 
+      />
     </div>
   );
 };
 
 SearchBooks.propTypes = {
   suggestions: PropTypes.arrayOf(PropTypes.object).isRequired,
+  history: PropTypes.shape({}).isRequired,
   suggestBooks: PropTypes.func.isRequired,
   addBook: PropTypes.func.isRequired
 };

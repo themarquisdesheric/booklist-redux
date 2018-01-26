@@ -8,7 +8,6 @@ import Button from './Button';
 
 export const Book = ({ book, isSuggestion, addBook, removeBook, toggleRead }) => (
   
-  // TODO: sanitize snippet input for html entities, etc
   // TODO: make 'read more' link for descriptions over 3 lines long
 
   <div className="box">

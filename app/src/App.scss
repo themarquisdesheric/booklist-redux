@@ -2,10 +2,7 @@
 @import "../node_modules/bulma/sass/utilities/functions";
 
 $icon-dimensions-large: 4rem;
-$tabs-toggle-link-active-background-color: $cyan;
-$tabs-toggle-link-active-border-color: $cyan;
-$tabs-toggle-link-hover-background-color: #E8EAF6;
-$tabs-toggle-link-hover-border-color: #E8EAF6;
+$tabs-toggle-link-hover-border-color: rgb(191, 55, 251);
 
 @import "../node_modules/bulma/sass/utilities/derived-variables.sass";
 @import "../node_modules/bulma/bulma";
@@ -51,6 +48,7 @@ header {
   
   h3 {
     letter-spacing: 1px;
+    color: rgba(20, 20, 20, 0.8);
   }
   
   .level {
@@ -69,7 +67,7 @@ header {
 
     &:hover {
       border: 1.5px solid rgb(191, 55, 251);
-      transform: scale(1.1);
+      transform: scale(1.07);
       transition: all 0.15s ease;
     }
   }
@@ -82,7 +80,20 @@ header {
   padding: 0 2em;
 
   .tabs li {
-    background-color: $white;
+    background: $white;
+
+    &.is-active-tab {
+      background: linear-gradient(to right, rgb(36, 101, 229), rgb(191, 55, 251));
+
+      a {
+        color: $white;
+
+        &:hover {
+          background: rgba(0, 0, 0, 0);
+        }
+      }
+
+    }
   }
   
   ul {

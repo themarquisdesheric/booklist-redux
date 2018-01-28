@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+import GetStarted from './GetStarted';
 import BookListContainer from '../containers/BookListContainer';
 import Header from './Header';
 import Footer from './Footer';
@@ -12,8 +13,7 @@ const App = () => (
     <Route
       exact
       path="/" 
-      component={() => 
-        <h1 style={{marginTop: '15em'}}>intro / link to /reading-list as get started</h1>} 
+      component={GetStarted} 
     />
     <Route path="/:filter" component={BookListContainer} />
     

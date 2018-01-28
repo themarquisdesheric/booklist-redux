@@ -73,6 +73,8 @@ header {
   }
 }
 
+/* booklist */
+
 .booklist {
   min-width: 60%;
   max-width: 400px;
@@ -81,18 +83,17 @@ header {
 
   .tabs li {
     background: $white;
+    
+    & a:hover {
+      background-color: unset;
+    }
 
     &.is-active-tab {
-      background: linear-gradient(to right, rgb(36, 101, 229), rgb(191, 55, 251));
+      background: linear-gradient(to top right, rgb(36, 101, 229), rgb(191, 55, 251));
 
       a {
         color: $white;
-
-        &:hover {
-          background: rgba(0, 0, 0, 0);
-        }
       }
-
     }
   }
   
@@ -102,11 +103,10 @@ header {
   }
 }
 
-/* 
+/* end booklist */
 
-Book 
+/* book */
 
-*/
 .media {
   position: relative;
 
@@ -128,24 +128,38 @@ Book
     margin-top: 50%;
   }
 
-  .button-unread {
-    color: $red;
+  .button {
+    padding: 0 .75em;
+    height: 2.75em;
+    color: rgb(191, 55, 251);
+    border: 1px solid rgb(191, 55, 251);
+    
+    &:hover {
+      color: rgb(36, 101, 229);
+      border: 1px solid rgb(36, 101, 229);
+    }
   }
-  
-  .button-read {
-    color: $green;
-  }
+
+  .delete {
+    border: none;
+    background-color: rgb(191, 55, 251);
+
+    &:hover {
+      border: none;
+    }
+
+    img {
+      width: 40px;
+    }
+  } 
   
   .button-icon {
+    width: 35px;
     margin-right: .3em;
   }
 }
 
-/* 
-
-End Book 
-
-*/
+/* end book */
 
 form {
   margin: auto;
@@ -155,6 +169,17 @@ form {
 
   div:first-child {
     width: 100%;
+  }
+
+  .button-gradient {
+    background: linear-gradient(to top right, rgb(36, 101, 229), rgb(191, 55, 251));
+    color: $white;
+    font-weight: bold;
+
+    &:hover {
+      color: $white;
+      border: 1px solid rgb(191, 55, 251);
+    }
   }
 
   &.field:not(:last-child) {

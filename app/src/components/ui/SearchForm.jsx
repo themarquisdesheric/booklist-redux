@@ -45,7 +45,7 @@ class SearchForm extends Component {
           </span>
         </div>
         <div className="control has-icons-left">
-          <input className="button is-info" type="submit" value="Search" />
+          <input className="button button-gradient" type="submit" value="Search" />
         </div>
       </form>
     );

@@ -10,7 +10,7 @@ const Tab = ({ value, visibilityFilter, children }) => {
   return (
     <li className={visibilityFilter ===  hyphenated ? 'is-active-tab' : ''}>
       <Link href to={`/${hyphenated}`}>
-        <span className="icon is-small">{children}</span>
+        <span className="icon">{children}</span>
         <span>{value}</span>
       </Link>
     </li>

@@ -12,7 +12,7 @@ const GetStarted = () => {
     caption: 'Decide which book you want to read next'
   }, {
     src: 'document',
-    caption: 'Save finished books for easy reference later'
+    caption: 'Save finished books for easy reference'
   }, {
     src: 'search-property',
     caption: 'Find new books to read'
@@ -21,7 +21,6 @@ const GetStarted = () => {
   return (
     <div className="get-started">
       <div className="box">
-        <img src="scroll.png" alt="scroll-never-ends" style={{width: '150px'}} />
         <h3 className="title is-4 is-uppercase">Manage the books in your life</h3>
 
         {content.map( ({ src, caption }) => (
@@ -37,7 +36,7 @@ const GetStarted = () => {
           </div>
         ))}
 
-        <Link href to="/reading-list" className="button is-dark is-uppercase button-get-started">
+        <Link href to="/reading-list" className="button button-gradient is-uppercase button-get-started">
           Get started
         </Link>
       </div>

@@ -1,8 +1,12 @@
 @import "../node_modules/bulma/sass/utilities/initial-variables";
 @import "../node_modules/bulma/sass/utilities/functions";
 
+$pink: rgb(191, 55, 251);
+$midnight-blue: rgb(36, 101, 229);
+
 $icon-dimensions-large: 4rem;
-$tabs-toggle-link-hover-border-color: rgb(191, 55, 251);
+$tabs-toggle-link-hover-border-color: $pink;
+
 
 @import "../node_modules/bulma/sass/utilities/derived-variables.sass";
 @import "../node_modules/bulma/bulma";
@@ -11,6 +15,12 @@ html {
   background: linear-gradient(to bottom right, #fafafa, #fefefe);
   position: relative;
   min-height: 100%; 
+
+  border: 4px solid $pink;  
+  border-image-source: linear-gradient($pink, $midnight-blue);
+  border-image-slice: 20;
+  border-top: none;
+  border-bottom: none;
 }
 
 body {
@@ -26,6 +36,7 @@ header {
   width: 100%;
   position: fixed;
   top: 0;
+  left: 0;
   z-index: 10;
 
   h1.title {
@@ -37,28 +48,27 @@ header {
 
 .get-started {
   margin: 8.5em auto 0;
-  width: 45%;
-  background: linear-gradient(to bottom right, rgb(36, 101, 229), rgb(191, 55, 251));
   
   .box {
-    width: 97%;
     margin: auto;
     padding: 0;
   }
   
   h3 {
     letter-spacing: 1px;
+    padding-top: 2em;
     color: rgba(20, 20, 20, 0.8);
   }
   
   .level {
-    width: 61%;
+    min-width: 27%;
+    max-width: 400px;
     margin: 1em auto;
-    padding: .5em 0;
+    padding: .5em .6em;
   }
 
   .button-get-started {
-    margin: .5em 0 2.5em;
+    margin: .5em 0 3.3em;
     padding: 10px 30px;
     letter-spacing: 1px;
     font-size: .9em;
@@ -66,9 +76,9 @@ header {
     letter-spacing: 1px;
 
     &:hover {
-      border: 1.5px solid rgb(191, 55, 251);
+      border: 1px solid $midnight-blue;
       transform: scale(1.07);
-      transition: all 0.15s ease;
+      transition: all 0.2s ease;
     }
   }
 }
@@ -89,11 +99,10 @@ header {
     }
 
     &.is-active-tab {
-      background: linear-gradient(to top right, rgb(36, 101, 229), rgb(191, 55, 251));
+      // background: linear-gradient(to top right, $midnight-blue, $pink); (missing white text color)
 
-      a {
-        color: $white;
-      }
+      // more subtle than above
+      background: #eee;
     }
   }
   
@@ -131,21 +140,21 @@ header {
   .button {
     padding: 0 .75em;
     height: 2.75em;
-    color: rgb(191, 55, 251);
-    border: 1px solid rgb(191, 55, 251);
+    color: $pink;
+    border: 1px solid $pink;
     
     &:hover {
-      color: rgb(36, 101, 229);
-      border: 1px solid rgb(36, 101, 229);
+      color: $midnight-blue;
+      border: 1px solid $midnight-blue;
     }
   }
 
   .delete {
     border: none;
-    background-color: rgb(191, 55, 251);
-
+    
     &:hover {
       border: none;
+      background-color: $pink;
     }
 
     img {
@@ -171,17 +180,6 @@ form {
     width: 100%;
   }
 
-  .button-gradient {
-    background: linear-gradient(to top right, rgb(36, 101, 229), rgb(191, 55, 251));
-    color: $white;
-    font-weight: bold;
-
-    &:hover {
-      color: $white;
-      border: 1px solid rgb(191, 55, 251);
-    }
-  }
-
   &.field:not(:last-child) {
     margin-bottom: 0;
   }
@@ -189,14 +187,34 @@ form {
 
 .footer {
   background: rgba(0, 0, 0, 0.9);
-  width: 100%;
-  height: 73px;
   position: absolute;
   bottom: 0;
+  left: 0;
+  height: 73px;
+  width: 102%;
+  margin-left: -1%;
   padding: 1.5em;
-  margin-top: 4em;
 
   span {
     font-weight: 900;
   }
 }
+
+/* misc */
+
+.button-gradient {
+  background: linear-gradient(to top right, $midnight-blue, $pink);
+  color: $white;
+  font-weight: bold;
+
+  &:hover {
+    color: $white;
+    border: 1px solid $pink;
+  }
+}
+
+.icon {
+  width: 30px;
+}
+
+/* end misc */

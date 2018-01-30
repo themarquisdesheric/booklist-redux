@@ -16,7 +16,7 @@ export const Book = ({ book, isSuggestion, addBook, removeBook, toggleRead }) =>
         <div className="content">
           <p>
             <strong className="title is-5">{book.title}</strong><br />
-            <small className="subtitle is-6">{`${book.authors.join(', ')}`}</small><br />
+            <small className="subtitle is-6">{`${book.authors.length > 1 ? book.authors.join(', ') : book.authors}`}</small><br />
             <span className="is-hidden-mobile is-italic">
               {book.snippet}
             </span>

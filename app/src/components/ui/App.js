@@ -10,11 +10,7 @@ const App = () => (
   <div className="App">
     <Header className="header" />
 
-    <Route
-      exact
-      path="/" 
-      component={GetStarted} 
-    />
+    <Route exact path="/" component={GetStarted} />
     <Route path="/:filter" component={BookListContainer} />
     
     <Footer />

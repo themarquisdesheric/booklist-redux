@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Button = ({ className, children, clickHandler }) => (
-  <button className={`button ${className}`} onClick={clickHandler}>
+  <button className={`button is-outlined ${className}`} onClick={clickHandler}>
     {children}
   </button>
 );

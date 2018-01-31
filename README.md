@@ -1,7 +1,11 @@
 # booklist-redux
+
 An app to manage the books in my life
 
 ## Built with
+
+Google Books API https://developers.google.com/books/
+
 React https://reactjs.org/  
 
 Redux https://redux.js.org/  
@@ -18,6 +22,7 @@ npm start
 ```
 
 ## Testing
+
 This app uses Jest for testing https://facebook.github.io/jest/
 
 To run tests, navigate to the `app` directory and type

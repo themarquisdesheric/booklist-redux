@@ -1,3 +1,4 @@
+import htmlToText from 'html-to-text';
 import c from '../constants';
 
 export const addBook = book => 
@@ -65,7 +66,7 @@ export const suggestBooks = searchTerm => dispatch => {
         ({
           title: book.volumeInfo.title,
           authors: book.volumeInfo.authors || '',
-          snippet: book.searchInfo ? book.searchInfo.textSnippet : '',
+          snippet: book.searchInfo ? htmlToText.fromString(book.searchInfo.textSnippet) : '',
           img: book.volumeInfo.imageLinks 
             ? book.volumeInfo.imageLinks.smallThumbnail 
             : '',
@@ -76,18 +77,6 @@ export const suggestBooks = searchTerm => dispatch => {
         type: c.CHANGE_SUGGESTIONS,
         payload: suggestedBooks
       });
-      
-      // dispatch({
-      //   type: c.ADD_BOOK,
-      //   payload: {
-      //     title,
-      //     author,
-      //     snippet,
-      //     img,
-      //     id: shortid.generate(),
-      //     read: false
-      //   }
-      // });
 
       dispatch({
         type: c.CANCEL_FETCHING

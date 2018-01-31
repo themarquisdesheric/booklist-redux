@@ -1,10 +1,12 @@
 @import "../node_modules/bulma/sass/utilities/initial-variables";
 @import "../node_modules/bulma/sass/utilities/functions";
 
-$tabs-toggle-link-active-background-color: $cyan;
-$tabs-toggle-link-active-border-color: $cyan;
-$tabs-toggle-link-hover-background-color: #E8EAF6;
-$tabs-toggle-link-hover-border-color: #E8EAF6;
+$pink: rgb(191, 55, 251);
+$midnight-blue: rgb(36, 101, 229);
+
+$icon-dimensions-large: 4rem;
+$tabs-toggle-link-hover-border-color: $pink;
+
 
 @import "../node_modules/bulma/sass/utilities/derived-variables.sass";
 @import "../node_modules/bulma/bulma";
@@ -13,13 +15,20 @@ html {
   background: linear-gradient(to bottom right, #fafafa, #fefefe);
   position: relative;
   min-height: 100%; 
+
+  border: 4px solid $pink;  
+  border-image-source: linear-gradient($pink, $midnight-blue);
+  border-image-slice: 20;
+  border-top: none;
+  border-bottom: none;
 }
 
 body {
-  margin: 0 0 72px;
+  margin: 0 0 73px;
   padding: 0;
   font-family: sans-serif;
   text-align: center;
+  transition: all 0.3s ease;
 }
 
 header {
@@ -27,7 +36,8 @@ header {
   width: 100%;
   position: fixed;
   top: 0;
-  z-index: 1;
+  left: 0;
+  z-index: 10;
 
   h1.title {
     color: #fff;
@@ -36,31 +46,80 @@ header {
   }
 }
 
+.get-started {
+  margin: 8.5em auto 0;
+  
+  .box {
+    margin: auto;
+    padding: 0;
+  }
+  
+  h3 {
+    letter-spacing: 1px;
+    padding-top: 2em;
+    color: rgba(20, 20, 20, 0.8);
+  }
+  
+  .level {
+    min-width: 27%;
+    max-width: 400px;
+    margin: 1em auto;
+    padding: .5em .6em;
+  }
+
+  .button-get-started {
+    margin: .5em 0 3.3em;
+    padding: 10px 30px;
+    letter-spacing: 1px;
+    font-size: .9em;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    &:hover {
+      border: 1px solid $midnight-blue;
+      transform: scale(1.07);
+      transition: all 0.2s ease;
+    }
+  }
+}
+
+/* booklist */
+
 .booklist {
   min-width: 60%;
   max-width: 400px;
   margin: 10.5em auto;
   padding: 0 2em;
+
+  .tabs li {
+    background: #eee;
+    
+    & a:hover {
+      background-color: unset;
+    }
+
+    &.is-active-tab {
+      // background: linear-gradient(to top right, $midnight-blue, $pink); (missing white text color)
+
+      // more subtle than above, still not sure
+      background: $white;
+      
+      a {
+        color: $pink;
+      }
+    }
+  }
   
   ul {
     padding-left: 0;
     text-decoration: none;
-    
-    li {
-      background-color: $white;      
-    }
   }
 }
 
-.is-active {
-  z-index: 0;
-}
+/* end booklist */
 
-/* 
+/* book */
 
-Book 
-
-*/
 .media {
   position: relative;
 
@@ -69,6 +128,8 @@ Book
     
     img {
       width: 85%;
+      min-width: 110px;
+      border: 1px solid $grey-lighter;
     }
   }
   
@@ -79,17 +140,39 @@ Book
   .add {
     margin-top: 50%;
   }
+
+  .button {
+    padding: 0 .75em;
+    height: 2.75em;
+    color: $pink;
+    border: 1px solid $pink;
+    
+    &:hover {
+      color: $midnight-blue;
+      border: 1px solid $midnight-blue;
+    }
+  }
+
+  .delete {
+    border: none;
+    
+    &:hover {
+      border: none;
+      background-color: $pink;
+    }
+
+    img {
+      width: 40px;
+    }
+  } 
   
   .button-icon {
+    width: 35px;
     margin-right: .3em;
   }
 }
 
-/* 
-
-End Book 
-
-*/
+/* end book */
 
 form {
   margin: auto;
@@ -108,14 +191,34 @@ form {
 
 .footer {
   background: rgba(0, 0, 0, 0.9);
-  width: 100%;
-  height: 72px;
   position: absolute;
   bottom: 0;
+  left: 0;
+  height: 73px;
+  width: 102%;
+  margin-left: -1%;
   padding: 1.5em;
-  margin-top: 4em;
 
   span {
     font-weight: 900;
   }
 }
+
+/* misc */
+
+.button-gradient {
+  background: linear-gradient(to top right, $midnight-blue, $pink);
+  color: $white;
+  font-weight: bold;
+
+  &:hover {
+    color: $white;
+    border: 1px solid $pink;
+  }
+}
+
+.icon {
+  width: 30px;
+}
+
+/* end misc */

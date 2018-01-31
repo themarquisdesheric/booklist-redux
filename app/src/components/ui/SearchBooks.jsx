@@ -4,10 +4,11 @@ import { Route } from 'react-router-dom';
 import SearchForm from './SearchForm';
 import { Book } from './Book';
 
-const SearchBooks = ({ suggestions, history, suggestBooks, addBook }) => {
+const SearchBooks = ({ suggestions, fetching, history, suggestBooks, addBook }) => {
   return (
     <div>
-      <SearchForm history={history} suggestBooks={suggestBooks} /> 
+      <SearchForm history={history} suggestBooks={suggestBooks} />
+      {fetching && 'loading...'}
       <Route 
         path="/suggestions"
         component={() => (
@@ -31,6 +32,7 @@ const SearchBooks = ({ suggestions, history, suggestBooks, addBook }) => {
 
 SearchBooks.propTypes = {
   suggestions: PropTypes.arrayOf(PropTypes.object).isRequired,
+  fetching: PropTypes.bool.isRequired,
   history: PropTypes.shape({}).isRequired,
   suggestBooks: PropTypes.func.isRequired,
   addBook: PropTypes.func.isRequired

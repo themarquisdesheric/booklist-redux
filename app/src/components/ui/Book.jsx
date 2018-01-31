@@ -1,14 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { SortableElement } from 'react-sortable-hoc';
-import PlusIcon from 'react-icons/lib/fa/plus-circle';
-import CheckIcon from 'react-icons/lib/fa/check-square';
-import RemoveIcon from 'react-icons/lib/fa/minus-square';
 import Button from './Button';
 
 export const Book = ({ book, isSuggestion, addBook, removeBook, toggleRead }) => (
   
-  // TODO: sanitize snippet input for html entities, etc
   // TODO: make 'read more' link for descriptions over 3 lines long
 
   <div className="box">
@@ -20,27 +16,27 @@ export const Book = ({ book, isSuggestion, addBook, removeBook, toggleRead }) =>
         <div className="content">
           <p>
             <strong className="title is-5">{book.title}</strong><br />
-            <small className="subtitle is-6">{book.author}</small><br />
+            <small className="subtitle is-6">{`${book.authors.length > 1 ? book.authors.join(', ') : book.authors}`}</small><br />
             <span className="is-hidden-mobile is-italic">
               {book.snippet}
             </span>
           </p>
           {/* if not a book suggestion then find out if book has been read  */}
           {isSuggestion ? null : book.read ? 
-            <Button className="is-danger" clickHandler={() => toggleRead(book.id)}>
-              <RemoveIcon className="button-icon" />Mark Unread
+            <Button clickHandler={() => toggleRead(book.id)}>
+              <img src="remove.png" alt="logo" className="button-icon" />Mark Unread
             </Button> 
             : 
-            <Button className="is-success" clickHandler={() => toggleRead(book.id)}>
-              <CheckIcon className="button-icon" />Mark Read
+            <Button clickHandler={() => toggleRead(book.id)}>
+              <img src="mark-read.png" alt="logo" className="button-icon" />Mark Read
             </Button> 
           }
         </div>
       </div>
       <div className="media-right">
         {isSuggestion ? 
-          <Button className="is-primary add" clickHandler={() => addBook(book)}>
-            <PlusIcon className="button-icon" />Add Book
+          <Button clickHandler={() => addBook(book)}>
+            <img src="add.png" alt="logo" className="button-icon" />Add Book
           </Button> 
           : 
           <Button className="delete" clickHandler={() => removeBook(book.id)} />

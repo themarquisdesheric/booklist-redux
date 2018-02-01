@@ -31,7 +31,7 @@ class BookList extends Component {
             <div>
               <Tabs visibilityFilter={visibilityFilter} />
               
-              {books.length === 0 ? 
+              {!books.length ? 
                 <NoBooks readingList /> :
                 <SortableBookList items={books} onSortEnd={this.onSortEnd} removeBook={removeBook} toggleRead={toggleRead} />
               }
@@ -44,7 +44,7 @@ class BookList extends Component {
             <div>
               <Tabs visibilityFilter={visibilityFilter} />
               
-              {books.length === 0 ?
+              {!books.length ?
                 <NoBooks /> :
                 <ul>
                   {books.map(book => <Book key={book.title} book={book} removeBook={removeBook} toggleRead={toggleRead} />)}

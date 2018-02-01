@@ -62,16 +62,21 @@ export const suggestBooks = searchTerm => dispatch => {
   fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURI(searchTerm)}`)
     .then(response => response.json())
     .then(suggestions => {
-      const suggestedBooks = suggestions.items.map(book => 
-        ({
+      const suggestedBooks = suggestions.items.map(book => {
+        let img = book.volumeInfo.imageLinks ? 
+          book.volumeInfo.imageLinks.smallThumbnail : '';
+
+        if (img) img = `https${img.slice(4)}`;
+  
+        return {
           title: book.volumeInfo.title,
           authors: book.volumeInfo.authors || '',
           snippet: book.searchInfo ? htmlToText.fromString(book.searchInfo.textSnippet) : '',
-          img: book.volumeInfo.imageLinks 
-            ? book.volumeInfo.imageLinks.smallThumbnail 
-            : '',
+          img,
           id: book.id
-        }));
+        };
+      });
+
 
       dispatch({
         type: c.CHANGE_SUGGESTIONS,

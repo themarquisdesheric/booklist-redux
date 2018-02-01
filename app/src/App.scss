@@ -114,6 +114,13 @@ header {
     padding-left: 0;
     text-decoration: none;
   }
+
+  .no-books {
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 /* end booklist */

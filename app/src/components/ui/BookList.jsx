@@ -5,6 +5,7 @@ import { SortableContainer, arrayMove } from 'react-sortable-hoc';
 import Tabs from './Tabs';
 import { SortableBook, Book } from './Book';
 import SearchBooks from './SearchBooks';
+import NoBooks from './NoBooks';
 
 const SortableBookList = SortableContainer( ({ items, removeBook, toggleRead }) => (
   <ul>
@@ -29,7 +30,11 @@ class BookList extends Component {
           component={() => (
             <div>
               <Tabs visibilityFilter={visibilityFilter} />
-              <SortableBookList items={books} onSortEnd={this.onSortEnd} removeBook={removeBook} toggleRead={toggleRead} />
+              
+              {!books.length ? 
+                <NoBooks readingList /> :
+                <SortableBookList items={books} onSortEnd={this.onSortEnd} removeBook={removeBook} toggleRead={toggleRead} />
+              }
             </div>
           )} 
         />
@@ -38,9 +43,13 @@ class BookList extends Component {
           component={() => (
             <div>
               <Tabs visibilityFilter={visibilityFilter} />
-              <ul>
-                {books.map(book => <Book key={book.title} book={book} removeBook={removeBook} toggleRead={toggleRead} />)}
-              </ul>
+              
+              {!books.length ?
+                <NoBooks /> :
+                <ul>
+                  {books.map(book => <Book key={book.title} book={book} removeBook={removeBook} toggleRead={toggleRead} />)}
+                </ul>
+              }
             </div>
           )}
         />

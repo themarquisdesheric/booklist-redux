@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "bulma": "^0.6.2",
+    "gh-pages": "^1.1.0",
     "html-to-text": "^3.3.0",
     "lodash": "^4.17.4",
     "prop-types": "^15.6.0",
@@ -27,6 +28,8 @@
     "react-scripts": "1.0.17"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
@@ -35,5 +38,6 @@
     "build": "npm-run-all build-css build-js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "homepage": "https://themarquisdesheric.github.io/booklist-redux"
 }

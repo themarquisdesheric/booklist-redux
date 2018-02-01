@@ -9,7 +9,7 @@ const NoBooks = ({ readingList }) => {
         <figcaption>
           {readingList ? 
             'You have no books in your reading list :(' : 
-            'You have not marked any books as read yet :('
+            'You have not marked any books as read yet'
           }
         </figcaption>
       </figure>

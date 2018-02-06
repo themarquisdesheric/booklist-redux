@@ -3,10 +3,9 @@
 
 $pink: rgb(191, 55, 251);
 $midnight-blue: rgb(36, 101, 229);
-
 $icon-dimensions-large: 4rem;
 $tabs-toggle-link-hover-border-color: $pink;
-
+$subtitle-color: $grey;
 
 @import "../node_modules/bulma/sass/utilities/derived-variables.sass";
 @import "../node_modules/bulma/bulma";
@@ -15,7 +14,6 @@ html {
   background: linear-gradient(to bottom right, #fafafa, #fefefe);
   position: relative;
   min-height: 100%; 
-
   border: 4px solid $pink;  
   border-image-source: linear-gradient($pink, $midnight-blue);
   border-image-slice: 20;
@@ -43,6 +41,10 @@ header {
     color: #fff;
     font-size: 4em;
     padding: .5em;
+
+    a {
+      color: $white-ter;
+    }
   }
 }
 
@@ -99,9 +101,6 @@ header {
     }
 
     &.is-active-tab {
-      // background: linear-gradient(to top right, $midnight-blue, $pink); (missing white text color)
-
-      // more subtle than above, still not sure
       background: $white;
       
       a {
@@ -138,10 +137,6 @@ header {
       min-width: 110px;
       border: 1px solid $grey-lighter;
     }
-  }
-  
-  .subtitle {
-    color: $grey;
   }
 
   .add {

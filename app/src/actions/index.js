@@ -77,7 +77,6 @@ export const suggestBooks = searchTerm => dispatch => {
         };
       });
 
-
       dispatch({
         type: c.CHANGE_SUGGESTIONS,
         payload: suggestedBooks

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { SortableElement } from 'react-sortable-hoc';
+import BookInfo from './BookInfo';
 import Button from './Button';
 
 export const Book = ({ book, isSuggestion, addBook, removeBook, toggleRead }) => (
@@ -14,13 +15,8 @@ export const Book = ({ book, isSuggestion, addBook, removeBook, toggleRead }) =>
       </figure>
       <div className="media-content">
         <div className="content">
-          <p>
-            <strong className="title is-5">{book.title}</strong><br />
-            <small className="subtitle is-6">{`${book.authors.length > 1 ? book.authors.join(', ') : book.authors}`}</small><br />
-            <span className="is-hidden-mobile is-italic">
-              {book.snippet}
-            </span>
-          </p>
+          <BookInfo title={book.title} authors={book.authors} snippet={book.snippet} />
+           
           {/* if not a book suggestion then find out if book has been read  */}
           {isSuggestion ? null : book.read ? 
             <Button clickHandler={() => toggleRead(book.id)}>

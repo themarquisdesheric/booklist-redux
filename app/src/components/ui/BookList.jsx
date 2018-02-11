@@ -7,10 +7,18 @@ import { SortableBook, Book } from './Book';
 import SearchBooks from './SearchBooks';
 import NoBooks from './NoBooks';
 
-const SortableBookList = SortableContainer( ({ items, removeBook, toggleRead }) => (
+const SortableBookList = SortableContainer( ({ items, removeBook, toggleRead, suggestBooks, history }) => (
   <ul>
     {items.map( (book, index) => (
-      <SortableBook key={`item-${book.title}`} index={index} book={book} removeBook={removeBook} toggleRead={toggleRead} />
+      <SortableBook 
+        key={`item-${book.title}`} 
+        index={index} 
+        book={book} 
+        removeBook={removeBook} 
+        toggleRead={toggleRead} 
+        suggestBooks={suggestBooks} 
+        history={history} 
+      />
     ))}
   </ul>
 ));
@@ -23,6 +31,7 @@ class BookList extends Component {
 
   render() {
     const { books, visibilityFilter, suggestions, fetching, history, suggestBooks, addBook, removeBook, toggleRead } = this.props;
+    
     return (
       <main className="booklist">
         <Route
@@ -33,7 +42,14 @@ class BookList extends Component {
               
               {!books.length ? 
                 <NoBooks readingList /> :
-                <SortableBookList items={books} onSortEnd={this.onSortEnd} removeBook={removeBook} toggleRead={toggleRead} />
+                <SortableBookList 
+                  items={books} 
+                  onSortEnd={this.onSortEnd} 
+                  removeBook={removeBook} 
+                  toggleRead={toggleRead} 
+                  suggestBooks={suggestBooks} 
+                  history={history} 
+                />
               }
             </div>
           )} 
@@ -47,7 +63,16 @@ class BookList extends Component {
               {!books.length ?
                 <NoBooks /> :
                 <ul>
-                  {books.map(book => <Book key={book.title} book={book} removeBook={removeBook} toggleRead={toggleRead} />)}
+                  {books.map(book => (
+                    <Book 
+                      key={book.title} 
+                      book={book} 
+                      removeBook={removeBook} 
+                      toggleRead={toggleRead} 
+                      suggestBooks={suggestBooks} 
+                      history={history} 
+                    />
+                  ))}
                 </ul>
               }
             </div>

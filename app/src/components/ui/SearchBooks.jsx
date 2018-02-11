@@ -21,7 +21,8 @@ const SearchBooks = ({ suggestions, fetching, history, suggestBooks, addBook }) 
                 addBook={() => {
                   addBook(book);
                   history.push('reading-list');
-                }} 
+                }}
+                suggestBooks={suggestBooks} 
               />))}
           </ul>
         )} 

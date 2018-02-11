@@ -4,7 +4,7 @@ import { SortableElement } from 'react-sortable-hoc';
 import BookInfo from './BookInfo';
 import Button from './Button';
 
-export const Book = ({ book, isSuggestion, addBook, removeBook, toggleRead }) => (
+export const Book = ({ book, isSuggestion, addBook, removeBook, toggleRead, suggestBooks, history }) => (
   
   // TODO: make 'read more' link for descriptions over 3 lines long
 
@@ -15,8 +15,13 @@ export const Book = ({ book, isSuggestion, addBook, removeBook, toggleRead }) =>
       </figure>
       <div className="media-content">
         <div className="content">
-          <BookInfo title={book.title} authors={book.authors} snippet={book.snippet} />
-           
+          <BookInfo 
+            title={book.title} 
+            authors={book.authors} 
+            snippet={book.snippet} 
+            suggestBooks={suggestBooks} 
+            history={history} 
+          />
           {/* if not a book suggestion then find out if book has been read  */}
           {isSuggestion ? null : book.read ? 
             <Button clickHandler={() => toggleRead(book.id)}>
@@ -46,7 +51,9 @@ Book.defaultProps = {
   isSuggestion: false,
   addBook: () => {},
   removeBook: () => {},
-  toggleRead: () => {}
+  toggleRead: () => {},
+  suggestBooks: () => {},
+  history: {}
 };
 
 Book.propTypes = {
@@ -58,7 +65,9 @@ Book.propTypes = {
   isSuggestion: PropTypes.bool,
   addBook: PropTypes.func,
   removeBook: PropTypes.func,
-  toggleRead: PropTypes.func
+  toggleRead: PropTypes.func,
+  suggestBooks: PropTypes.func,
+  history: PropTypes.shape({})
 };
 
 export const SortableBook = SortableElement(Book);

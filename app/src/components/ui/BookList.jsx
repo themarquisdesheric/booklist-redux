@@ -36,7 +36,7 @@ class BookList extends Component {
       <main className="booklist">
         <Route
           path="/reading-list"
-          component={() => (
+          render={() => (
             <div>
               <Tabs visibilityFilter={visibilityFilter} />
               
@@ -56,7 +56,7 @@ class BookList extends Component {
         />
         <Route 
           path="/finished-books"
-          component={() => (
+          render={() => (
             <div>
               <Tabs visibilityFilter={visibilityFilter} />
               

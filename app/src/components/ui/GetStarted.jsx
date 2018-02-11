@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// make 'you need to add more books' component with matching icon for /reading-list
-
 const GetStarted = () => {
   const content = [{
     src: 'book-shelf', 

@@ -2,16 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Author = ({ author, suggestBooks, history }) => (
-  <span onMouseEnter={() => {
-    suggestBooks(author);
+  <button 
+    className="author-link" 
+    onClick={() => {
+      suggestBooks(author);
 
-    if (!history.location) return;
+      if (!history.location) return;
 
-    history.push('suggestions');
-  }}
+      history.push('suggestions');
+    }}
   >
-    {author} &nbsp;
-  </span>
+    {author}
+  </button>
 );
 
 Author.defaultProps = {

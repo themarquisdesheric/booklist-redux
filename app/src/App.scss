@@ -139,6 +139,18 @@ header {
     }
   }
 
+  .author-link {
+    border: none;
+    font-size: 1rem;
+    padding: 0 .5em 0 0;
+    color: $grey;
+    cursor: pointer;
+
+    &:hover {
+      color: $dark;
+    }
+  }
+
   .add {
     margin-top: 50%;
   }

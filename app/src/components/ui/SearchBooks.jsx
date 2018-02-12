@@ -11,7 +11,7 @@ const SearchBooks = ({ suggestions, fetching, history, suggestBooks, addBook }) 
       {fetching && 'loading...'}
       <Route 
         path="/suggestions"
-        component={() => (
+        render={() => (
           <ul>
             {suggestions.map( (book, i) => (
               <Book 
@@ -21,7 +21,8 @@ const SearchBooks = ({ suggestions, fetching, history, suggestBooks, addBook }) 
                 addBook={() => {
                   addBook(book);
                   history.push('reading-list');
-                }} 
+                }}
+                suggestBooks={suggestBooks} 
               />))}
           </ul>
         )} 

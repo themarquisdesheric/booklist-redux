@@ -139,6 +139,18 @@ header {
     }
   }
 
+  .author-link {
+    border: none;
+    font-size: 1rem;
+    padding: 0 .5em 0 0;
+    color: $grey;
+    cursor: pointer;
+
+    &:hover {
+      color: $dark;
+    }
+  }
+
   .add {
     margin-top: 50%;
   }
@@ -197,7 +209,7 @@ form {
   bottom: 0;
   left: 0;
   height: 73px;
-  width: 102%;
+  width: 101.25%;
   margin-left: -1%;
   padding: 1.5em;
 

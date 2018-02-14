@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
+import { BeatLoader } from 'react-spinners';
 import SearchForm from './SearchForm';
 import { Book } from './Book';
 
@@ -8,7 +9,9 @@ const SearchBooks = ({ suggestions, fetching, history, suggestBooks, addBook }) 
   return (
     <div>
       <SearchForm history={history} suggestBooks={suggestBooks} />
-      {fetching && 'loading...'}
+      <div className="spinner">
+        <BeatLoader loading={fetching} color={'rgb(191, 55, 251)'} />
+      </div>
       <Route 
         path="/suggestions"
         render={() => (

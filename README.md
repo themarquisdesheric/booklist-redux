@@ -18,6 +18,10 @@ Persistence via local storage API (for now)
 
 To use the app, clone it and navigate to the `app` directory, then run 
 ```
+npm install
+```
+
+```
 npm start
 ```
 

@@ -13,12 +13,6 @@ $subtitle-color: $grey;
 html {
   background: linear-gradient(to bottom right, #fafafa, #fefefe);
   position: relative;
-  min-height: 100%; 
-  border: 4px solid $pink;  
-  border-image-source: linear-gradient($pink, $midnight-blue);
-  border-image-slice: 20;
-  border-top: none;
-  border-bottom: none;
 }
 
 body {
@@ -27,6 +21,12 @@ body {
   font-family: sans-serif;
   text-align: center;
   transition: all 0.3s ease;
+  height: 100%; 
+  border: 4px solid $pink;  
+  border-image-source: linear-gradient($pink, $midnight-blue);
+  border-image-slice: 20;
+  border-top: none;
+  border-bottom: none;
 }
 
 header {
@@ -88,10 +88,13 @@ header {
 /* booklist */
 
 .booklist {
-  min-width: 60%;
-  max-width: 400px;
-  margin: 10.5em auto;
-  padding: 0 2em;
+  min-width: 345px;
+  max-width: 800px;
+  margin: 8.5em auto;
+  padding: 2em 2em 0;
+  @media (max-width: 700px) {
+    padding: 2em 1em 0;   
+  }
 
   .tabs li {
     background: #eee;
@@ -131,10 +134,11 @@ header {
 
   figure {
     height: 160px;
-    
+    max-width: 140px;
+
     img {
       width: 85%;
-      min-width: 110px;
+      width: 110px;
       border: 1px solid $grey-lighter;
     }
   }
@@ -209,8 +213,7 @@ form {
   bottom: 0;
   left: 0;
   height: 73px;
-  width: 101.25%;
-  margin-left: -1%;
+  width: 100%;
   padding: 1.5em;
 
   span {

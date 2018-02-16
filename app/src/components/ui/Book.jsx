@@ -11,7 +11,10 @@ export const Book = ({ book, isSuggestion, addBook, removeBook, toggleRead, sugg
   <div className="box">
     <article className="media">
       <figure className="media-left">
-        <img src={book.img} alt={book.title} />
+        {book.img ? 
+          <img src={book.img} alt={book.title} /> :
+          <div className="no-img" />
+        }
       </figure>
       <div className="media-content">
         <div className="content">

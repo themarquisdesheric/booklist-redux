@@ -36,23 +36,26 @@ class BookList extends Component {
       <main className="booklist">
         <Route
           path="/reading-list"
-          render={() => (
-            <div>
-              <Tabs visibilityFilter={visibilityFilter} />
-              
-              {!books.length ? 
-                <NoBooks readingList /> :
-                <SortableBookList 
-                  items={books} 
-                  onSortEnd={this.onSortEnd} 
-                  removeBook={removeBook} 
-                  toggleRead={toggleRead} 
-                  suggestBooks={suggestBooks} 
-                  history={history} 
-                />
-              }
-            </div>
-          )} 
+          render={() => {
+            window.scrollTo(0, 0);
+
+            return (
+              <div>
+                <Tabs visibilityFilter={visibilityFilter} />
+                
+                {!books.length ? 
+                  <NoBooks readingList /> :
+                  <SortableBookList 
+                    items={books} 
+                    onSortEnd={this.onSortEnd} 
+                    removeBook={removeBook} 
+                    toggleRead={toggleRead} 
+                    suggestBooks={suggestBooks} 
+                    history={history} 
+                  />
+                }
+              </div>
+          )}}
         />
         <Route 
           path="/finished-books"

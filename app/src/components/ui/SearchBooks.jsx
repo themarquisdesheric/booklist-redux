@@ -14,21 +14,24 @@ const SearchBooks = ({ suggestions, fetching, history, suggestBooks, addBook }) 
       </div>
       <Route 
         path="/suggestions"
-        render={() => (
-          <ul>
-            {suggestions.map( (book, i) => (
-              <Book 
-                key={book.id} 
-                book={book} 
-                isSuggestion 
-                addBook={() => {
-                  addBook(book);
-                  history.push('reading-list');
-                }}
-                suggestBooks={suggestBooks} 
-              />))}
-          </ul>
-        )} 
+        render={() => {
+          window.scrollTo(0, 0);
+          
+          return (
+            <ul>
+              {suggestions.map( (book, i) => (
+                <Book 
+                  key={book.id} 
+                  book={book} 
+                  isSuggestion 
+                  addBook={() => {
+                    addBook(book);
+                    history.push('reading-list');
+                  }}
+                  suggestBooks={suggestBooks} 
+                />))}
+            </ul>
+        )}}
       />
     </div>
   );

@@ -22,12 +22,20 @@ export const Book = ({ book, isSuggestion, addBook, removeBook, toggleRead, sugg
             suggestBooks={suggestBooks} 
             history={history} 
           />
-          {/* if not a book suggestion then find out if book has been read  */}
-          {isSuggestion ? null : book.read ? 
+          
+          {isSuggestion && 
+            <Button clickHandler={() => addBook(book)}>
+                <img src="add.png" alt="logo" className="button-icon" />Add Book
+            </Button>
+          }  
+          
+          {book.read && 
             <Button clickHandler={() => toggleRead(book.id)}>
               <img src="remove.png" alt="logo" className="button-icon" />Mark Unread
-            </Button> 
-            : 
+            </Button>
+          }
+
+          {!isSuggestion && !book.read &&
             <Button clickHandler={() => toggleRead(book.id)}>
               <img src="mark-read.png" alt="logo" className="button-icon" />Mark Read
             </Button> 
@@ -35,11 +43,7 @@ export const Book = ({ book, isSuggestion, addBook, removeBook, toggleRead, sugg
         </div>
       </div>
       <div className="media-right">
-        {isSuggestion ? 
-          <Button clickHandler={() => addBook(book)}>
-            <img src="add.png" alt="logo" className="button-icon" />Add Book
-          </Button> 
-          : 
+        {!isSuggestion && 
           <Button className="delete" clickHandler={() => removeBook(book.id)} />
         }
       </div>

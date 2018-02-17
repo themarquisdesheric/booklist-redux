@@ -32,7 +32,10 @@ class SearchForm extends Component {
     
     suggestBooks(this.state.title);
     this.setState({ title: '' });
-    history.push('/suggestions');
+
+    if (history.location.pathname !== '/suggestions') {
+      history.push('/suggestions');
+    }
   }
 
   render() {

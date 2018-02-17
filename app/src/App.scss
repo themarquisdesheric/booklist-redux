@@ -13,20 +13,19 @@ $subtitle-color: $grey;
 html {
   background: linear-gradient(to bottom right, #fafafa, #fefefe);
   position: relative;
-  min-height: 100%; 
-  border: 4px solid $pink;  
-  border-image-source: linear-gradient($pink, $midnight-blue);
-  border-image-slice: 20;
-  border-top: none;
-  border-bottom: none;
 }
 
 body {
-  margin: 0 0 73px;
+  margin: 0 0 69px;
   padding: 0;
   font-family: sans-serif;
   text-align: center;
   transition: all 0.3s ease;
+  height: 100%; 
+  border-left: 4px solid $pink;  
+  border-right: 4px solid $pink;  
+  border-image-source: linear-gradient($pink, $midnight-blue);
+  border-image-slice: 0 20;
 }
 
 header {
@@ -49,11 +48,13 @@ header {
 }
 
 .get-started {
-  margin: 8.5em auto 0;
+  margin: 8.3em auto 1px;
   
   .box {
+    min-height: 74vh;
     margin: auto;
     padding: 0;
+    border-radius: 0;
   }
   
   h3 {
@@ -88,10 +89,11 @@ header {
 /* booklist */
 
 .booklist {
-  min-width: 60%;
-  max-width: 400px;
-  margin: 10.5em auto;
-  padding: 0 2em;
+  min-width: 340px;
+  max-width: 800px;
+  min-height: 69.6vh;
+  margin: 8.5em auto 2em;
+  padding: 2em 2em 0;
 
   .tabs li {
     background: #eee;
@@ -129,12 +131,22 @@ header {
 .media {
   position: relative;
 
+  .drag-handle {
+    align-self: center;
+    position: relative;
+    right: 8px;
+    line-height: .9em;
+    cursor: move;
+  }
+
   figure {
     height: 160px;
-    
-    img {
+    max-width: 140px;
+
+    img, .no-img {
+      height: 160px;
       width: 85%;
-      min-width: 110px;
+      width: 110px;
       border: 1px solid $grey-lighter;
     }
   }
@@ -145,9 +157,31 @@ header {
     padding: 0 .5em 0 0;
     color: $grey;
     cursor: pointer;
+    text-align: left;
 
     &:hover {
       color: $dark;
+    }
+  }
+
+  .snippet {
+    overflow: hidden;
+    position: relative;
+    text-align: justify;
+
+    .see-more {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: 1.5em;
+      padding: 0 .3em;
+      color: $pink;
+      background-color: #fff;
+      cursor: pointer;
+
+      &:hover {
+        color: $midnight-blue;
+      }
     }
   }
 
@@ -209,8 +243,7 @@ form {
   bottom: 0;
   left: 0;
   height: 73px;
-  width: 101.25%;
-  margin-left: -1%;
+  width: 100%;
   padding: 1.5em;
 
   span {
@@ -235,4 +268,30 @@ form {
   width: 30px;
 }
 
+.spinner {
+  padding-bottom: 1em;
+}
+
 /* end misc */
+
+@media (max-width: 769px) {
+  .level-item {
+    justify-content: unset;
+  }
+}
+
+@media (max-width: 700px) {
+  .booklist {
+    padding: 2em 1em 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .tabs li a, .button {
+    font-size: .9em;
+  }
+
+  .media .button-icon {
+    width: 27px;
+  }
+}

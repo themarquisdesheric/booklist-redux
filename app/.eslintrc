@@ -13,7 +13,7 @@
       "node": true
   },
   "extends": ["airbnb", "eslint:recommended", "react-app"],
-  "plugins": ["react", "jsx-a11y", "import"],
+  "plugins": ["react", "jsx-a11y", "import", "emotion"],
   "rules": {
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
       "jsx-a11y/href-no-hash": "off", 

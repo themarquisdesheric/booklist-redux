@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Author = ({ author, suggestBooks, history }) => (
-  <button 
+  <span 
     className="author-link" 
     onClick={() => {
       suggestBooks(author);
@@ -13,7 +13,7 @@ const Author = ({ author, suggestBooks, history }) => (
     }}
   >
     {author}
-  </button>
+  </span>
 );
 
 Author.defaultProps = {

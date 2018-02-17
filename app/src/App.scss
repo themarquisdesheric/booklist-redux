@@ -164,6 +164,27 @@ header {
     }
   }
 
+  .snippet {
+    overflow: hidden;
+    position: relative;
+    text-align: justify;
+
+    .see-more {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: 1.5em;
+      padding: 0 .3em;
+      color: $pink;
+      background-color: #fff;
+      cursor: pointer;
+
+      &:hover {
+        color: $midnight-blue;
+      }
+    }
+  }
+
   .add {
     margin-top: 50%;
   }

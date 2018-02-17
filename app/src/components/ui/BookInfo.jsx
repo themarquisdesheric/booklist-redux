@@ -1,24 +1,42 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Author from './Author';
 
-const BookInfo = ({ title, authors = [], snippet, suggestBooks, history }) => (
-  <p>
-    <strong className="title is-5">{title}</strong><br />
-    <small className="subtitle is-6">
-      {authors.length > 1 ?
-        authors.map(author => 
-          <Author key={author} author={author} suggestBooks={suggestBooks} history={history} />
-        ) :
-        <Author key={authors} author={authors} suggestBooks={suggestBooks} history={history} />
-      }
-    </small><br />
+class BookInfo extends Component {
+  state = {
+    seeMore: false
+  }
 
-    <span className="is-hidden-mobile is-italic">
-      {snippet}
-    </span>
-  </p>
-);
+  seeMore= () => {
+    this.setState(prevState => ({seeMore: !prevState.seeMore})); 
+  }
+
+  render() {
+    const { title, authors = [], snippet, suggestBooks, history } = this.props;
+    const { seeMore } = this.state;
+  
+    return (
+      <div>
+        <strong className="title is-5">{title}</strong><br />
+        <small className="subtitle is-6">
+          {authors.length > 1 ?
+            authors.map(author => 
+              <Author key={author} author={author} suggestBooks={suggestBooks} history={history} />
+            ) :
+            <Author key={authors} author={authors} suggestBooks={suggestBooks} history={history} />
+          }
+        </small><br />
+
+        <div className="is-hidden-mobile is-italic snippet" style={{height: `${seeMore ? 'auto' : '4.5em'}`}}>
+          {snippet}
+          {snippet.length > 210 && 
+            <span className="see-more" onClick={this.seeMore}>
+              {seeMore ? 'See less...' : 'See more...'}
+            </span>}
+        </div>
+      </div>
+  )}
+}
 
 BookInfo.defaultProps = {
   history: {}

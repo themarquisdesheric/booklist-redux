@@ -7,9 +7,6 @@ import Button from './Button';
 const DragHandle = SortableHandle(() => <span className="drag-handle" >:::&nbsp;<br />:::&nbsp;</span>);
 
 export const Book = ({ book, isSuggestion, addBook, removeBook, toggleRead, suggestBooks, history }) => (
-  
-  // TODO: make 'read more' link for descriptions over 3 lines long
-
   <div className="box">
     <article className="media">
       {!isSuggestion && !book.read && <DragHandle />}

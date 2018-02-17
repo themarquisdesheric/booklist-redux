@@ -48,10 +48,11 @@ class BookList extends Component {
                   <SortableBookList 
                     items={books} 
                     onSortEnd={this.onSortEnd} 
+                    useDragHandle={true}
                     removeBook={removeBook} 
                     toggleRead={toggleRead} 
                     suggestBooks={suggestBooks} 
-                    history={history} 
+                    history={history}
                   />
                 }
               </div>

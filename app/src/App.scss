@@ -131,6 +131,14 @@ header {
 .media {
   position: relative;
 
+  .drag-handle {
+    align-self: center;
+    position: relative;
+    right: 8px;
+    line-height: .9em;
+    cursor: move;
+  }
+
   figure {
     height: 160px;
     max-width: 140px;

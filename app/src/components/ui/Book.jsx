@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { SortableElement } from 'react-sortable-hoc';
+import { SortableElement, SortableHandle } from 'react-sortable-hoc';
 import BookInfo from './BookInfo';
 import Button from './Button';
+
+const DragHandle = SortableHandle(() => <span className="drag-handle" >:::&nbsp;<br />:::&nbsp;</span>);
 
 export const Book = ({ book, isSuggestion, addBook, removeBook, toggleRead, suggestBooks, history }) => (
   
@@ -10,6 +12,7 @@ export const Book = ({ book, isSuggestion, addBook, removeBook, toggleRead, sugg
 
   <div className="box">
     <article className="media">
+      {!isSuggestion && !book.read && <DragHandle />}
       <figure className="media-left">
         {book.img ? 
           <img src={book.img} alt={book.title} /> :

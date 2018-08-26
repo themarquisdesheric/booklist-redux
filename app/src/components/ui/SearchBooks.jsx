@@ -28,7 +28,9 @@ const SearchBooks = ({ results, fetching, history, getBooks, addBook }) => {
                   getBooks={getBooks} 
                   addBook={() => {
                     addBook(book);
-                    history.push('reading-list');
+                    history.push({
+                      pathname: '/reading-list'
+                    });
                   }}
                 />))}
 
@@ -36,7 +38,7 @@ const SearchBooks = ({ results, fetching, history, getBooks, addBook }) => {
             </ul>
         )}}
       />
-      
+
       <SearchForm history={history} getBooks={getBooks} />
     </div>
   );

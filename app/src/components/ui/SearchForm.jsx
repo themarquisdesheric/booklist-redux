@@ -26,10 +26,7 @@ class SearchForm extends Component {
     
     getBooks(query);
     this.setState({ query: '' });
-
-    if (history.location.pathname !== '/results') {
-      history.push('/results');
-    }
+    history.push(`/results/${query}`);
   }
 
   render() {

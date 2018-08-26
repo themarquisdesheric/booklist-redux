@@ -81,6 +81,7 @@ class BookList extends Component {
               </div>
           )}}
         />
+        
         <Route 
           path="/finished-books"
           render={() => (
@@ -111,7 +112,7 @@ class BookList extends Component {
           fetching={fetching} 
           history={history} 
           suggestBooks={suggestBooks} 
-          addBook={addBook} 
+          addBook={addBook}
         />
       </main>
     );

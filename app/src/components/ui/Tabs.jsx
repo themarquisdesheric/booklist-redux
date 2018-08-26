@@ -30,7 +30,7 @@ const Tabs = ({ visibilityFilter }) => {
 };
 
 Tabs.propTypes = {
-  visibilityFilter: PropTypes.string.isRequired
+  visibilityFilter: PropTypes.string
 };
 
 export default Tabs;

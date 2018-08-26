@@ -19,7 +19,7 @@ const Tab = ({ value, visibilityFilter, children }) => {
 
 Tab.propTypes = {
   value: PropTypes.string.isRequired,
-  visibilityFilter: PropTypes.string.isRequired,
+  visibilityFilter: PropTypes.string,
   children: PropTypes.node.isRequired
 };
 

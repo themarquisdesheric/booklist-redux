@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 import { BeatLoader } from 'react-spinners';
+import Tabs from './Tabs';
 import SearchForm from './SearchForm';
 import { Book } from './Book';
 import Pagination from './Pagination';
@@ -9,6 +10,7 @@ import Pagination from './Pagination';
 const SearchBooks = ({ suggestions, fetching, history, suggestBooks, addBook }) => {
   return (
     <div>
+      <Route path="/suggestions" component={Tabs} />
       <SearchForm history={history} suggestBooks={suggestBooks} />
       <div className="spinner">
         <BeatLoader loading={fetching} color={'rgb(191, 55, 251)'} />
@@ -32,7 +34,7 @@ const SearchBooks = ({ suggestions, fetching, history, suggestBooks, addBook }) 
                   }}
                 />))}
 
-              {suggestions && <Pagination />}
+              {!!suggestions.length && <Pagination />}
             </ul>
         )}}
       />

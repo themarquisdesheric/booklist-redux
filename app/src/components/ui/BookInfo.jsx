@@ -3,6 +3,21 @@ import PropTypes from 'prop-types';
 import Author from './Author';
 
 class BookInfo extends Component {
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    authors: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.string),
+      PropTypes.string
+    ]).isRequired,
+    snippet: PropTypes.string.isRequired,
+    suggestBooks: PropTypes.func.isRequired,
+    history: PropTypes.shape({})
+  };
+
+  static defaultProps = {
+    history: {}
+  };
+
   state = {
     seeMore: false
   }
@@ -37,20 +52,5 @@ class BookInfo extends Component {
       </div>
   )}
 }
-
-BookInfo.defaultProps = {
-  history: {}
-};
-
-BookInfo.propTypes = {
-  title: PropTypes.string.isRequired,
-  authors: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.string),
-    PropTypes.string
-  ]).isRequired,
-  snippet: PropTypes.string.isRequired,
-  suggestBooks: PropTypes.func.isRequired,
-  history: PropTypes.shape({})
-};
 
 export default BookInfo;

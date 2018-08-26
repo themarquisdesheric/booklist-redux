@@ -24,6 +24,29 @@ const SortableBookList = SortableContainer( ({ items, removeBook, toggleRead, su
 ));
 
 class BookList extends Component {
+  static propTypes = {
+    books: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+        read: PropTypes.bool.isRequired
+      })
+    ),
+    visibilityFilter: PropTypes.string.isRequired,
+    fetching: PropTypes.bool.isRequired,
+    suggestions: PropTypes.arrayOf(PropTypes.object).isRequired,
+    history: PropTypes.shape({}).isRequired,
+    suggestBooks: PropTypes.func.isRequired,
+    addBook: PropTypes.func.isRequired,
+    removeBook: PropTypes.func.isRequired,
+    toggleRead: PropTypes.func.isRequired,
+    setOrder: PropTypes.func.isRequired
+  };
+
+  static defaultProps = {
+    books: []
+  };
+
   onSortEnd = ({ oldIndex, newIndex }) => {
     const sortedBooks = arrayMove(this.props.books, oldIndex, newIndex);
     this.props.setOrder(sortedBooks);
@@ -94,28 +117,5 @@ class BookList extends Component {
     );
   }
 }
-
-BookList.defaultProps = {
-  books: []
-};
-
-BookList.propTypes = {
-  books: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      id: PropTypes.string.isRequired,
-      read: PropTypes.bool.isRequired
-    })
-  ),
-  visibilityFilter: PropTypes.string.isRequired,
-  fetching: PropTypes.bool.isRequired,
-  suggestions: PropTypes.arrayOf(PropTypes.object).isRequired,
-  history: PropTypes.shape({}).isRequired,
-  suggestBooks: PropTypes.func.isRequired,
-  addBook: PropTypes.func.isRequired,
-  removeBook: PropTypes.func.isRequired,
-  toggleRead: PropTypes.func.isRequired,
-  setOrder: PropTypes.func.isRequired
-};
 
 export default BookList;

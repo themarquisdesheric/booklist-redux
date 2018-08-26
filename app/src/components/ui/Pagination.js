@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Pagination = () => (
+const Pagination = ({ query }) => (
   <nav className="pagination is-centered" aria-label="pagination">
     <ul className="pagination-list">
       <li>

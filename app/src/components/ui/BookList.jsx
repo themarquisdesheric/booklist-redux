@@ -57,54 +57,44 @@ class BookList extends Component {
     
     return (
       <main className="booklist">
+        <Tabs visibilityFilter={visibilityFilter} />
+
         <Route
           path="/reading-list"
           render={() => {
             window.scrollTo(0, 0);
 
-            return (
-              <div>
-                <Tabs visibilityFilter={visibilityFilter} />
-                
-                {!books.length ? 
-                  <NoBooks readingList /> :
-                  <SortableBookList 
-                    items={books} 
-                    onSortEnd={this.onSortEnd} 
-                    useDragHandle={true}
-                    removeBook={removeBook} 
-                    toggleRead={toggleRead} 
-                    getBooks={getBooks} 
-                    history={history}
-                  />
-                }
-              </div>
-          )}}
+            return books.length 
+              ? <SortableBookList 
+                  items={books} 
+                  onSortEnd={this.onSortEnd} 
+                  useDragHandle={true}
+                  removeBook={removeBook} 
+                  toggleRead={toggleRead} 
+                  getBooks={getBooks} 
+                  history={history}
+                />
+              : <NoBooks readingList />
+          }}
         />
 
         <Route 
           path="/finished-books"
-          render={() => (
-            <div>
-              <Tabs visibilityFilter={visibilityFilter} />
-              
-              {!books.length ?
-                <NoBooks /> :
-                <ul>
-                  {books.map(book => (
-                    <Book 
-                      key={book.title} 
-                      book={book} 
-                      removeBook={removeBook} 
-                      toggleRead={toggleRead} 
-                      getBooks={getBooks} 
-                      history={history} 
-                    />
-                  ))}
-                </ul>
-              }
-            </div>
-          )}
+          render={() => books.length 
+            ? <ul>
+                {books.map(book => 
+                  <Book 
+                    key={book.title} 
+                    book={book} 
+                    removeBook={removeBook} 
+                    toggleRead={toggleRead} 
+                    getBooks={getBooks} 
+                    history={history} 
+                  />
+                )}
+              </ul>
+            : <NoBooks />
+          }
         />
 
         <SearchBooks 

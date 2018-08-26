@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import { BeatLoader } from 'react-spinners';
 import SearchForm from './SearchForm';
 import { Book } from './Book';
+import Pagination from './Pagination';
 
 const SearchBooks = ({ suggestions, fetching, history, suggestBooks, addBook }) => {
   return (
@@ -19,17 +20,19 @@ const SearchBooks = ({ suggestions, fetching, history, suggestBooks, addBook }) 
           
           return (
             <ul>
-              {suggestions.map( (book, i) => (
+              {suggestions.map( book => (
                 <Book 
                   key={book.id} 
                   book={book} 
                   isSuggestion 
+                  suggestBooks={suggestBooks} 
                   addBook={() => {
                     addBook(book);
                     history.push('reading-list');
                   }}
-                  suggestBooks={suggestBooks} 
                 />))}
+
+              {suggestions && <Pagination />}
             </ul>
         )}}
       />

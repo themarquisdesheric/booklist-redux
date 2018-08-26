@@ -7,7 +7,7 @@ class BookInfo extends Component {
     seeMore: false
   }
 
-  seeMore= () => {
+  seeMore = () => {
     this.setState(prevState => ({seeMore: !prevState.seeMore})); 
   }
 

@@ -10,7 +10,7 @@ class BookInfo extends Component {
       PropTypes.string
     ]).isRequired,
     snippet: PropTypes.string.isRequired,
-    suggestBooks: PropTypes.func.isRequired,
+    getBooks: PropTypes.func.isRequired,
     history: PropTypes.shape({})
   };
 
@@ -27,7 +27,7 @@ class BookInfo extends Component {
   }
 
   render() {
-    const { title, authors = [], snippet, suggestBooks, history } = this.props;
+    const { title, authors = [], snippet, getBooks, history } = this.props;
     const { seeMore } = this.state;
   
     return (
@@ -36,9 +36,9 @@ class BookInfo extends Component {
         <small className="subtitle is-6">
           {authors.length > 1 ?
             authors.map(author => 
-              <Author key={author} author={author} suggestBooks={suggestBooks} history={history} />
+              <Author key={author} author={author} getBooks={getBooks} history={history} />
             ) :
-            <Author key={authors} author={authors} suggestBooks={suggestBooks} history={history} />
+            <Author key={authors} author={authors} getBooks={getBooks} history={history} />
           }
         </small><br />
 

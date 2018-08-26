@@ -1,7 +1,7 @@
 import c from '../constants';
 import books from '../reducers/books';
 import fetching from '../reducers/fetching';
-import suggestions from '../reducers/suggestions';
+import results from '../reducers/results';
 
 describe('books', () => {
   it('adds a book', () => {
@@ -158,18 +158,18 @@ describe('fetching', () => {
   });
 });
 
-describe('suggestions', () => {
+describe('results', () => {
   it('changes the suggested books', () => {
     const state = [];
 
     const action = {
-      type: c.CHANGE_SUGGESTIONS,
+      type: c.CHANGE_RESULTS,
       payload: ['sapiens', 'the magus']
     };
 
     const expectedState = ['sapiens', 'the magus'];
 
-    const newState = suggestions(state, action);
+    const newState = results(state, action);
 
     expect(newState).toEqual(expectedState);
   });
@@ -178,10 +178,10 @@ describe('suggestions', () => {
     const state = ['sapiens', 'the magus'];
 
     const action = {
-      type: c.CLEAR_SUGGESTIONS
+      type: c.CLEAR_RESULTS
     };
 
-    const newState = suggestions(state, action);
+    const newState = results(state, action);
 
     expect(newState).toEqual([]);
   });

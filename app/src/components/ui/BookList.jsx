@@ -7,7 +7,7 @@ import { SortableBook, Book } from './Book';
 import SearchBooks from './SearchBooks';
 import NoBooks from './NoBooks';
 
-const SortableBookList = SortableContainer( ({ items, removeBook, toggleRead, suggestBooks, history }) => (
+const SortableBookList = SortableContainer( ({ items, removeBook, toggleRead, getBooks, history }) => (
   <ul>
     {items.map( (book, index) => (
       <SortableBook 
@@ -16,7 +16,7 @@ const SortableBookList = SortableContainer( ({ items, removeBook, toggleRead, su
         book={book} 
         removeBook={removeBook} 
         toggleRead={toggleRead} 
-        suggestBooks={suggestBooks} 
+        getBooks={getBooks} 
         history={history} 
       />
     ))}
@@ -34,9 +34,9 @@ class BookList extends Component {
     ),
     visibilityFilter: PropTypes.string.isRequired,
     fetching: PropTypes.bool.isRequired,
-    suggestions: PropTypes.arrayOf(PropTypes.object).isRequired,
+    results: PropTypes.arrayOf(PropTypes.object).isRequired,
     history: PropTypes.shape({}).isRequired,
-    suggestBooks: PropTypes.func.isRequired,
+    getBooks: PropTypes.func.isRequired,
     addBook: PropTypes.func.isRequired,
     removeBook: PropTypes.func.isRequired,
     toggleRead: PropTypes.func.isRequired,
@@ -53,7 +53,7 @@ class BookList extends Component {
   };
 
   render() {
-    const { books, visibilityFilter, suggestions, fetching, history, suggestBooks, addBook, removeBook, toggleRead } = this.props;
+    const { books, visibilityFilter, results, fetching, history, getBooks, addBook, removeBook, toggleRead } = this.props;
     
     return (
       <main className="booklist">
@@ -74,14 +74,14 @@ class BookList extends Component {
                     useDragHandle={true}
                     removeBook={removeBook} 
                     toggleRead={toggleRead} 
-                    suggestBooks={suggestBooks} 
+                    getBooks={getBooks} 
                     history={history}
                   />
                 }
               </div>
           )}}
         />
-        
+
         <Route 
           path="/finished-books"
           render={() => (
@@ -97,7 +97,7 @@ class BookList extends Component {
                       book={book} 
                       removeBook={removeBook} 
                       toggleRead={toggleRead} 
-                      suggestBooks={suggestBooks} 
+                      getBooks={getBooks} 
                       history={history} 
                     />
                   ))}
@@ -108,10 +108,10 @@ class BookList extends Component {
         />
 
         <SearchBooks 
-          suggestions={suggestions} 
+          results={results} 
           fetching={fetching} 
           history={history} 
-          suggestBooks={suggestBooks} 
+          getBooks={getBooks} 
           addBook={addBook}
         />
       </main>

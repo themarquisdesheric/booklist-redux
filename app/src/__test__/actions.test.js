@@ -5,8 +5,8 @@ import {
   toggleRead, 
   fetchBooks, 
   cancelFetching, 
-  changeSuggestions, 
-  clearSuggestions
+  changeResults, 
+  clearResults
 } from '../actions';
 
 describe('actions: books', () => {
@@ -64,23 +64,23 @@ describe('actions: fetching', () => {
   });
 });
 
-describe('actions: suggestions', () => {
-  it('should create an action to change the book suggestions', () => {
-    const action = changeSuggestions(['sapiens', 'the magus']);
+describe('actions: results', () => {
+  it('should create an action to change the book results', () => {
+    const action = changeResults(['sapiens', 'the magus']);
 
     const expectedAction = {
-      type: c.CHANGE_SUGGESTIONS,
+      type: c.CHANGE_RESULTS,
       payload: ['sapiens', 'the magus']
     };
 
     expect(action).toEqual(expectedAction);
   });
 
-  it('should create an action to clear the book suggestions', () => {
-    const action = clearSuggestions();
+  it('should create an action to clear the book results', () => {
+    const action = clearResults();
 
     const expectedAction = {
-      type: c.CLEAR_SUGGESTIONS
+      type: c.CLEAR_RESULTS
     };
 
     expect(action).toEqual(expectedAction);

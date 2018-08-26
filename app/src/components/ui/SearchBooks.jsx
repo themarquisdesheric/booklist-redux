@@ -7,46 +7,46 @@ import SearchForm from './SearchForm';
 import { Book } from './Book';
 import Pagination from './Pagination';
 
-const SearchBooks = ({ suggestions, fetching, history, suggestBooks, addBook }) => {
+const SearchBooks = ({ results, fetching, history, getBooks, addBook }) => {
   return (
     <div>
-      <Route path="/suggestions" component={Tabs} />
+      <Route path="/results" component={Tabs} />
       <div className="spinner">
         <BeatLoader loading={fetching} color={'rgb(191, 55, 251)'} />
       </div>
       <Route 
-        path="/suggestions"
+        path="/results"
         render={() => {
           window.scrollTo(0, 0);
           
           return (
             <ul>
-              {suggestions.map( book => (
+              {results.map( book => (
                 <Book 
                   key={book.id} 
                   book={book} 
                   isSuggestion 
-                  suggestBooks={suggestBooks} 
+                  getBooks={getBooks} 
                   addBook={() => {
                     addBook(book);
                     history.push('reading-list');
                   }}
                 />))}
 
-              {!!suggestions.length && <Pagination />}
+              {!!results.length && <Pagination />}
             </ul>
         )}}
       />
-      <SearchForm history={history} suggestBooks={suggestBooks} />
+      <SearchForm history={history} getBooks={getBooks} />
     </div>
   );
 };
 
 SearchBooks.propTypes = {
-  suggestions: PropTypes.arrayOf(PropTypes.object).isRequired,
+  results: PropTypes.arrayOf(PropTypes.object).isRequired,
   fetching: PropTypes.bool.isRequired,
   history: PropTypes.shape({}).isRequired,
-  suggestBooks: PropTypes.func.isRequired,
+  getBooks: PropTypes.func.isRequired,
   addBook: PropTypes.func.isRequired
 };
 

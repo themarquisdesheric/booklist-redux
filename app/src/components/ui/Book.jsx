@@ -6,7 +6,7 @@ import Button from './Button';
 
 const DragHandle = SortableHandle(() => <span className="drag-handle" >:::&nbsp;<br />:::&nbsp;</span>);
 
-export const Book = ({ book, isSuggestion, addBook, removeBook, toggleRead, suggestBooks, history }) => (
+export const Book = ({ book, isSuggestion, addBook, removeBook, toggleRead, getBooks, history }) => (
   <div className="box">
     <article className="media">
       {!isSuggestion && !book.read && <DragHandle />}
@@ -22,7 +22,7 @@ export const Book = ({ book, isSuggestion, addBook, removeBook, toggleRead, sugg
             title={book.title} 
             authors={book.authors} 
             snippet={book.snippet} 
-            suggestBooks={suggestBooks} 
+            getBooks={getBooks} 
             history={history} 
           />
           
@@ -59,7 +59,7 @@ Book.defaultProps = {
   addBook: () => {},
   removeBook: () => {},
   toggleRead: () => {},
-  suggestBooks: () => {},
+  getBooks: () => {},
   history: {}
 };
 
@@ -73,7 +73,7 @@ Book.propTypes = {
   addBook: PropTypes.func,
   removeBook: PropTypes.func,
   toggleRead: PropTypes.func,
-  suggestBooks: PropTypes.func,
+  getBooks: PropTypes.func,
   history: PropTypes.shape({})
 };
 

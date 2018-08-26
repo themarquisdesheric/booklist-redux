@@ -4,7 +4,7 @@ import SearchIcon from 'react-icons/lib/fa/search';
 
 class SearchForm extends Component {
   static propTypes = {
-    suggestBooks: PropTypes.func.isRequired,
+    getBooks: PropTypes.func.isRequired,
     history: PropTypes.shape({}).isRequired
   };
   
@@ -17,17 +17,18 @@ class SearchForm extends Component {
   }
 
   handleSubmit = (e) => {
-    const { suggestBooks, history } = this.props;
+    const { getBooks, history } = this.props;
+    const { query } = this.state;
 
     e.preventDefault();
 
-    if (!this.state.query) return;
+    if (!query) return;
     
-    suggestBooks(this.state.query);
+    getBooks(query);
     this.setState({ query: '' });
 
-    if (history.location.pathname !== '/suggestions') {
-      history.push('/suggestions');
+    if (history.location.pathname !== '/results') {
+      history.push('/results');
     }
   }
 

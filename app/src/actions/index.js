@@ -43,28 +43,29 @@ export const cancelFetching = () =>
     payload: false
   });
 
-export const changeSuggestions = suggestions =>
+export const changeResults = results =>
   ({
-    type: c.CHANGE_SUGGESTIONS,
-    payload: suggestions
+    type: c.CHANGE_RESULTS,
+    payload: results
   });
 
-export const clearSuggestions = () =>
+export const clearResults = () =>
   ({
-    type: c.CLEAR_SUGGESTIONS
+    type: c.CLEAR_RESULTS
   });
 
-export const suggestBooks = searchTerm => dispatch => {
+export const getBooks = (searchTerm, page = 0) => dispatch => {
   dispatch({
     type: c.FETCH_BOOKS
   });
 
-  fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURI(searchTerm)}`)
+  fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURI(searchTerm)}&startIndex=${page}`)
     .then(response => response.json())
-    .then(suggestions => {
-      const suggestedBooks = suggestions.items.map(book => {
-        let img = book.volumeInfo.imageLinks ? 
-          book.volumeInfo.imageLinks.smallThumbnail : '';
+    .then(books => {
+      const formattedBooks = books.items.map(book => {
+        let img = book.volumeInfo.imageLinks 
+          ? book.volumeInfo.imageLinks.smallThumbnail 
+          : '';
 
         if (img) img = `https${img.slice(4)}`;
   
@@ -78,8 +79,8 @@ export const suggestBooks = searchTerm => dispatch => {
       });
 
       dispatch({
-        type: c.CHANGE_SUGGESTIONS,
-        payload: suggestedBooks
+        type: c.CHANGE_RESULTS,
+        payload: formattedBooks
       });
 
       dispatch({

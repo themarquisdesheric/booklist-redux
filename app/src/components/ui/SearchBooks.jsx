@@ -11,7 +11,6 @@ const SearchBooks = ({ suggestions, fetching, history, suggestBooks, addBook }) 
   return (
     <div>
       <Route path="/suggestions" component={Tabs} />
-      <SearchForm history={history} suggestBooks={suggestBooks} />
       <div className="spinner">
         <BeatLoader loading={fetching} color={'rgb(191, 55, 251)'} />
       </div>
@@ -38,6 +37,7 @@ const SearchBooks = ({ suggestions, fetching, history, suggestBooks, addBook }) 
             </ul>
         )}}
       />
+      <SearchForm history={history} suggestBooks={suggestBooks} />
     </div>
   );
 };

@@ -34,7 +34,7 @@ const SearchBooks = ({ results, fetching, history, getBooks, addBook }) => {
                   }}
                 />))}
 
-              {!!results.length && <Pagination />}
+              {!!results.length && <Pagination getBooks={getBooks} history={history} />}
             </ul>
         )}}
       />

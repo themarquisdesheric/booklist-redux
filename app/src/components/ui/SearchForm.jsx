@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import queryString from 'query-string';
 import SearchIcon from 'react-icons/lib/fa/search';
 
 class SearchForm extends Component {
@@ -11,6 +13,17 @@ class SearchForm extends Component {
   state = {
     query: ''
   };
+
+  componentDidMount() {
+    const { getBooks, location: { search } } = this.props;
+
+    if (search) {
+      const params = queryString.parse(search);
+
+      getBooks(params.search);
+    }
+  }
+  
 
   handleChange = (e) => {
     this.setState({ query: e.target.value });
@@ -26,7 +39,7 @@ class SearchForm extends Component {
     
     getBooks(query);
     this.setState({ query: '' });
-    history.push(`/results/${query}`);
+    history.push(`/results?search=${query}`);
   }
 
   render() {
@@ -46,4 +59,4 @@ class SearchForm extends Component {
   }
 }
 
-export default SearchForm;
+export default withRouter(SearchForm);

@@ -39,7 +39,7 @@ const SearchBooks = ({ results, fetching, history, getBooks, addBook }) => {
         )}}
       />
 
-      <SearchForm history={history} getBooks={getBooks} />
+      <SearchForm getBooks={getBooks} />
     </div>
   );
 };

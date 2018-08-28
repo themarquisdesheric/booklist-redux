@@ -20,7 +20,7 @@ const SearchBooks = ({ results, fetching, history, getBooks, addBook }) => {
           
           return (
             <ul>
-              {results.map( book => (
+              {results.map(book => (
                 <Book 
                   key={book.id} 
                   book={book} 
@@ -34,7 +34,7 @@ const SearchBooks = ({ results, fetching, history, getBooks, addBook }) => {
                   }}
                 />))}
 
-              {!!results.length && <Pagination getBooks={getBooks} history={history} />}
+              {!!results.length && <Pagination />}
             </ul>
         )}}
       />

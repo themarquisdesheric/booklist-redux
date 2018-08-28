@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import queryString from 'query-string';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { getBooks } from '../../actions';
 
-const PaginationLink = ({ getBooks, history, index }) => {
+const PaginationLink = ({ query, getBooks, history, index }) => {
   const page = index + 1;
   // we're paginating by 10 so the start index needs to reflect that
   const pageStartIndex = index ? `${index}0` : 0;
@@ -14,9 +16,8 @@ const PaginationLink = ({ getBooks, history, index }) => {
         className={`pagination-link ${index || 'is-current'}`} 
         aria-label={`Goto page ${page}`}
         onClick={() => {
-          const params = queryString.parse(history.location.search);
-  
-          getBooks(params.search, pageStartIndex);
+          // history.push(`/results?${search}&page=${page}`);
+          getBooks(query, pageStartIndex);
         }}
       >
         {page}
@@ -31,4 +32,13 @@ PaginationLink.propTypes = {
   index: PropTypes.number
 };
 
-export default PaginationLink;
+const mapStateToProps = state => ({
+  query: state.query
+});
+
+const mapDispatchToProps = dispatch => ({
+  getBooks: (query, pageStartIndex) => 
+    dispatch(getBooks(query, pageStartIndex))
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PaginationLink));

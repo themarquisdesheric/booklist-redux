@@ -72,6 +72,7 @@ class BookList extends Component {
                   removeBook={removeBook} 
                   toggleRead={toggleRead} 
                   getBooks={getBooks} 
+                  history={history}
                 />
               : <NoBooks readingList />
           }}
@@ -88,6 +89,7 @@ class BookList extends Component {
                     removeBook={removeBook} 
                     toggleRead={toggleRead} 
                     getBooks={getBooks} 
+                    history={history} 
                   />
                 )}
               </ul>

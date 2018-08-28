@@ -36,9 +36,4 @@ const mapStateToProps = state => ({
   query: state.query
 });
 
-const mapDispatchToProps = dispatch => ({
-  getBooks: (query, pageStartIndex) => 
-    dispatch(getBooks(query, pageStartIndex))
-});
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PaginationLink));
+export default withRouter(connect(mapStateToProps, { getBooks })(PaginationLink));

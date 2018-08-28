@@ -1,7 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import queryString from 'query-string';
-
-// ! proptypes
 
 const PaginationLink = ({ getBooks, history, index }) => {
   const page = index + 1;
@@ -25,5 +24,11 @@ const PaginationLink = ({ getBooks, history, index }) => {
     </li>
   );
 }
+
+PaginationLink.propTypes = {
+  getBooks: PropTypes.func,
+  history: PropTypes.object,
+  index: PropTypes.number
+};
 
 export default PaginationLink;

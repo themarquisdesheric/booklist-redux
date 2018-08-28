@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import PaginationLink from './PaginationLink';
 
 const Pagination = ({ getBooks, history }) => (
@@ -14,5 +15,10 @@ const Pagination = ({ getBooks, history }) => (
     </ul>
   </nav>
 );
+
+Pagination.propTypes = {
+  getBooks: PropTypes.func,
+  history: PropTypes.object
+};
 
 export default Pagination;

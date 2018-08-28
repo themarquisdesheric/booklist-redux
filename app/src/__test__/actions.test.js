@@ -41,12 +41,12 @@ describe('actions: books', () => {
 });
 
 describe('actions: fetching', () => {
-  it('should create an action to set fetching to true when fetching books', () => {
-    const action = fetchBooks();
+  it('should create an action to set fetching to the search query when fetching books', () => {
+    const action = fetchBooks('borges');
 
     const expectedAction = {
       type: c.FETCH_BOOKS,
-      payload: true
+      payload: 'borges'
     };
 
     expect(action).toEqual(expectedAction);

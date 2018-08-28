@@ -2,6 +2,7 @@ import c from '../constants';
 import books from '../reducers/books';
 import fetching from '../reducers/fetching';
 import results from '../reducers/results';
+import query from '../reducers/query';
 
 describe('books', () => {
   it('adds a book', () => {
@@ -184,5 +185,20 @@ describe('results', () => {
     const newState = results(state, action);
 
     expect(newState).toEqual([]);
+  });
+});
+
+describe('query', () => {
+  it('sets the search query upon fetching books', () => {
+    const state = '';
+
+    const action = {
+      type: c.FETCH_BOOKS,
+      payload: 'borges'
+    };
+
+    const newState = query(state, action);
+
+    expect(newState).toEqual('borges');
   });
 });

@@ -31,10 +31,10 @@ export const setOrder = books => (dispatch, getState) => {
   });
 };
 
-export const fetchBooks = () =>
+export const fetchBooks = (query) =>
   ({
     type: c.FETCH_BOOKS,
-    payload: true
+    payload: query
   });
 
 export const cancelFetching = () =>
@@ -56,7 +56,8 @@ export const clearResults = () =>
 
 export const getBooks = (searchTerm, page = 0) => dispatch => {
   dispatch({
-    type: c.FETCH_BOOKS
+    type: c.FETCH_BOOKS,
+    payload: searchTerm
   });
 
   fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURI(searchTerm)}&startIndex=${page}`)

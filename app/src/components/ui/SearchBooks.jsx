@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { BeatLoader } from 'react-spinners';
 import SearchForm from './SearchForm';
@@ -10,28 +10,30 @@ const SearchBooks = ({ results, fetching, match, history, getBooks, addBook }) =
 
   return (
     <div>
-      <div className="spinner">
-        <BeatLoader loading={fetching} color={'rgb(191, 55, 251)'} />
-      </div>
-
       {showResults && (
-        <ul>
-          {results.map(book => (
-            <Book 
-              key={book.id} 
-              book={book} 
-              isSuggestion 
-              getBooks={getBooks} 
-              addBook={() => {
-                addBook(book);
-                history.push({
-                  pathname: '/reading-list'
-                });
-              }}
-            />))}
+        <Fragment>
+          <div className="spinner">
+            <BeatLoader loading={fetching} color="rgb(191, 55, 251)" />
+          </div>
 
-          {!!results.length && <Pagination />}
-        </ul>
+          <ul>
+            {results.map(book => (
+              <Book 
+                key={book.id} 
+                book={book} 
+                isSuggestion 
+                getBooks={getBooks} 
+                addBook={() => {
+                  addBook(book);
+                  history.push({
+                    pathname: '/reading-list'
+                  });
+                }}
+              />))}
+
+            {!!results.length && <Pagination />}
+          </ul>
+        </Fragment>
       )}
 
       <SearchForm getBooks={getBooks} />

@@ -97,12 +97,22 @@ class BookList extends Component {
           }
         />
 
-        <SearchBooks 
-          results={results} 
-          fetching={fetching} 
-          history={history} 
-          getBooks={getBooks} 
-          addBook={addBook}
+        <Route 
+          path="/(reading-list|finished-books|results)"
+          render={({ match }) => {
+            window.scrollTo(0, 0);
+
+            return (
+              <SearchBooks 
+                results={results} 
+                fetching={fetching} 
+                match={match}
+                history={history} 
+                getBooks={getBooks} 
+                addBook={addBook}
+              />
+            )
+          }}
         />
       </main>
     );

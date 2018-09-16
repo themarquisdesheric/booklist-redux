@@ -55,12 +55,15 @@ export const clearResults = () =>
   });
 
 export const getBooks = (searchTerm, page = 0) => dispatch => {
+  // we're paginating by 10 so the start index needs to reflect that
+  const pageStartIndex = page ? `${page}0` : 0;
+
   dispatch({
     type: c.FETCH_BOOKS,
     payload: searchTerm
   });
 
-  fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURI(searchTerm)}&startIndex=${page}`)
+  fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURI(searchTerm)}&startIndex=${pageStartIndex}`)
     .then(response => response.json())
     .then(books => {
       const formattedBooks = books.items.map(book => {

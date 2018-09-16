@@ -19,9 +19,7 @@ class SearchForm extends Component {
     const { getBooks, location: { pathname, search } } = this.props;
     const query = path.basename(pathname);
     const { page } = queryString.parse(search);
-    // we're paginating by 10 so the start index needs to reflect that
-    const index = page - 1;
-    const pageStartIndex = index ? `${index}0` : 0;
+    const pageStartIndex = page - 1;
 
     if (query) getBooks(query, pageStartIndex);
   }

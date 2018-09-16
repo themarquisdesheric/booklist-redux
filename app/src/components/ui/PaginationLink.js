@@ -6,8 +6,6 @@ import queryString from 'query-string';
 import { getBooks } from '../../actions';
 
 const PaginationLink = ({ query, getBooks, history, location: { pathname, search }, index }) => {
-  // we're paginating by 10 so the start index needs to reflect that
-  const pageStartIndex = index ? `${index}0` : 0;
   const { page: pageFromUrl } = queryString.parse(search);  
   const page = index + 1;
   // eslint-disable-next-line
@@ -24,7 +22,7 @@ const PaginationLink = ({ query, getBooks, history, location: { pathname, search
           if (`${pathname}${search}` === newUrl) return;
 
           history.push(`/results/${query}?page=${page}`);
-          getBooks(query, pageStartIndex);
+          getBooks(query, index);
         }}
       >
         {page}

@@ -45,9 +45,7 @@ header {
     font-size: 4em;
     padding: .5em;
 
-    a {
-      color: $white-ter;
-    }
+    a { color: $white-ter; }
   }
 }
 
@@ -102,16 +100,12 @@ header {
   .tabs li {
     background: #eee;
     
-    & a:hover {
-      background-color: unset;
-    }
+    & a:hover { background-color: unset; }
 
     &.is-active-tab {
       background: $white;
       
-      a {
-        color: $pink;
-      }
+      a { color: $pink; }
     }
   }
   
@@ -163,9 +157,7 @@ header {
     cursor: pointer;
     text-align: left;
 
-    &:hover {
-      color: $dark;
-    }
+    &:hover { color: $dark; }
   }
 
   .snippet {
@@ -183,15 +175,11 @@ header {
       background-color: #fff;
       cursor: pointer;
 
-      &:hover {
-        color: $midnight-blue;
-      }
+      &:hover { color: $midnight-blue; }
     }
   }
 
-  .add {
-    margin-top: 50%;
-  }
+  .add { margin-top: 50%; }
 
   .button {
     padding: 0 .75em;
@@ -213,9 +201,7 @@ header {
       background-color: $pink;
     }
 
-    img {
-      width: 40px;
-    }
+    img { width: 40px; }
   } 
   
   .button-icon {
@@ -232,13 +218,9 @@ form {
   min-width: 320px;
   max-width: 500px;
 
-  div:first-child {
-    width: 100%;
-  }
+  div:first-child { width: 100%; }
 
-  &.field:not(:last-child) {
-    margin-bottom: 0;
-  }
+  &.field:not(:last-child) { margin-bottom: 0; }
 }
 
 .pagination.is-centered { margin: 0; }
@@ -263,35 +245,33 @@ form {
   width: 100%;
   padding: 1.5em;
 
-  span {
-    font-weight: 900;
-  }
+  span { font-weight: 900; }
 }
 
 /* misc */
 
 .button-gradient {
+  height: 100%;
   background: linear-gradient(
     to top right, 
     $midnight-blue, 
     $pink
   );
   color: $white;
-  font-weight: bold;
-
+  font-weight: 600;
+  border: 1px solid rgba(10, 10, 10, 0.1);
+  
   &:hover {
+    transition: font-weight .25s ease-out;
+    font-weight: bold;
     color: $white;
     border: 1px solid $pink;
   }
 }
 
-.icon {
-  width: 30px;
-}
+.icon { width: 30px; }
 
-.spinner {
-  padding-bottom: 1em;
-}
+.spinner { padding-bottom: 1em; }
 
 /* end misc */
 

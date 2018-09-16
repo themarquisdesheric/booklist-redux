@@ -221,6 +221,11 @@ form {
   div:first-child { width: 100%; }
 
   &.field:not(:last-child) { margin-bottom: 0; }
+
+  input[placeholder="Find a book"]:focus {
+    border-color: $pink;
+    box-shadow: none;
+  }
 }
 
 .pagination.is-centered { margin: 0; }
@@ -261,12 +266,13 @@ form {
   font-weight: 600;
   border: 1px solid rgba(10, 10, 10, 0.1);
   
-  &:hover {
-    transition: font-weight .25s ease-out;
-    font-weight: bold;
+  &:hover,
+  &:focus {
     color: $white;
     border: 1px solid $pink;
   }
+
+  &:focus { font-weight: bold; }
 }
 
 .icon { width: 30px; }

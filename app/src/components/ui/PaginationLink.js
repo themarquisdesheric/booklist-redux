@@ -2,21 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import queryString from 'query-string';
 import { getBooks } from '../../actions';
 
-const PaginationLink = ({ query, getBooks, history, index }) => {
-  const page = index + 1;
+const PaginationLink = ({ query, getBooks, history, location: { pathname, search }, index }) => {
   // we're paginating by 10 so the start index needs to reflect that
   const pageStartIndex = index ? `${index}0` : 0;
+  const { page: pageFromUrl } = queryString.parse(search);  
+  const page = index + 1;
+  // eslint-disable-next-line
+  const active = (page == pageFromUrl);
 
   return (
     <li>
       <a 
-        // ! need this to reflect curent page, can be pulled off history once in query string
-        className={`pagination-link ${index || 'is-current'}`} 
+        className={`pagination-link ${active ? 'is-current' : ''}`} 
         aria-label={`Goto page ${page}`}
         onClick={() => {
-          // history.push(`/results?${search}&page=${page}`);
+          const newUrl = `/results/${query}?page=${page}`;
+          // don't reload if already on same page of results
+          if (`${pathname}${search}` === newUrl) return;
+
+          history.push(`/results/${query}?page=${page}`);
           getBooks(query, pageStartIndex);
         }}
       >

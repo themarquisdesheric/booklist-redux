@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import queryString from 'query-string';
 import path from 'path';
 import SearchIcon from 'react-icons/lib/fa/search';
 
@@ -15,10 +16,14 @@ class SearchForm extends Component {
   };
 
   componentDidMount() {
-    const { getBooks, location: { pathname } } = this.props;
+    const { getBooks, location: { pathname, search } } = this.props;
     const query = path.basename(pathname);
+    const { page } = queryString.parse(search);
+    // we're paginating by 10 so the start index needs to reflect that
+    const index = page - 1;
+    const pageStartIndex = index ? `${index}0` : 0;
 
-    if (query) getBooks(query);
+    if (query) getBooks(query, pageStartIndex);
   }
   
 
@@ -36,7 +41,7 @@ class SearchForm extends Component {
     
     getBooks(query);
     this.setState({ query: '' });
-    history.push(`/results/${query}`);
+    history.push(`/results/${query}?page=1`);
   }
 
   render() {

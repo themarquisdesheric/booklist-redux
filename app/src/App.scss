@@ -11,7 +11,11 @@ $subtitle-color: $grey;
 @import "../node_modules/bulma/bulma";
 
 html {
-  background: linear-gradient(to bottom right, #fafafa, #fefefe);
+  background: linear-gradient(
+    to bottom right, 
+    #fafafa, 
+    #fefefe
+  );
   position: relative;
 }
 
@@ -239,6 +243,17 @@ form {
 
 .pagination.is-centered { margin: 0; }
 
+.pagination-link.is-current { 
+  background: linear-gradient(
+    to top right, 
+    rgba(5, 5, 5, 0.9), 
+    rgba(5, 5, 5, 0.6)
+  );
+  font-weight: bold;
+  border: none;
+}
+
+
 .footer {
   background: rgba(0, 0, 0, 0.9);
   position: absolute;
@@ -256,7 +271,11 @@ form {
 /* misc */
 
 .button-gradient {
-  background: linear-gradient(to top right, $midnight-blue, $pink);
+  background: linear-gradient(
+    to top right, 
+    $midnight-blue, 
+    $pink
+  );
   color: $white;
   font-weight: bold;
 

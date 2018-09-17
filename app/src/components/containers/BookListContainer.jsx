@@ -1,5 +1,4 @@
 import { bindActionCreators } from 'redux';
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import BookList from '../ui/BookList';
@@ -21,14 +20,14 @@ const mapStateToProps = (state, { match }) => ({
   books: getFilteredBooks(state.books, match.params.filter),
   visibilityFilter: match.params.filter,
   fetching: state.fetching,
-  suggestions: state.suggestions
+  results: state.results
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
-const BookListContainer = withRouter(connect(
+const BookListContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(BookList));
+)(BookList);
 
 export default BookListContainer;

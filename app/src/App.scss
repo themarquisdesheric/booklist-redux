@@ -11,7 +11,11 @@ $subtitle-color: $grey;
 @import "../node_modules/bulma/bulma";
 
 html {
-  background: linear-gradient(to bottom right, #fafafa, #fefefe);
+  background: linear-gradient(
+    to bottom right, 
+    #fafafa, 
+    #fefefe
+  );
   position: relative;
 }
 
@@ -41,9 +45,7 @@ header {
     font-size: 4em;
     padding: .5em;
 
-    a {
-      color: $white-ter;
-    }
+    a { color: $white-ter; }
   }
 }
 
@@ -98,16 +100,12 @@ header {
   .tabs li {
     background: #eee;
     
-    & a:hover {
-      background-color: unset;
-    }
+    & a:hover { background-color: unset; }
 
     &.is-active-tab {
       background: $white;
       
-      a {
-        color: $pink;
-      }
+      a { color: $pink; }
     }
   }
   
@@ -159,9 +157,7 @@ header {
     cursor: pointer;
     text-align: left;
 
-    &:hover {
-      color: $dark;
-    }
+    &:hover { color: $dark; }
   }
 
   .snippet {
@@ -179,15 +175,11 @@ header {
       background-color: #fff;
       cursor: pointer;
 
-      &:hover {
-        color: $midnight-blue;
-      }
+      &:hover { color: $midnight-blue; }
     }
   }
 
-  .add {
-    margin-top: 50%;
-  }
+  .add { margin-top: 50%; }
 
   .button {
     padding: 0 .75em;
@@ -209,9 +201,7 @@ header {
       background-color: $pink;
     }
 
-    img {
-      width: 40px;
-    }
+    img { width: 40px; }
   } 
   
   .button-icon {
@@ -228,14 +218,28 @@ form {
   min-width: 320px;
   max-width: 500px;
 
-  div:first-child {
-    width: 100%;
-  }
+  div:first-child { width: 100%; }
 
-  &.field:not(:last-child) {
-    margin-bottom: 0;
+  &.field:not(:last-child) { margin-bottom: 0; }
+
+  input[placeholder="Find a book"]:focus {
+    border-color: $pink;
+    box-shadow: none;
   }
 }
+
+.pagination.is-centered { margin: 0; }
+
+.pagination-link.is-current { 
+  background: linear-gradient(
+    to top right, 
+    rgba(5, 5, 5, 0.9), 
+    rgba(5, 5, 5, 0.6)
+  );
+  font-weight: bold;
+  border: none;
+}
+
 
 .footer {
   background: rgba(0, 0, 0, 0.9);
@@ -246,31 +250,34 @@ form {
   width: 100%;
   padding: 1.5em;
 
-  span {
-    font-weight: 900;
-  }
+  span { font-weight: 900; }
 }
 
 /* misc */
 
 .button-gradient {
-  background: linear-gradient(to top right, $midnight-blue, $pink);
+  height: 100%;
+  background: linear-gradient(
+    to top right, 
+    $midnight-blue, 
+    $pink
+  );
   color: $white;
-  font-weight: bold;
-
-  &:hover {
+  font-weight: 600;
+  border: 1px solid rgba(10, 10, 10, 0.1);
+  
+  &:hover,
+  &:focus {
     color: $white;
     border: 1px solid $pink;
   }
+
+  &:focus { font-weight: bold; }
 }
 
-.icon {
-  width: 30px;
-}
+.icon { width: 30px; }
 
-.spinner {
-  padding-bottom: 1em;
-}
+.spinner { padding-bottom: 1em; }
 
 /* end misc */
 

@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Author = ({ author, suggestBooks, history }) => (
+const Author = ({ author, getBooks, history }) => (
   <span 
     className="author-link" 
     onClick={() => {
-      suggestBooks(author);
+      getBooks(author);
 
       if (!history.location) return;
 
-      history.push('suggestions');
+      history.push('results');
     }}
   >
     {author}
@@ -25,7 +25,7 @@ Author.propTypes = {
     PropTypes.arrayOf(PropTypes.string),
     PropTypes.string
   ]).isRequired,
-  suggestBooks: PropTypes.func.isRequired,
+  getBooks: PropTypes.func.isRequired,
   history: PropTypes.shape({})
 };
 

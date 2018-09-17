@@ -3,16 +3,31 @@ import PropTypes from 'prop-types';
 import Author from './Author';
 
 class BookInfo extends Component {
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    authors: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.string),
+      PropTypes.string
+    ]).isRequired,
+    snippet: PropTypes.string.isRequired,
+    getBooks: PropTypes.func.isRequired,
+    history: PropTypes.shape({})
+  };
+
+  static defaultProps = {
+    history: {}
+  };
+
   state = {
     seeMore: false
   }
 
-  seeMore= () => {
+  seeMore = () => {
     this.setState(prevState => ({seeMore: !prevState.seeMore})); 
   }
 
   render() {
-    const { title, authors = [], snippet, suggestBooks, history } = this.props;
+    const { title, authors = [], snippet, getBooks, history } = this.props;
     const { seeMore } = this.state;
   
     return (
@@ -21,9 +36,9 @@ class BookInfo extends Component {
         <small className="subtitle is-6">
           {authors.length > 1 ?
             authors.map(author => 
-              <Author key={author} author={author} suggestBooks={suggestBooks} history={history} />
+              <Author key={author} author={author} getBooks={getBooks} history={history} />
             ) :
-            <Author key={authors} author={authors} suggestBooks={suggestBooks} history={history} />
+            <Author key={authors} author={authors} getBooks={getBooks} history={history} />
           }
         </small><br />
 
@@ -37,20 +52,5 @@ class BookInfo extends Component {
       </div>
   )}
 }
-
-BookInfo.defaultProps = {
-  history: {}
-};
-
-BookInfo.propTypes = {
-  title: PropTypes.string.isRequired,
-  authors: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.string),
-    PropTypes.string
-  ]).isRequired,
-  snippet: PropTypes.string.isRequired,
-  suggestBooks: PropTypes.func.isRequired,
-  history: PropTypes.shape({})
-};
 
 export default BookInfo;

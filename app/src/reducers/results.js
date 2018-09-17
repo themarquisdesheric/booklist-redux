@@ -1,11 +1,11 @@
 import c from '../constants';
 
-const suggestions = (state = [], action) => {
+const results = (state = [], action) => {
   switch (action.type) {
-    case c.CHANGE_SUGGESTIONS:
+    case c.CHANGE_RESULTS:
       return action.payload;
 
-    case c.CLEAR_SUGGESTIONS:
+    case c.CLEAR_RESULTS:
       return [];
     
     default:
@@ -13,4 +13,4 @@ const suggestions = (state = [], action) => {
   }
 };
 
-export default suggestions;
+export default results;

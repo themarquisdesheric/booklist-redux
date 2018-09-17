@@ -1,7 +1,5 @@
-import c from '../constants';
-import books from '../reducers/books';
-import fetching from '../reducers/fetching';
-import suggestions from '../reducers/suggestions';
+import c from '../../constants';
+import books from '../../reducers/books';
 
 describe('books', () => {
   it('adds a book', () => {
@@ -123,66 +121,5 @@ describe('books', () => {
     const newState = books(state, action);
 
     expect(newState).toEqual(state);
-  });
-});
-
-describe('fetching', () => {
-  it('sets the fetching to true when fetching books', () => {
-    const state = false;
-
-    const action = {
-      type: c.FETCH_BOOKS,
-      payload: true
-    };
-
-    const expectedState = true;
-
-    const newState = fetching(state, action);
-
-    expect(newState).toEqual(expectedState);
-  });
-
-  it('sets the fetching to false when cancelling fetching', () => {
-    const state = true;
-
-    const action = {
-      type: c.CANCEL_FETCHING,
-      payload: false
-    };
-
-    const expectedState = false;
-
-    const newState = fetching(state, action);
-
-    expect(newState).toEqual(expectedState);
-  });
-});
-
-describe('suggestions', () => {
-  it('changes the suggested books', () => {
-    const state = [];
-
-    const action = {
-      type: c.CHANGE_SUGGESTIONS,
-      payload: ['sapiens', 'the magus']
-    };
-
-    const expectedState = ['sapiens', 'the magus'];
-
-    const newState = suggestions(state, action);
-
-    expect(newState).toEqual(expectedState);
-  });
-
-  it('clears the suggested books', () => {
-    const state = ['sapiens', 'the magus'];
-
-    const action = {
-      type: c.CLEAR_SUGGESTIONS
-    };
-
-    const newState = suggestions(state, action);
-
-    expect(newState).toEqual([]);
   });
 });

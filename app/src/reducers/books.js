@@ -31,7 +31,7 @@ const books = (state = [], action) => {
 
     case c.SET_ORDER:
       return action.payload;
-   
+
     default:
       return state;
   }

@@ -33,14 +33,15 @@ class BookList extends Component {
       })
     ),
     visibilityFilter: PropTypes.string.isRequired,
-    fetching: PropTypes.bool.isRequired,
     results: PropTypes.arrayOf(PropTypes.object).isRequired,
+    fetching: PropTypes.bool.isRequired,
+    paginationPages: PropTypes.number,
     history: PropTypes.shape({}).isRequired,
     getBooks: PropTypes.func.isRequired,
     addBook: PropTypes.func.isRequired,
     removeBook: PropTypes.func.isRequired,
     toggleRead: PropTypes.func.isRequired,
-    setOrder: PropTypes.func.isRequired
+    setOrder: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -53,8 +54,8 @@ class BookList extends Component {
   };
 
   render() {
-    const { books, visibilityFilter, results, fetching, history, getBooks, addBook, removeBook, toggleRead } = this.props;
-    
+    const { books, visibilityFilter, results, fetching, paginationPages, history, getBooks, addBook, removeBook, toggleRead } = this.props;
+
     return (
       <main className="booklist">
         <Tabs visibilityFilter={visibilityFilter} />
@@ -110,6 +111,7 @@ class BookList extends Component {
                 history={history} 
                 getBooks={getBooks} 
                 addBook={addBook}
+                paginationPages={paginationPages}
               />
             )
           }}

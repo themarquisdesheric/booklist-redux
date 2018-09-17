@@ -20,7 +20,8 @@ const mapStateToProps = (state, { match }) => ({
   books: getFilteredBooks(state.books, match.params.filter),
   visibilityFilter: match.params.filter,
   fetching: state.fetching,
-  results: state.results
+  results: state.results,
+  paginationPages: state.paginationPages
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);

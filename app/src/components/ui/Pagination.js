@@ -1,18 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import PaginationLink from './PaginationLink';
 
-const Pagination = () => (
-  <nav className="pagination is-centered" aria-label="pagination">
-    <ul className="pagination-list">
+const Pagination = ({ paginationPages }) => {
+  // ! pick up here
 
-      {/* // ! for as long as there are results / 10 */}
-      
-      <PaginationLink index={0} />
-      <PaginationLink index={1} />
-      <PaginationLink index={2} />
+  return (
+    <nav className="pagination is-centered" aria-label="pagination">
+      <ul className="pagination-list">
+        
+        <PaginationLink index={0} />
+        <PaginationLink index={1} />
+        <PaginationLink index={2} />
 
-    </ul>
-  </nav>
-);
+      </ul>
+    </nav>
+  );
+};
+
+Pagination.propTypes = {
+  paginationPages: PropTypes.number
+};
 
 export default Pagination;

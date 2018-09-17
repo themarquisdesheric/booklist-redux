@@ -1,8 +1,5 @@
-import c from '../constants';
-import books from '../reducers/books';
-import fetching from '../reducers/fetching';
-import results from '../reducers/results';
-import query from '../reducers/query';
+import c from '../../constants';
+import books from '../../reducers/books';
 
 describe('books', () => {
   it('adds a book', () => {
@@ -124,81 +121,5 @@ describe('books', () => {
     const newState = books(state, action);
 
     expect(newState).toEqual(state);
-  });
-});
-
-describe('fetching', () => {
-  it('sets the fetching to true when fetching books', () => {
-    const state = false;
-
-    const action = {
-      type: c.FETCH_BOOKS,
-      payload: true
-    };
-
-    const expectedState = true;
-
-    const newState = fetching(state, action);
-
-    expect(newState).toEqual(expectedState);
-  });
-
-  it('sets the fetching to false when cancelling fetching', () => {
-    const state = true;
-
-    const action = {
-      type: c.CANCEL_FETCHING,
-      payload: false
-    };
-
-    const expectedState = false;
-
-    const newState = fetching(state, action);
-
-    expect(newState).toEqual(expectedState);
-  });
-});
-
-describe('results', () => {
-  it('changes the suggested books', () => {
-    const state = [];
-
-    const action = {
-      type: c.CHANGE_RESULTS,
-      payload: ['sapiens', 'the magus']
-    };
-
-    const expectedState = ['sapiens', 'the magus'];
-
-    const newState = results(state, action);
-
-    expect(newState).toEqual(expectedState);
-  });
-
-  it('clears the suggested books', () => {
-    const state = ['sapiens', 'the magus'];
-
-    const action = {
-      type: c.CLEAR_RESULTS
-    };
-
-    const newState = results(state, action);
-
-    expect(newState).toEqual([]);
-  });
-});
-
-describe('query', () => {
-  it('sets the search query upon fetching books', () => {
-    const state = '';
-
-    const action = {
-      type: c.FETCH_BOOKS,
-      payload: 'borges'
-    };
-
-    const newState = query(state, action);
-
-    expect(newState).toEqual('borges');
   });
 });

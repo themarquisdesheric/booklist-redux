@@ -4,12 +4,14 @@ import books from './books';
 import fetching from './fetching';
 import results from './results';
 import query from './query';
+import paginationPages from './paginationPages';
 
 const appReducer = combineReducers({
   books,
   fetching,
   results,
-  query
+  query,
+  paginationPages
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

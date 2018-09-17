@@ -66,6 +66,7 @@ export const getBooks = (searchTerm, page = 0) => dispatch => {
   fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURI(searchTerm)}&startIndex=${pageStartIndex}`)
     .then(response => response.json())
     .then(books => {
+      const paginationPages = Math.floor(books.totalItems / 10);
       const formattedBooks = books.items.map(book => {
         let img = book.volumeInfo.imageLinks 
           ? book.volumeInfo.imageLinks.smallThumbnail 
@@ -84,7 +85,8 @@ export const getBooks = (searchTerm, page = 0) => dispatch => {
 
       dispatch({
         type: c.CHANGE_RESULTS,
-        payload: formattedBooks
+        payload: formattedBooks,
+        paginationPages
       });
 
       dispatch({

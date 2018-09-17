@@ -7,6 +7,6 @@ const query = (state = '', action) => {
     default:
       return state;
   }
-}
+};
 
 export default query;

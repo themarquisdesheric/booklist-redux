@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import queryString from 'query-string';
+import qs from 'qs';
 import path from 'path';
 import SearchIcon from 'react-icons/lib/fa/search';
 
@@ -18,7 +18,7 @@ class SearchForm extends Component {
   componentDidMount() {
     const { getBooks, location: { pathname, search } } = this.props;
     const query = path.basename(pathname);
-    const { page } = queryString.parse(search);
+    const { page } = qs.parse(search.slice(1));
     const pageStartIndex = page - 1;
 
     if (query) getBooks(query, pageStartIndex);

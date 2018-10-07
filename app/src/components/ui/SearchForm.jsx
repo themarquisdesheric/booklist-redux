@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import queryString from 'query-string';
+import qs from 'qs';
 import path from 'path';
 import SearchIcon from 'react-icons/lib/fa/search';
 
@@ -18,10 +18,10 @@ class SearchForm extends Component {
   componentDidMount() {
     const { getBooks, location: { pathname, search } } = this.props;
     const query = path.basename(pathname);
-    const { page } = queryString.parse(search);
+    const { page } = qs.parse(search.slice(1));
     const pageStartIndex = page - 1;
 
-    if (query) getBooks(query, pageStartIndex);
+    if (pathname.includes('results')) getBooks(query, pageStartIndex);
   }
   
 
@@ -30,16 +30,33 @@ class SearchForm extends Component {
   }
 
   handleSubmit = (e) => {
-    const { getBooks, history } = this.props;
+    const { getBooks, history, location: { pathname } } = this.props;
     const { query } = this.state;
+    const onResultsPage = pathname.includes('results');
+
+    const fetchBooks = () => {
+      getBooks(query);
+      this.setState({ query: '' });
+      history.push(`/results/${query}?page=1`);
+    };
 
     e.preventDefault();
 
     if (!query) return;
-    
-    getBooks(query);
-    this.setState({ query: '' });
-    history.push(`/results/${query}?page=1`);
+
+    if (onResultsPage) {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
+      
+      window.setTimeout( () => {
+        fetchBooks();
+      }, 500);
+    } else {
+      fetchBooks();
+    }
   }
 
   render() {

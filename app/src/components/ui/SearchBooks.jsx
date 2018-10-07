@@ -5,7 +5,7 @@ import SearchForm from './SearchForm';
 import { Book } from './Book';
 import Pagination from './Pagination';
 
-const SearchBooks = ({ results, fetching, match, history, getBooks, addBook }) => {
+const SearchBooks = ({ results, fetching, paginationPages, match, history, getBooks, addBook }) => {
   const showResults = match.url === '/results';
 
   return (
@@ -17,21 +17,23 @@ const SearchBooks = ({ results, fetching, match, history, getBooks, addBook }) =
           </div>
 
           <ul>
-            {results.map(book => (
-              <Book 
-                key={book.id} 
-                book={book} 
-                isSuggestion 
-                getBooks={getBooks} 
-                addBook={() => {
-                  addBook(book);
-                  history.push({
-                    pathname: '/reading-list'
-                  });
-                }}
-              />))}
+            {results.length 
+              ? results.map(book => (
+                <Book 
+                  key={book.id} 
+                  book={book} 
+                  isSuggestion 
+                  getBooks={getBooks} 
+                  addBook={() => {
+                    addBook(book);
+                    history.push({
+                      pathname: '/reading-list'
+                    });
+                  }}
+                />))
+              : (fetching) ? null : <p>No results :(</p>}
 
-            {!!results.length && <Pagination />}
+            {!!results.length && <Pagination paginationPages={paginationPages} />}
           </ul>
         </Fragment>
       )}
@@ -44,6 +46,7 @@ const SearchBooks = ({ results, fetching, match, history, getBooks, addBook }) =
 SearchBooks.propTypes = {
   results: PropTypes.arrayOf(PropTypes.object).isRequired,
   fetching: PropTypes.bool.isRequired,
+  paginationPages: PropTypes.number,
   match: PropTypes.object.isRequired,
   history: PropTypes.shape({}).isRequired,
   getBooks: PropTypes.func.isRequired,

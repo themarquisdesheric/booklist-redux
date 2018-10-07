@@ -21,6 +21,12 @@ const PaginationLink = ({ query, getBooks, history, location: { pathname, search
           // don't reload if already on same page of results
           if (`${pathname}${search}` === newUrl) return;
 
+          window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+          });
+
           history.push(`/results/${query}?page=${page}`);
           getBooks(query, index);
         }}

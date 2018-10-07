@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import queryString from 'query-string';
+import qs from 'qs';
 import { getBooks } from '../../actions';
 
 const PaginationLink = ({ query, getBooks, history, location: { pathname, search }, index }) => {
-  const { page: pageFromUrl } = queryString.parse(search);  
+  const { page: pageFromUrl } = qs.parse(search.slice(1));  
   const page = index + 1;
   // eslint-disable-next-line
   const active = (page == pageFromUrl);

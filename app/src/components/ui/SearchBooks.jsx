@@ -17,19 +17,21 @@ const SearchBooks = ({ results, fetching, paginationPages, match, history, getBo
           </div>
 
           <ul>
-            {results.map(book => (
-              <Book 
-                key={book.id} 
-                book={book} 
-                isSuggestion 
-                getBooks={getBooks} 
-                addBook={() => {
-                  addBook(book);
-                  history.push({
-                    pathname: '/reading-list'
-                  });
-                }}
-              />))}
+            {results.length 
+              ? results.map(book => (
+                <Book 
+                  key={book.id} 
+                  book={book} 
+                  isSuggestion 
+                  getBooks={getBooks} 
+                  addBook={() => {
+                    addBook(book);
+                    history.push({
+                      pathname: '/reading-list'
+                    });
+                  }}
+                />))
+              : <p>No results :(</p>}
 
             {!!results.length && <Pagination paginationPages={paginationPages} />}
           </ul>

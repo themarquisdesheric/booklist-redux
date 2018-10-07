@@ -21,7 +21,7 @@ class SearchForm extends Component {
     const { page } = qs.parse(search.slice(1));
     const pageStartIndex = page - 1;
 
-    if (query) getBooks(query, pageStartIndex);
+    if (pathname.includes('results')) getBooks(query, pageStartIndex);
   }
   
 

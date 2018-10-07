@@ -67,21 +67,23 @@ export const getBooks = (searchTerm, page = 0) => dispatch => {
     .then(response => response.json())
     .then(books => {
       const paginationPages = Math.floor(books.totalItems / 10);
-      const formattedBooks = books.items.map(book => {
-        let img = book.volumeInfo.imageLinks 
-          ? book.volumeInfo.imageLinks.smallThumbnail 
-          : '';
+      const formattedBooks = (books.items) 
+        ? books.items.map(book => {
+            let img = book.volumeInfo.imageLinks 
+              ? book.volumeInfo.imageLinks.smallThumbnail 
+              : '';
 
-        if (img) img = `https${img.slice(4)}`;
-  
-        return {
-          title: book.volumeInfo.title,
-          authors: book.volumeInfo.authors || '',
-          snippet: book.searchInfo ? htmlToText.fromString(book.searchInfo.textSnippet) : '',
-          img,
-          id: book.id
-        };
-      });
+            if (img) img = `https${img.slice(4)}`;
+      
+            return {
+              title: book.volumeInfo.title,
+              authors: book.volumeInfo.authors || '',
+              snippet: book.searchInfo ? htmlToText.fromString(book.searchInfo.textSnippet) : '',
+              img,
+              id: book.id
+            };
+          })
+        : [];
 
       dispatch({
         type: c.CHANGE_RESULTS,

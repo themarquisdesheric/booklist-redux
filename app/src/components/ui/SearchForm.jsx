@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import qs from 'qs';
 import path from 'path';
 import SearchIcon from 'react-icons/lib/fa/search';
+import smoothScrollTop from '../../utils/smoothScrollTop';
 
 class SearchForm extends Component {
   static propTypes = {
@@ -45,15 +46,12 @@ class SearchForm extends Component {
     if (!query) return;
 
     if (onResultsPage) {
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'smooth'
-      });
+      smoothScrollTop();
       
-      window.setTimeout( () => {
-        fetchBooks();
-      }, 500);
+      window.setTimeout( 
+        () => fetchBooks()
+        , 500
+      );
     } else {
       fetchBooks();
     }

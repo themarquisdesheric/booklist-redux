@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import qs from 'qs';
 import { getBooks } from '../../actions';
+import smoothScrollTop from '../../utils/smoothScrollTop';
 
 const PaginationLink = ({ query, getBooks, history, location: { pathname, search }, index = 0 }) => {
   const { page: pageFromUrl } = qs.parse(search.slice(1));  
@@ -21,12 +22,7 @@ const PaginationLink = ({ query, getBooks, history, location: { pathname, search
           // don't reload if already on same page of results
           if (`${pathname}${search}` === newUrl) return;
 
-          window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: 'smooth'
-          });
-
+          smoothScrollTop();
           history.push(`/results/${query}?page=${page}`);
           getBooks(query, index);
         }}

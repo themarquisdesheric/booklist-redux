@@ -31,7 +31,7 @@ const SearchBooks = ({ results, fetching, paginationPages, match, history, getBo
                     });
                   }}
                 />))
-              : <p>No results :(</p>}
+              : (fetching) ? null : <p>No results :(</p>}
 
             {!!results.length && <Pagination paginationPages={paginationPages} />}
           </ul>

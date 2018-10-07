@@ -30,16 +30,33 @@ class SearchForm extends Component {
   }
 
   handleSubmit = (e) => {
-    const { getBooks, history } = this.props;
+    const { getBooks, history, location: { pathname } } = this.props;
     const { query } = this.state;
+    const onResultsPage = pathname.includes('results');
+
+    const fetchBooks = () => {
+      getBooks(query);
+      this.setState({ query: '' });
+      history.push(`/results/${query}?page=1`);
+    };
 
     e.preventDefault();
 
     if (!query) return;
-    
-    getBooks(query);
-    this.setState({ query: '' });
-    history.push(`/results/${query}?page=1`);
+
+    if (onResultsPage) {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
+      
+      window.setTimeout( () => {
+        fetchBooks();
+      }, 500);
+    } else {
+      fetchBooks();
+    }
   }
 
   render() {

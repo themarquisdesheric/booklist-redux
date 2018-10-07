@@ -62,10 +62,8 @@ class BookList extends Component {
 
         <Route
           path="/reading-list"
-          render={() => {
-            window.scrollTo(0, 0);
-
-            return books.length 
+          render={() => 
+            books.length 
               ? <SortableBookList 
                   items={books} 
                   onSortEnd={this.onSortEnd} 
@@ -76,45 +74,42 @@ class BookList extends Component {
                   history={history}
                 />
               : <NoBooks readingList />
-          }}
+          }
         />
 
         <Route 
           path="/finished-books"
-          render={() => books.length 
-            ? <ul>
-                {books.map(book => 
-                  <Book 
-                    key={book.title} 
-                    book={book} 
-                    removeBook={removeBook} 
-                    toggleRead={toggleRead} 
-                    getBooks={getBooks} 
-                    history={history} 
-                  />
-                )}
-              </ul>
-            : <NoBooks />
+          render={() => 
+            books.length 
+              ? <ul>
+                  {books.map(book => 
+                    <Book 
+                      key={book.title} 
+                      book={book} 
+                      removeBook={removeBook} 
+                      toggleRead={toggleRead} 
+                      getBooks={getBooks} 
+                      history={history} 
+                    />
+                  )}
+                </ul>
+              : <NoBooks />
           }
         />
 
         <Route 
           path="/(reading-list|finished-books|results)"
-          render={({ match }) => {
-            window.scrollTo(0, 0);
-
-            return (
-              <SearchBooks 
-                results={results} 
-                fetching={fetching} 
-                match={match}
-                history={history} 
-                getBooks={getBooks} 
-                addBook={addBook}
-                paginationPages={paginationPages}
-              />
-            )
-          }}
+          render={({ match }) => 
+            <SearchBooks 
+              results={results} 
+              fetching={fetching} 
+              match={match}
+              history={history} 
+              getBooks={getBooks} 
+              addBook={addBook}
+              paginationPages={paginationPages}
+            />
+          }
         />
       </main>
     );

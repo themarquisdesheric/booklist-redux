@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import qs from 'qs';
 import { getBooks } from '../../actions';
 
-const PaginationLink = ({ query, getBooks, history, location: { pathname, search }, index }) => {
+const PaginationLink = ({ query, getBooks, history, location: { pathname, search }, index = 0 }) => {
   const { page: pageFromUrl } = qs.parse(search.slice(1));  
   const page = index + 1;
   // eslint-disable-next-line

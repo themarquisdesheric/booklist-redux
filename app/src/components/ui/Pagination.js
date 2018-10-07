@@ -2,21 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PaginationLink from './PaginationLink';
 
-const Pagination = ({ paginationPages }) => {
-  // ! pick up here
+// TODO: pick up with paginationPages here
 
-  return (
-    <nav className="pagination is-centered" aria-label="pagination">
-      <ul className="pagination-list">
-        
-        <PaginationLink index={0} />
-        <PaginationLink index={1} />
-        <PaginationLink index={2} />
-
-      </ul>
-    </nav>
-  );
-};
+const Pagination = ({ paginationPages }) => (
+  <nav className="pagination is-centered" aria-label="pagination">
+    <ul className="pagination-list">
+      {(paginationPages >= 3)
+          ? [1,2,3].map( (_, index) => 
+              <PaginationLink key={index} index={index} />
+            )
+          : (paginationPages === 2)
+              ? [1,2].map( (_, index) => 
+                  <PaginationLink key={index} index={index} />
+                )
+              : <PaginationLink active />
+      }
+    </ul>
+  </nav>
+);
 
 Pagination.propTypes = {
   paginationPages: PropTypes.number

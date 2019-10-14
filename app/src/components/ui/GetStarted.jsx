@@ -19,7 +19,7 @@ const GetStarted = () => {
   return (
     <div className="get-started">
       <div className="box">
-        <h3 className="title is-4 is-uppercase">Manage the books in your life</h3>
+        <h3 className="title is-size-5-mobile is-size-4-tablet is-uppercase">Manage the books in your life</h3>
 
         {content.map( ({ src, caption }) => (
           <div key={src} className="level">

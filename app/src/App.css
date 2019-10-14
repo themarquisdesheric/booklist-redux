@@ -6509,7 +6509,7 @@ html {
   position: relative; }
 
 body {
-  margin: 0 0 69px;
+  margin: 0;
   padding: 0;
   font-family: sans-serif;
   text-align: center;
@@ -6521,12 +6521,7 @@ body {
   border-image-slice: 0 20; }
 
 header {
-  background: rgba(5, 5, 5, 0.9);
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10; }
+  background: rgba(5, 5, 5, 0.9); }
   header h1.title {
     color: #fff;
     font-size: 4em;
@@ -6535,7 +6530,9 @@ header {
       color: whitesmoke; }
 
 .get-started {
-  margin: 8.3em auto 1px; }
+  margin: 0 auto;
+  padding: 1.25em 0;
+  min-height: calc(100vh - 136px - 73px); }
   .get-started .box {
     min-height: 74vh;
     margin: auto;
@@ -6566,9 +6563,9 @@ header {
 .booklist {
   min-width: 340px;
   max-width: 800px;
-  min-height: 69.6vh;
-  margin: 8.5em auto 2em;
-  padding: 2em 2em 0; }
+  padding: 2em 2em 0;
+  margin: 2em auto;
+  min-height: calc(100vh - 136px - 73px - 4em); }
   .booklist .tabs li {
     background: #eee; }
     .booklist .tabs li a:hover {
@@ -6673,11 +6670,7 @@ form {
 
 .footer {
   background: rgba(0, 0, 0, 0.9);
-  position: absolute;
-  bottom: 0;
-  left: 0;
   height: 73px;
-  width: 100%;
   padding: 1.5em; }
   .footer span {
     font-weight: 900; }

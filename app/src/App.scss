@@ -20,7 +20,7 @@ html {
 }
 
 body {
-  margin: 0 0 69px;
+  margin: 0;
   padding: 0;
   font-family: sans-serif;
   text-align: center;
@@ -34,11 +34,6 @@ body {
 
 header {
   background: rgba(5, 5, 5, 0.9);
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
 
   h1.title {
     color: #fff;
@@ -50,7 +45,10 @@ header {
 }
 
 .get-started {
-  margin: 8.3em auto 1px;
+  margin: 0 auto;
+  padding: 1.25em 0;
+  // viewport height - header height - footer height
+  min-height: calc(100vh - 136px - 73px);
   
   .box {
     min-height: 74vh;
@@ -93,9 +91,10 @@ header {
 .booklist {
   min-width: 340px;
   max-width: 800px;
-  min-height: 69.6vh;
-  margin: 8.5em auto 2em;
   padding: 2em 2em 0;
+  margin: 2em auto;
+  // viewport height - header height - footer height - content margin
+  min-height: calc(100vh - 136px - 73px - 4em);
 
   .tabs li {
     background: #eee;
@@ -243,11 +242,7 @@ form {
 
 .footer {
   background: rgba(0, 0, 0, 0.9);
-  position: absolute;
-  bottom: 0;
-  left: 0;
   height: 73px;
-  width: 100%;
   padding: 1.5em;
 
   span { font-weight: 900; }
